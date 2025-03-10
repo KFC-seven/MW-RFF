@@ -1,0 +1,6 @@
+Scatter Model Test Accuracy: 0.5218
+Trajectory Model Test Accuracy: 0.5629
+Parameters:
+num_classes_to_select: 30
+limit_per_class: 1000
+use_all_images: True
