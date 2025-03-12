@@ -1,0 +1,74 @@
+=== Experiment Summary ===
+Feature Folder: trajectory_pos
+Timestamp: 2025-03-11 21:15:42
+Total Classes: 30
+Best Train Accuracy: 0.9633
+Best Val Accuracy: 0.3271
+Final Test Accuracy: 0.3277
+
+=== Training Parameters ===
+num_classes_to_select: 30
+limit_per_class: 1000
+use_all_images: True
+batch_size: 256
+epochs: 30
+learning_rate: 0.001
+input_size: 224
+model_name: resnet18
+
+=== Epoch-wise Results ===
+Epoch | Train Acc | Val Acc | Learning Rate
+--------------------------------------------
+    1 | 0.1087   | 0.1210  | 1.00e-03
+    2 | 0.1636   | 0.1690  | 1.00e-03
+    3 | 0.2033   | 0.1931  | 1.00e-03
+    4 | 0.2412   | 0.2133  | 1.00e-03
+    5 | 0.2758   | 0.2275  | 1.00e-03
+    6 | 0.3103   | 0.2199  | 1.00e-03
+    7 | 0.3508   | 0.2607  | 1.00e-03
+    8 | 0.3887   | 0.2604  | 1.00e-03
+    9 | 0.4332   | 0.2985  | 1.00e-03
+   10 | 0.4867   | 0.2985  | 1.00e-03
+   11 | 0.5354   | 0.2938  | 1.00e-03
+   12 | 0.5907   | 0.3004  | 1.00e-03
+   13 | 0.6539   | 0.2991  | 1.00e-03
+   14 | 0.7056   | 0.2838  | 1.00e-03
+   15 | 0.7563   | 0.2797  | 1.00e-03
+   16 | 0.8768   | 0.3271  | 1.00e-04
+   17 | 0.9169   | 0.3267  | 1.00e-04
+   18 | 0.9339   | 0.3249  | 1.00e-04
+   19 | 0.9491   | 0.3209  | 1.00e-04
+   20 | 0.9617   | 0.3218  | 1.00e-05
+   21 | 0.9633   | 0.3208  | 1.00e-05
+
+=== Class Distribution ===
+Class 0 (4-10): 3570 samples
+Class 1 (18-20): 3570 samples
+Class 2 (11-19): 3825 samples
+Class 3 (10-7): 3825 samples
+Class 4 (8-3): 3825 samples
+Class 5 (18-13): 3570 samples
+Class 6 (16-1): 3825 samples
+Class 7 (19-6): 3825 samples
+Class 8 (8-18): 3825 samples
+Class 9 (2-4): 3825 samples
+Class 10 (1-12): 3570 samples
+Class 11 (20-12): 3825 samples
+Class 12 (7-13): 3315 samples
+Class 13 (19-7): 3825 samples
+Class 14 (18-4): 3570 samples
+Class 15 (8-20): 3825 samples
+Class 16 (16-19): 3570 samples
+Class 17 (7-8): 3060 samples
+Class 18 (7-7): 3825 samples
+Class 19 (13-18): 1785 samples
+Class 20 (19-10): 3570 samples
+Class 21 (8-1): 3825 samples
+Class 22 (2-7): 3825 samples
+Class 23 (14-10): 3825 samples
+Class 24 (6-6): 3570 samples
+Class 25 (20-19): 3825 samples
+Class 26 (11-1): 3825 samples
+Class 27 (18-9): 3825 samples
+Class 28 (13-3): 3570 samples
+Class 29 (7-11): 3825 samples
