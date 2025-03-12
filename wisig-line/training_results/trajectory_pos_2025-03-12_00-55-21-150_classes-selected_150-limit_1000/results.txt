@@ -1,0 +1,203 @@
+=== Experiment Summary ===
+Feature Folder: trajectory_pos
+Timestamp: 2025-03-12 00:55:56
+Total Classes: 150
+Best Train Accuracy: 0.2154
+Best Val Accuracy: 0.1452
+Final Test Accuracy: 0.1479
+
+=== Training Parameters ===
+num_classes_to_select: 150
+limit_per_class: 1000
+use_all_images: False
+batch_size: 256
+epochs: 30
+learning_rate: 0.01
+input_size: 224
+model_name: resnet18
+
+=== Epoch-wise Results ===
+Epoch | Train Acc | Val Acc | Learning Rate
+--------------------------------------------
+    1 | 0.0085   | 0.0118  | 1.00e-02
+    2 | 0.0144   | 0.0136  | 1.00e-02
+    3 | 0.0224   | 0.0288  | 1.00e-02
+    4 | 0.0343   | 0.0111  | 1.00e-02
+    5 | 0.0428   | 0.0352  | 1.00e-02
+    6 | 0.0518   | 0.0411  | 1.00e-02
+    7 | 0.0612   | 0.0314  | 1.00e-02
+    8 | 0.0716   | 0.0444  | 1.00e-02
+    9 | 0.0818   | 0.0378  | 1.00e-02
+   10 | 0.0904   | 0.0740  | 1.00e-02
+   11 | 0.0987   | 0.0635  | 1.00e-02
+   12 | 0.1077   | 0.0869  | 1.00e-02
+   13 | 0.1156   | 0.0657  | 1.00e-02
+   14 | 0.1241   | 0.0457  | 1.00e-02
+   15 | 0.1314   | 0.0411  | 1.00e-02
+   16 | 0.1674   | 0.1316  | 1.00e-03
+   17 | 0.1780   | 0.1338  | 1.00e-03
+   18 | 0.1815   | 0.1342  | 1.00e-03
+   19 | 0.1853   | 0.1362  | 1.00e-03
+   20 | 0.1887   | 0.1379  | 1.00e-03
+   21 | 0.1907   | 0.1347  | 1.00e-03
+   22 | 0.1935   | 0.1394  | 1.00e-03
+   23 | 0.1971   | 0.1400  | 1.00e-03
+   24 | 0.1987   | 0.1400  | 1.00e-03
+   25 | 0.2014   | 0.1415  | 1.00e-03
+   26 | 0.2045   | 0.1442  | 1.00e-03
+   27 | 0.2066   | 0.1429  | 1.00e-03
+   28 | 0.2099   | 0.1452  | 1.00e-03
+   29 | 0.2142   | 0.1422  | 1.00e-03
+   30 | 0.2154   | 0.1424  | 1.00e-03
+
+=== Class Distribution ===
+Class 0 (18-13): 1000 samples
+Class 1 (18-5): 1000 samples
+Class 2 (19-7): 1000 samples
+Class 3 (8-8): 1000 samples
+Class 4 (18-2): 1000 samples
+Class 5 (2-6): 1000 samples
+Class 6 (10-4): 1000 samples
+Class 7 (15-1): 1000 samples
+Class 8 (13-14): 1000 samples
+Class 9 (9-1): 1000 samples
+Class 10 (1-1): 1000 samples
+Class 11 (2-7): 1000 samples
+Class 12 (18-20): 1000 samples
+Class 13 (15-6): 1000 samples
+Class 14 (2-12): 1000 samples
+Class 15 (4-11): 1000 samples
+Class 16 (19-8): 1000 samples
+Class 17 (20-1): 1000 samples
+Class 18 (7-11): 1000 samples
+Class 19 (11-19): 1000 samples
+Class 20 (13-18): 1000 samples
+Class 21 (2-20): 1000 samples
+Class 22 (2-14): 1000 samples
+Class 23 (20-3): 1000 samples
+Class 24 (1-10): 1000 samples
+Class 25 (1-14): 1000 samples
+Class 26 (18-4): 1000 samples
+Class 27 (20-12): 1000 samples
+Class 28 (12-19): 1000 samples
+Class 29 (8-18): 1000 samples
+Class 30 (20-5): 1000 samples
+Class 31 (19-11): 1000 samples
+Class 32 (18-14): 1000 samples
+Class 33 (19-4): 1000 samples
+Class 34 (6-15): 1000 samples
+Class 35 (8-7): 1000 samples
+Class 36 (20-16): 1000 samples
+Class 37 (19-6): 1000 samples
+Class 38 (6-6): 1000 samples
+Class 39 (4-10): 1000 samples
+Class 40 (19-10): 1000 samples
+Class 41 (20-14): 1000 samples
+Class 42 (1-18): 1000 samples
+Class 43 (16-19): 1000 samples
+Class 44 (18-7): 1000 samples
+Class 45 (14-20): 1000 samples
+Class 46 (11-7): 1000 samples
+Class 47 (1-15): 1000 samples
+Class 48 (19-1): 1000 samples
+Class 49 (10-1): 1000 samples
+Class 50 (11-20): 1000 samples
+Class 51 (17-10): 1000 samples
+Class 52 (2-3): 1000 samples
+Class 53 (1-19): 1000 samples
+Class 54 (19-14): 1000 samples
+Class 55 (18-9): 1000 samples
+Class 56 (4-1): 1000 samples
+Class 57 (19-9): 1000 samples
+Class 58 (11-17): 1000 samples
+Class 59 (2-4): 1000 samples
+Class 60 (7-14): 1000 samples
+Class 61 (13-3): 1000 samples
+Class 62 (14-11): 1000 samples
+Class 63 (19-20): 1000 samples
+Class 64 (7-13): 1000 samples
+Class 65 (7-7): 1000 samples
+Class 66 (5-16): 1000 samples
+Class 67 (9-20): 1000 samples
+Class 68 (3-18): 1000 samples
+Class 69 (2-19): 1000 samples
+Class 70 (5-1): 1000 samples
+Class 71 (16-5): 1000 samples
+Class 72 (14-7): 1000 samples
+Class 73 (3-19): 1000 samples
+Class 74 (18-17): 1000 samples
+Class 75 (19-13): 1000 samples
+Class 76 (16-16): 1000 samples
+Class 77 (12-7): 1000 samples
+Class 78 (7-20): 1000 samples
+Class 79 (2-15): 1000 samples
+Class 80 (8-1): 1000 samples
+Class 81 (17-11): 1000 samples
+Class 82 (1-2): 1000 samples
+Class 83 (10-7): 1000 samples
+Class 84 (18-12): 1000 samples
+Class 85 (20-15): 1000 samples
+Class 86 (7-9): 1000 samples
+Class 87 (14-8): 1000 samples
+Class 88 (2-13): 1000 samples
+Class 89 (3-13): 1000 samples
+Class 90 (16-20): 1000 samples
+Class 91 (9-7): 1000 samples
+Class 92 (5-5): 1000 samples
+Class 93 (18-11): 1000 samples
+Class 94 (20-4): 1000 samples
+Class 95 (18-15): 1000 samples
+Class 96 (6-1): 1000 samples
+Class 97 (11-4): 1000 samples
+Class 98 (2-1): 1000 samples
+Class 99 (8-3): 1000 samples
+Class 100 (13-19): 1000 samples
+Class 101 (9-14): 1000 samples
+Class 102 (11-1): 1000 samples
+Class 103 (1-11): 1000 samples
+Class 104 (5-20): 1000 samples
+Class 105 (18-8): 1000 samples
+Class 106 (2-17): 1000 samples
+Class 107 (14-14): 1000 samples
+Class 108 (15-19): 1000 samples
+Class 109 (18-16): 1000 samples
+Class 110 (1-12): 1000 samples
+Class 111 (11-10): 1000 samples
+Class 112 (12-20): 1000 samples
+Class 113 (7-8): 1000 samples
+Class 114 (8-20): 1000 samples
+Class 115 (14-13): 1000 samples
+Class 116 (12-1): 1000 samples
+Class 117 (20-8): 1000 samples
+Class 118 (10-17): 1000 samples
+Class 119 (8-13): 1000 samples
+Class 120 (18-10): 1000 samples
+Class 121 (10-10): 1000 samples
+Class 122 (1-16): 1000 samples
+Class 123 (2-16): 1000 samples
+Class 124 (7-10): 1000 samples
+Class 125 (3-2): 1000 samples
+Class 126 (20-7): 1000 samples
+Class 127 (13-7): 1000 samples
+Class 128 (19-2): 1000 samples
+Class 129 (3-1): 1000 samples
+Class 130 (20-18): 1000 samples
+Class 131 (3-8): 1000 samples
+Class 132 (1-8): 1000 samples
+Class 133 (2-5): 1000 samples
+Class 134 (18-1): 1000 samples
+Class 135 (16-1): 1000 samples
+Class 136 (20-20): 1000 samples
+Class 137 (13-20): 1000 samples
+Class 138 (19-12): 1000 samples
+Class 139 (8-14): 1000 samples
+Class 140 (14-10): 1000 samples
+Class 141 (14-9): 1000 samples
+Class 142 (19-3): 1000 samples
+Class 143 (19-19): 1000 samples
+Class 144 (2-8): 1000 samples
+Class 145 (20-19): 1000 samples
+Class 146 (14-12): 1000 samples
+Class 147 (10-11): 1000 samples
+Class 148 (3-20): 1000 samples
+Class 149 (7-12): 1000 samples
