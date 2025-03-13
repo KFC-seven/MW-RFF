@@ -18,7 +18,7 @@ mat_files = dir(fullfile(input_folder, '*.mat'));
 num_devices = length(mat_files);
 
 %% 主循环处理每个设备
-parfor d = 1:num_devices
+for d = 1:num_devices
     total_processed = 0; % 当前设备处理计数器
     [~, dev_name] = fileparts(mat_files(d).name);
     fprintf('【开始处理】设备: %s (%d/%d)\n', dev_name, d, num_devices);
