@@ -1,16 +1,12 @@
 %% 参数配置
-input_folder = '..\los_nonht';    % 输入.mat文件所在文件夹
-output_root = '..\IQ_signal_21';     % 输出根目录
-signal_bandwidth = 20e6;          % 20 MHz
+input_folder = '..\los_data';     % 输入.mat文件所在文件夹
+output_root = '..\IQ_signal_21';  % 输出根目录
+lag_samples = 5;                  % 滞后点数
 enable_noise = false;             % 是否添加噪声（true/false）
 SNR_dB = 20;                      % 噪声信噪比
 line_style = '-';                 % 连线样式：'-'实线 | '--'虚线 | ':'点线
 line_width = 0.5;                 % 线宽（建议0.5-1.5）
 line_color = [0, 0.4470, 0.7410]; % 轨迹线颜色（RGB向量）
-
-% 根据信号带宽自动计算最佳滞后点数
-tau = round(1/(signal_bandwidth * 1e-6)); % 示例：τ=5 (对应20MHz带宽)
-lag_samples = tau;
 
 %% 初始化处理环境
 clc; close all;
@@ -41,17 +37,24 @@ for d = 1:num_devices
 
     %% --- 轨迹生成 ---
     if total_signals > 0
-        output_dir = fullfile(output_root, dev_name, 'trajectory_plots'); % 修改目录名
+        output_dir = fullfile(output_root, dev_name, 'trajectory_plots');
         if ~exist(output_dir, 'dir')
             mkdir(output_dir);
         end
         
+        % 配置图形参数（重要修改）
         fig = figure('Visible', 'off', 'Position', [100, 100, 256, 256]);
-        axes('Position', [0 0 1 1], 'Visible', 'off');
+        ax = axes('Parent', fig, 'Position', [0 0 1 1], 'Visible', 'off'); % 全画布坐标系
         
         for sig_idx = 1:total_signals
             %% 信号预处理
-            signal = data_Ineed(1:320, sig_idx);
+            % 处理数据长度不足的情况（新增容错处理）
+            max_samples = min(size(data_Ineed,1), 320);
+            signal = data_Ineed(1:max_samples, sig_idx);
+            if length(signal) < 320
+                signal = [signal; zeros(320-length(signal),1)]; % 补零填充
+            end
+            
             signal = signal / sqrt(mean(abs(signal).^2));
             
             if enable_noise
@@ -59,26 +62,29 @@ for d = 1:num_devices
             end
             
             %% 轨迹计算
+            if lag_samples >= length(signal)
+                warning('lag_samples(%d) >= signal length(%d)', lag_samples, length(signal));
+                lag_samples = 1;
+            end
             lagged = signal(lag_samples:end);
             conjugated = signal(1:length(lagged)) .* conj(lagged);
             
-            %% 绘制连线图（核心修改部分）
-            clf(fig);
-            hold on;
-            % 绘制顺序连线
-            plot(real(conjugated), imag(conjugated),...
+             %% ==== 统一画图配置 ====
+            fig = figure('Visible', 'off', 'Position', [100, 100, 256, 256], 'Color', 'none');
+            ax = axes('Parent', fig, 'Position', [0 0 1 1],...
+                'XLim', [-3 3], 'YLim', [-3 3], 'Visible', 'off');
+            
+            %% ==== 保持原有绘图方式 ====
+            plot(ax, real(conjugated), imag(conjugated),...
                 'LineStyle', line_style,...
                 'LineWidth', line_width,...
                 'Color', line_color);
-            hold off;
             
-            % 保持坐标范围一致
-            xlim([-3 3]);
-            ylim([-3 3]);
-            
-            %% 保存轨迹图
+            %% ==== 统一保存配置 ====
             save_name = fullfile(output_dir, sprintf('%s_%04d.png', dev_name, sig_idx));
             exportgraphics(fig, save_name, 'Resolution', 300);
+            close(fig);
+            
             total_processed = total_processed + 1;
         end
         close(fig);

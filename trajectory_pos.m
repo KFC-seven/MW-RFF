@@ -1,5 +1,5 @@
 %% 参数配置
-input_folder = '..\los_nonht';    % 输入.mat文件所在文件夹
+input_folder = '..\los_data';    % 输入.mat文件所在文件夹
 output_root = '..\IQ_signal_21';     % 输出根目录
 group_size = 320;                 % 每组包含的前导码数量
 line_style = '-';                 % 连线样式
@@ -73,7 +73,7 @@ for d = 1:num_devices
                 % 保存文件（添加SNR标识）
                 if enable_noise
                     save_name = fullfile(output_dir,...
-                        sprintf('SNR%d_group%02d_%04d.png', SNR_dB, g, local_idx));
+                        sprintf('SNR%d_grup%02d_%04d.png', SNR_dB, g, local_idx));
                 else
                     save_name = fullfile(output_dir,...
                         sprintf('group%02d_%04d.png', g, local_idx));

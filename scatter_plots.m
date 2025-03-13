@@ -1,13 +1,9 @@
 %% 参数配置
-input_folder = '..\los_nonht';    % 输入.mat文件所在文件夹（相对路径）
-output_root = '..\IQ_signal_21';     % 输出根目录
-signal_bandwidth = 20e6;          % 20 MHz
+input_folder = '..\los_data';     % 输入.mat文件所在文件夹（相对路径）
+output_root = '..\IQ_signal_21';  % 输出根目录
 enable_noise = false;             % 是否添加噪声（true/false）
 SNR_dB = 20;                      % 噪声信噪比（启用时有效）
-
-% 根据信号带宽自动计算最佳滞后点数
-tau = round(1/(signal_bandwidth * 1e-6)); % 示例：τ=5 (对应20MHz带宽)
-lag_samples = tau;
+lag_samples = 5;                  % 滞后点数
 
 %% 初始化处理环境
 clc; close all;
@@ -51,28 +47,40 @@ for d = 1:num_devices
         
         %% 信号处理流水线
         for sig_idx = 1:total_signals
-            % 1. 信号截取与归一化
-            signal = data_Ineed(1:320, sig_idx);
-            signal = signal / sqrt(mean(abs(signal).^2)); % 功率归一化
+            % 1. 信号截取与归一化（保持不变）
+            max_samples = min(size(data_Ineed, 1), 320);
+            signal = data_Ineed(1:max_samples, sig_idx);
+            if size(signal,1) < 320
+                signal = [signal; zeros(320 - size(signal,1), 1)];
+            end
+            signal = signal / sqrt(mean(abs(signal).^2));
             
-            % 2. 可选噪声注入
+            % 2. 噪声注入（保持不变）
             if enable_noise
-                signal = awgn(signal, SNR_dB, 'measured'); % 带测量校准的加噪
+                signal = awgn(signal, SNR_dB, 'measured');
             end
             
-            % 3. 滞后共轭乘积计算
+            % 3. 滞后共轭乘积（保持不变）
+            if lag_samples >= length(signal)
+                warning('lag_samples(%d) >= signal length(%d)', lag_samples, length(signal));
+                lag_samples = 1;
+            end
             lagged = signal(lag_samples:end);
             conjugated = signal(1:length(lagged)) .* conj(lagged);
             
-            % 4. 生成标准化散点图
-            clf(fig);
-            plot(real(conjugated), imag(conjugated), '.', 'MarkerSize', 1);
-            xlim([-3 3]); ylim([-3 3]); % 固定坐标范围
+            % 4. 画图
+            fig = figure('Visible', 'off', 'Position', [100, 100, 256, 256], 'Color', 'none');
+            ax = axes('Parent', fig, 'Position', [0 0 1 1],...
+                'XLim', [-3 3], 'YLim', [-3 3], 'Visible', 'off');
             
-            % 5. 保存高分辨率图像
-            save_name = fullfile(output_dir, ...
-                sprintf('%s_%04d.png', dev_name, sig_idx)); % 命名规范
-            exportgraphics(fig, save_name, 'Resolution', 300); % 300dpi高清输出
+            % ==== 保持原有绘图方式 ====
+            plot(ax, real(conjugated), imag(conjugated), '.', 'MarkerSize', 2);
+            
+            % ==== 统一保存配置 ====
+            save_name = fullfile(output_dir, sprintf('%s_%04d.png', dev_name, sig_idx));
+            exportgraphics(fig, save_name, 'Resolution', 300);
+            close(fig);
+            
             total_processed = total_processed + 1;
         end
         close(fig);
