@@ -1,6 +1,6 @@
 %% 参数配置
 input_folder = '..\los_nonht';    % 输入.mat文件所在文件夹（相对路径）
-output_root = 'IQ_signal_21';     % 输出根目录
+output_root = '..\IQ_signal_21';     % 输出根目录
 signal_bandwidth = 20e6;          % 20 MHz
 enable_noise = false;             % 是否添加噪声（true/false）
 SNR_dB = 20;                      % 噪声信噪比（启用时有效）
