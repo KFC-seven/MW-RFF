@@ -1,14 +1,12 @@
 %% 参数配置
-input_folder = '..\los_data';    % 输入.mat文件所在文件夹
-output_root = '..\IQ_signal_21';     % 输出根目录
+input_folder = '..\los_data';     % 输入.mat文件所在文件夹
+output_root = '..\IQ_signal_21_10dB';  % 输出根目录
+enable_noise = false;             % 是否添加噪声（true/false）
+SNR_dB = 10;                      % 信噪比（启用噪声时有效）
 group_size = 320;                 % 每组包含的前导码数量
 line_style = '-';                 % 连线样式
-line_width = 0.5;                 % 线宽
+line_width = 0.5;                        % 线宽
 line_color = [0, 0.4470, 0.7410]; % 轨迹线颜色
-
-% ===== 新增噪声参数 =====
-enable_noise = false;    % 是否添加噪声（true/false）
-SNR_dB = 20;            % 信噪比（启用噪声时有效）
 
 %% 初始化处理环境
 clc; close all;

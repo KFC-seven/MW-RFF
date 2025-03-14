@@ -1,8 +1,8 @@
 %% 参数配置
 input_folder = '..\los_data';     % 输入.mat文件所在文件夹（相对路径）
-output_root = '..\IQ_signal_21';  % 输出根目录
+output_root = '..\IQ_signal_21_10dB';  % 输出根目录
 enable_noise = false;             % 是否添加噪声（true/false）
-SNR_dB = 20;                      % 噪声信噪比（启用时有效）
+SNR_dB = 10;                      % 噪声信噪比（启用时有效）
 lag_samples = 5;                  % 滞后点数
 
 %% 初始化处理环境
@@ -83,7 +83,6 @@ for d = 1:num_devices
             
             total_processed = total_processed + 1;
         end
-        close(fig);
     end
     
     %% --- 处理结果报告 ---

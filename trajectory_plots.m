@@ -1,9 +1,9 @@
 %% 参数配置
 input_folder = '..\los_data';     % 输入.mat文件所在文件夹
-output_root = '..\IQ_signal_21';  % 输出根目录
+output_root = '..\IQ_signal_21_10dB';  % 输出根目录
 lag_samples = 5;                  % 滞后点数
 enable_noise = false;             % 是否添加噪声（true/false）
-SNR_dB = 20;                      % 噪声信噪比
+SNR_dB = 10;                      % 噪声信噪比
 line_style = '-';                 % 连线样式：'-'实线 | '--'虚线 | ':'点线
 line_width = 0.5;                 % 线宽（建议0.5-1.5）
 line_color = [0, 0.4470, 0.7410]; % 轨迹线颜色（RGB向量）
@@ -87,7 +87,6 @@ for d = 1:num_devices
             
             total_processed = total_processed + 1;
         end
-        close(fig);
     end
     
     %% --- 处理报告 ---
