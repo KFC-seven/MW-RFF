@@ -2,7 +2,7 @@
 input_folder = '..\los_data';     % 输入.mat文件所在文件夹
 output_root = '..\IQ_signal_21_10dB';  % 输出根目录
 lag_samples = 5;                  % 滞后点数
-enable_noise = false;             % 是否添加噪声（true/false）
+enable_noise = true;             % 是否添加噪声（true/false）
 SNR_dB = 10;                      % 噪声信噪比
 line_style = '-';                 % 连线样式：'-'实线 | '--'虚线 | ':'点线
 line_width = 0.5;                 % 线宽（建议0.5-1.5）

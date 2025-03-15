@@ -1,7 +1,7 @@
 %% 参数配置
 input_folder = '..\los_data';     % 输入.mat文件所在文件夹
 output_root = '..\IQ_signal_21_10dB';  % 输出根目录
-enable_noise = false;             % 是否添加噪声（true/false）
+enable_noise = true;             % 是否添加噪声（true/false）
 SNR_dB = 10;                      % 信噪比（启用噪声时有效）
 group_size = 320;                 % 每组包含的前导码数量
 line_style = '-';                 % 连线样式
