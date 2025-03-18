@@ -1,0 +1,60 @@
+=== Experiment Summary ===
+Feature Folder: trajectory_plots
+Timestamp: 2025-03-17 19:41:10
+Total Classes: 10
+Best Train Accuracy: 0.9997
+Best Val Accuracy: 0.7450
+Final Test Accuracy: 0.7408
+
+=== Training Parameters ===
+num_classes_to_select: 10
+limit_per_class: 3000
+use_all_images: False
+batch_size: 256
+epochs: 50
+learning_rate: 0.001
+input_size: 224
+model_name: resnet18
+
+=== Epoch-wise Results ===
+Epoch | Train Acc | Val Acc | Learning Rate
+--------------------------------------------
+    1 | 0.5143   | 0.5575  | 1.00e-03
+    2 | 0.6547   | 0.5522  | 1.00e-03
+    3 | 0.6977   | 0.5955  | 1.00e-03
+    4 | 0.7328   | 0.5848  | 1.00e-03
+    5 | 0.7561   | 0.5908  | 1.00e-03
+    6 | 0.7723   | 0.6203  | 1.00e-03
+    7 | 0.7933   | 0.6087  | 1.00e-03
+    8 | 0.8116   | 0.6348  | 1.00e-03
+    9 | 0.8429   | 0.6037  | 1.00e-03
+   10 | 0.8585   | 0.5697  | 1.00e-03
+   11 | 0.8875   | 0.6435  | 1.00e-03
+   12 | 0.9028   | 0.6482  | 1.00e-03
+   13 | 0.9069   | 0.6480  | 1.00e-03
+   14 | 0.9273   | 0.5645  | 1.00e-03
+   15 | 0.9359   | 0.6167  | 1.00e-03
+   16 | 0.9683   | 0.7357  | 1.00e-04
+   17 | 0.9872   | 0.7423  | 1.00e-04
+   18 | 0.9922   | 0.7405  | 1.00e-04
+   19 | 0.9954   | 0.7430  | 1.00e-04
+   20 | 0.9967   | 0.7412  | 1.00e-04
+   21 | 0.9978   | 0.7418  | 1.00e-04
+   22 | 0.9990   | 0.7450  | 1.00e-04
+   23 | 0.9994   | 0.7418  | 1.00e-04
+   24 | 0.9996   | 0.7420  | 1.00e-04
+   25 | 0.9997   | 0.7417  | 1.00e-04
+   26 | 0.9997   | 0.7432  | 1.00e-05
+   27 | 0.9997   | 0.7423  | 1.00e-05
+
+=== Class Distribution ===
+Class 0 (dev11): 3000 samples
+Class 1 (dev20): 3000 samples
+Class 2 (dev17): 3000 samples
+Class 3 (dev2): 3000 samples
+Class 4 (dev13): 3000 samples
+Class 5 (dev9): 3000 samples
+Class 6 (dev10): 3000 samples
+Class 7 (dev6): 3000 samples
+Class 8 (dev18): 3000 samples
+Class 9 (dev8): 3000 samples

@@ -1,0 +1,59 @@
+=== Experiment Summary ===
+Feature Folder: scatter_plots
+Timestamp: 2025-03-17 21:16:55
+Total Classes: 10
+Best Train Accuracy: 0.8698
+Best Val Accuracy: 0.6850
+Final Test Accuracy: 0.6875
+
+=== Training Parameters ===
+num_classes_to_select: 10
+limit_per_class: 3000
+use_all_images: False
+batch_size: 256
+epochs: 50
+learning_rate: 0.001
+input_size: 224
+model_name: resnet18
+
+=== Epoch-wise Results ===
+Epoch | Train Acc | Val Acc | Learning Rate
+--------------------------------------------
+    1 | 0.3764   | 0.3802  | 1.00e-03
+    2 | 0.5679   | 0.4900  | 1.00e-03
+    3 | 0.5976   | 0.1595  | 1.00e-03
+    4 | 0.6245   | 0.1000  | 1.00e-03
+    5 | 0.6428   | 0.5485  | 1.00e-03
+    6 | 0.6601   | 0.1102  | 1.00e-03
+    7 | 0.6761   | 0.1000  | 1.00e-03
+    8 | 0.6824   | 0.6192  | 1.00e-03
+    9 | 0.6993   | 0.2090  | 1.00e-03
+   10 | 0.7199   | 0.1672  | 1.00e-03
+   11 | 0.7321   | 0.6120  | 1.00e-03
+   12 | 0.7914   | 0.6813  | 1.00e-04
+   13 | 0.8118   | 0.6755  | 1.00e-04
+   14 | 0.8250   | 0.6792  | 1.00e-04
+   15 | 0.8393   | 0.6773  | 1.00e-04
+   16 | 0.8531   | 0.6840  | 1.00e-05
+   17 | 0.8569   | 0.6828  | 1.00e-05
+   18 | 0.8554   | 0.6838  | 1.00e-05
+   19 | 0.8592   | 0.6842  | 1.00e-05
+   20 | 0.8623   | 0.6843  | 1.00e-05
+   21 | 0.8629   | 0.6850  | 1.00e-05
+   22 | 0.8642   | 0.6820  | 1.00e-05
+   23 | 0.8644   | 0.6813  | 1.00e-05
+   24 | 0.8661   | 0.6810  | 1.00e-05
+   25 | 0.8691   | 0.6822  | 1.00e-06
+   26 | 0.8698   | 0.6825  | 1.00e-06
+
+=== Class Distribution ===
+Class 0 (dev4): 3000 samples
+Class 1 (dev11): 3000 samples
+Class 2 (dev3): 3000 samples
+Class 3 (dev5): 3000 samples
+Class 4 (dev13): 3000 samples
+Class 5 (dev18): 3000 samples
+Class 6 (dev0): 3000 samples
+Class 7 (dev17): 3000 samples
+Class 8 (dev6): 3000 samples
+Class 9 (dev7): 3000 samples

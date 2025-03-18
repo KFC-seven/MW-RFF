@@ -1,0 +1,74 @@
+=== Experiment Summary ===
+Feature Folder: trajectory_pos
+Timestamp: 2025-03-17 12:03:17
+Total Classes: 20
+Best Train Accuracy: 0.4179
+Best Val Accuracy: 0.4135
+Final Test Accuracy: 0.4062
+
+=== Training Parameters ===
+num_classes_to_select: 20
+limit_per_class: 1000
+use_all_images: False
+batch_size: 256
+epochs: 50
+learning_rate: 0.01
+input_size: 224
+model_name: resnet18
+
+=== Epoch-wise Results ===
+Epoch | Train Acc | Val Acc | Learning Rate
+--------------------------------------------
+    1 | 0.0520   | 0.0500  | 1.00e-02
+    2 | 0.0798   | 0.1482  | 1.00e-02
+    3 | 0.1501   | 0.1343  | 1.00e-02
+    4 | 0.1835   | 0.1160  | 1.00e-02
+    5 | 0.2027   | 0.0568  | 1.00e-02
+    6 | 0.2948   | 0.1940  | 1.00e-03
+    7 | 0.3368   | 0.3575  | 1.00e-03
+    8 | 0.3493   | 0.3772  | 1.00e-03
+    9 | 0.3766   | 0.3835  | 1.00e-03
+   10 | 0.3789   | 0.3470  | 1.00e-03
+   11 | 0.3777   | 0.3620  | 1.00e-03
+   12 | 0.3922   | 0.3513  | 1.00e-03
+   13 | 0.3976   | 0.4062  | 1.00e-04
+   14 | 0.4072   | 0.4045  | 1.00e-04
+   15 | 0.4083   | 0.4030  | 1.00e-04
+   16 | 0.4096   | 0.3967  | 1.00e-04
+   17 | 0.4136   | 0.4078  | 1.00e-05
+   18 | 0.4136   | 0.4093  | 1.00e-05
+   19 | 0.4150   | 0.4115  | 1.00e-05
+   20 | 0.4172   | 0.4090  | 1.00e-05
+   21 | 0.4163   | 0.4108  | 1.00e-05
+   22 | 0.4125   | 0.4118  | 1.00e-05
+   23 | 0.4167   | 0.4113  | 1.00e-05
+   24 | 0.4160   | 0.4110  | 1.00e-05
+   25 | 0.4114   | 0.4128  | 1.00e-05
+   26 | 0.4110   | 0.4135  | 1.00e-05
+   27 | 0.4164   | 0.4125  | 1.00e-05
+   28 | 0.4179   | 0.4108  | 1.00e-05
+   29 | 0.4171   | 0.4110  | 1.00e-05
+   30 | 0.4167   | 0.4128  | 1.00e-06
+   31 | 0.4173   | 0.4130  | 1.00e-06
+
+=== Class Distribution ===
+Class 0 (dev17): 1000 samples
+Class 1 (dev2): 1000 samples
+Class 2 (dev6): 1000 samples
+Class 3 (dev10): 1000 samples
+Class 4 (dev1): 1000 samples
+Class 5 (dev3): 1000 samples
+Class 6 (dev13): 1000 samples
+Class 7 (dev19): 1000 samples
+Class 8 (dev11): 1000 samples
+Class 9 (dev20): 1000 samples
+Class 10 (dev0): 1000 samples
+Class 11 (dev16): 1000 samples
+Class 12 (dev15): 1000 samples
+Class 13 (dev5): 1000 samples
+Class 14 (dev9): 1000 samples
+Class 15 (dev8): 1000 samples
+Class 16 (dev7): 1000 samples
+Class 17 (dev18): 1000 samples
+Class 18 (dev14): 1000 samples
+Class 19 (dev4): 1000 samples
