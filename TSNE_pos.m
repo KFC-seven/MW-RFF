@@ -2,12 +2,12 @@
 input_folder = '..\los_data';        % 输入数据文件夹
 output_root = '..\TSNE';             % 输出根目录
 enable_noise = true;                 % 噪声使能开关
-SNR_dB = 10;                         % 信噪比设置
+SNR_dB = 5;                         % 信噪比设置
 group_size = 320;                    % 每组样本量
 tsne_perplexity = 30;                % t-SNE困惑度参数
 resolution = 300;                    % 输出图像DPI
 random_seed = 2023;                  % 固定随机种子
-num_selected_devices = 5;            % 随机选择的设备数量
+num_selected_devices = 10;            % 随机选择的设备数量
 
 %% 初始化环境
 clc; close all; 
@@ -108,7 +108,7 @@ function visualization_engine(output_root, dpi, labels, proj2d, proj3d, snr, num
         mkdir(viz_dir);
     end
 
-    title_str = @(dim) sprintf('IQ信号t-SNE %dD投影\nSNR: %ddB | 选择/有效设备: %d/%d | 随机种子: %d',...
+    title_str = @(dim) sprintf('长时序轨迹图-IQ信号t-SNE %dD投影\nSNR: %ddB | 选择/有效设备: %d/%d | 随机种子: %d',...
         dim, snr, num_selected, actual_num, seed);
 
     % 2D可视化

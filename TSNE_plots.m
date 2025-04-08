@@ -2,12 +2,12 @@
 input_folder = '..\los_data';
 output_root = '..\TSNE';
 enable_noise = true;
-SNR_dB = 10;
+SNR_dB = 5;
 target_length = 320;
 tsne_perplexity = 30;
 resolution = 300;
 fixed_seed = 2023;  
-num_selected_devices = 5;  % +++ 新增随机选择参数 +++
+num_selected_devices = 10;  % +++ 新增随机选择参数 +++
 
 %% 初始化环境
 clc; close all; 
@@ -138,7 +138,7 @@ function visualize_tsne_results(features, labels, output_dir, dpi, perplexity, o
     proj_3d = tsne(features, 'NumDimensions', 3, 'Perplexity', perplexity);
     
     % 生成参数化标题
-    title_base = @(dim) sprintf('IQ信号t-SNE %dD投影\nSNR: %ddB | 设备: 选择%d/有效%d | 种子: %d',...
+    title_base = @(dim) sprintf('时序轨迹图IQ信号t-SNE %dD投影\nSNR: %ddB | 设备: 选择%d/有效%d | 种子: %d',...
         dim, options.SNR_DB, options.SelectedDevices, options.ActualDevices, options.Seed);
 
     % 2D可视化
