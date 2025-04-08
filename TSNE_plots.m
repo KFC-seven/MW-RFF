@@ -1,7 +1,7 @@
 %% 参数配置（保持原样）
 input_folder = '..\los_data';
 output_root = '..\TSNE_Visualization';
-enable_noise = false;
+enable_noise = true;
 SNR_dB = 10;
 target_length = 320;
 tsne_perplexity = 30;
