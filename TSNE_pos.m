@@ -59,8 +59,10 @@ for d = 1:num_devices
     end
 end
 
-%% 数据完整性校验（保持原样）
-assert(size(feature_matrix, 1) == length(device_labels),...);
+%% 数据完整性检查
+assert(size(feature_matrix,1) == length(device_labels),...
+    '维度不匹配: 特征矩阵(%d) ≠ 标签数(%d)',...
+    size(feature_matrix,1), length(device_labels));
 
 %% 降维分析
 fprintf('\n开始t-SNE降维...\n');
@@ -115,7 +117,7 @@ end
 
 %% 统一风格的可视化引擎
 function visualization_engine(output_root, dpi, labels, proj2d, proj3d)
-    % 创建输出目录
+    % 创建输出目录dangchu
     viz_dir = fullfile(output_root, 'TSNE_Pos');
     if ~exist(viz_dir, 'dir')
         mkdir(viz_dir);
@@ -130,7 +132,7 @@ function visualization_engine(output_root, dpi, labels, proj2d, proj3d)
     gscatter(proj2d(:,1), proj2d(:,2), group_ids, color_palette, '.', 8); % 统一点标记样式
     title('长时序轨迹图-IQ信号t-SNE 2D投影'); % 中文标题
     legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
-    exportgraphics(fig, fullfile(viz_dir, '2D_TSNE.png'), 'Resolution', dpi);
+    exportgraphics(fig, fullfile(viz_dir, '长时序轨迹图-2D_TSNE.png'), 'Resolution', dpi);
     
     %% 3D可视化
     fig = figure('Position', [100 100 800 600], 'Visible', 'off');
@@ -144,6 +146,6 @@ function visualization_engine(output_root, dpi, labels, proj2d, proj3d)
     grid on;
     title('长时序轨迹图-IQ信号t-SNE 3D投影'); % 中文标题
     legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
-    exportgraphics(fig, fullfile(viz_dir, '3D_TSNE.png'), 'Resolution', dpi);
+    exportgraphics(fig, fullfile(viz_dir, '长时序轨迹图-3D_TSNE.png'), 'Resolution', dpi);
     close all;
 end

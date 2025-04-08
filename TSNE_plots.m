@@ -122,10 +122,10 @@ function visualize_tsne_results(features, labels, output_dir, dpi, perplexity)
     
     % 2D可视化
     figure('Position', [100 100 800 600], 'Visible', 'off');
-    gscatter(proj_2d(:,1), proj_2d(:,2), group_ids, colors, '.', 15);
-    title('IQ信号t-SNE 2D投影');
+    gscatter(proj_2d(:,1), proj_2d(:,2), group_ids, colors, '.', 8);
+    title('时序轨迹图-IQ信号t-SNE 2D投影');
     legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
-    exportgraphics(gcf, fullfile(viz_dir, '2D_TSNE.png'), 'Resolution', dpi);
+    exportgraphics(gcf, fullfile(viz_dir, '时序轨迹图-2D_TSNE.png'), 'Resolution', dpi);
     
     % 3D可视化
     figure('Position', [100 100 800 600], 'Visible', 'off');
@@ -133,11 +133,11 @@ function visualize_tsne_results(features, labels, output_dir, dpi, perplexity)
     for i = 1:length(unique_labels)
         idx = group_ids == i;
         scatter3(proj_3d(idx,1), proj_3d(idx,2), proj_3d(idx,3),...
-                 36, colors(i,:), 'filled');
+                 10, colors(i,:), 'filled');
     end
     view(135, 30); grid on;
-    title('IQ信号t-SNE 3D投影');
+    title('时序轨迹图-IQ信号t-SNE 3D投影');
     legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
-    exportgraphics(gcf, fullfile(viz_dir, '3D_TSNE.png'), 'Resolution', dpi);
+    exportgraphics(gcf, fullfile(viz_dir, '时序轨迹图-3D_TSNE.png'), 'Resolution', dpi);
     close all;
 end
