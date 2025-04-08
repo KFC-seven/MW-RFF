@@ -76,34 +76,37 @@ function [features, valid_idx] = extract_features(signals)
     features = [time_features, freq_features];
 end
 
-%% 可视化引擎 (添加组标识)
+%% 统一风格的可视化引擎
 function visualization_engine(output_root, dpi, labels, proj2d, proj3d)
     % 创建输出目录
-    viz_dir = fullfile(output_root, 'FirstGroup_Visualization');
-    if ~exist(viz_dir, 'dir'), mkdir(viz_dir); end
+    viz_dir = fullfile(output_root, 'TSNE_Pos');
+    if ~exist(viz_dir, 'dir')
+        mkdir(viz_dir);
+    end
     
-    % 生成设备颜色映射
+    % 生成颜色映射
     [unique_labels, ~, group_ids] = unique(labels);
-    color_palette = hsv(length(unique_labels));
+    color_palette = lines(length(unique_labels)); % 改用lines配色
     
-    % 2D可视化
-    fig = figure('Visible', 'off', 'Position', [100 100 800 600]);
-    gscatter(proj2d(:,1), proj2d(:,2), group_ids, color_palette);
-    title('First Group 2D t-SNE');
+    %% 2D可视化
+    fig = figure('Position', [100 100 800 600], 'Visible', 'off');
+    gscatter(proj2d(:,1), proj2d(:,2), group_ids, color_palette, '.', 15); % 统一点标记样式
+    title('IQ信号t-SNE 2D投影'); % 中文标题
     legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
-    exportgraphics(fig, fullfile(viz_dir, 'FirstGroup_2DTSNE.png'), 'Resolution', dpi);
+    exportgraphics(fig, fullfile(viz_dir, '2D_TSNE.png'), 'Resolution', dpi);
     
-    % 3D可视化
-    fig = figure('Visible', 'off', 'Position', [100 100 800 600]);
+    %% 3D可视化
+    fig = figure('Position', [100 100 800 600], 'Visible', 'off');
     hold on;
     for i = 1:length(unique_labels)
         mask = group_ids == i;
         scatter3(proj3d(mask,1), proj3d(mask,2), proj3d(mask,3),...
-                 36, color_palette(i,:), 'filled');
+                 36, color_palette(i,:), 'filled'); % 保持点大小一致
     end
-    view(3); grid on;
-    title('First Group 3D t-SNE');
+    view(135, 30); % 固定视角参数
+    grid on;
+    title('IQ信号t-SNE 3D投影'); % 中文标题
     legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
-    exportgraphics(fig, fullfile(viz_dir, 'FirstGroup_3DTSNE.png'), 'Resolution', dpi);
+    exportgraphics(fig, fullfile(viz_dir, '3D_TSNE.png'), 'Resolution', dpi);
     close all;
 end
