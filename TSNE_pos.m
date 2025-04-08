@@ -1,7 +1,7 @@
 %% 参数配置
 input_folder = '..\los_data';        % 输入数据文件夹
-output_root = '..\FirstGroup_TSNE';  % 输出根目录
-enable_noise = true;                % 噪声使能开关
+output_root = '..\TSNE';             % 输出根目录
+enable_noise = true;                 % 噪声使能开关
 SNR_dB = 10;                         % 信噪比设置
 group_size = 320;                    % 每组样本量
 tsne_perplexity = 30;                % t-SNE困惑度参数
@@ -90,8 +90,8 @@ function visualization_engine(output_root, dpi, labels, proj2d, proj3d)
     
     %% 2D可视化
     fig = figure('Position', [100 100 800 600], 'Visible', 'off');
-    gscatter(proj2d(:,1), proj2d(:,2), group_ids, color_palette, '.', 15); % 统一点标记样式
-    title('IQ信号t-SNE 2D投影'); % 中文标题
+    gscatter(proj2d(:,1), proj2d(:,2), group_ids, color_palette, '.', 8); % 统一点标记样式
+    title('长时序轨迹图-IQ信号t-SNE 2D投影'); % 中文标题
     legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
     exportgraphics(fig, fullfile(viz_dir, '2D_TSNE.png'), 'Resolution', dpi);
     
@@ -101,11 +101,11 @@ function visualization_engine(output_root, dpi, labels, proj2d, proj3d)
     for i = 1:length(unique_labels)
         mask = group_ids == i;
         scatter3(proj3d(mask,1), proj3d(mask,2), proj3d(mask,3),...
-                 36, color_palette(i,:), 'filled'); % 保持点大小一致
+                 10, color_palette(i,:), 'filled'); % 保持点大小一致
     end
     view(135, 30); % 固定视角参数
     grid on;
-    title('IQ信号t-SNE 3D投影'); % 中文标题
+    title('长时序轨迹图-IQ信号t-SNE 3D投影'); % 中文标题
     legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
     exportgraphics(fig, fullfile(viz_dir, '3D_TSNE.png'), 'Resolution', dpi);
     close all;
