@@ -104,40 +104,79 @@ function [features, valid_idx] = extract_tsne_features(signals)
     valid_idx(nan_mask) = [];
 end
 
-%% 可视化引擎
-function visualize_tsne_results(features, labels, output_dir, dpi, perplexity)
-    % 创建输出目录
-    viz_dir = fullfile(output_dir, 'TSNE_Plots');
-    if ~exist(viz_dir, 'dir'), mkdir(viz_dir); end
-    
-    % t-SNE降维
-    fprintf('正在进行t-SNE降维...\n');
-    rng(123);  % 固定随机种子保证可重复性
-    proj_2d = tsne(features, 'NumDimensions', 2, 'Perplexity', perplexity);
-    proj_3d = tsne(features, 'NumDimensions', 3, 'Perplexity', perplexity);
-    
-    % 颜色映射
-    [unique_labels, ~, group_ids] = unique(labels);
-    colors = lines(length(unique_labels));
-    
-    % 2D可视化
-    figure('Position', [100 100 800 600], 'Visible', 'off');
-    gscatter(proj_2d(:,1), proj_2d(:,2), group_ids, colors, '.', 8);
-    title('时序轨迹图-IQ信号t-SNE 2D投影');
-    legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
-    exportgraphics(gcf, fullfile(viz_dir, '时序轨迹图-2D_TSNE.png'), 'Resolution', dpi);
-    
-    % 3D可视化
-    figure('Position', [100 100 800 600], 'Visible', 'off');
-    hold on;
-    for i = 1:length(unique_labels)
-        idx = group_ids == i;
-        scatter3(proj_3d(idx,1), proj_3d(idx,2), proj_3d(idx,3),...
-                 10, colors(i,:), 'filled');
+%% 统一风格的可视化引擎
+function visualization_engine(output_root, dpi, labels, proj2d, proj3d)
+    % 创建输出目录dangchu
+    viz_dir = fullfile(output_root, 'TSNE_Pos');
+    if ~exist(viz_dir, 'dir')
+        mkdir(viz_dir);
     end
-    view(135, 30); grid on;
-    title('时序轨迹图-IQ信号t-SNE 3D投影');
-    legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
-    exportgraphics(gcf, fullfile(viz_dir, '时序轨迹图-3D_TSNE.png'), 'Resolution', dpi);
+    
+    % 生成唯一颜色映射
+    [unique_labels, ~, group_ids] = unique(labels);
+    num_devices = length(unique_labels);
+    
+    % 自定义颜色生成策略
+    if num_devices <= 10
+        % 小规模设备使用高对比度颜色
+        color_palette = lines(num_devices);
+    else
+        % 大规模设备使用HSV色相环（避免相近颜色）
+        hue = linspace(0, 1, num_devices+1)';
+        hue = hue(1:end-1);
+        color_palette = hsv2rgb([hue, ones(num_devices,1), 0.85*ones(num_devices,1)]);
+        
+        % 打乱色相顺序避免连续颜色相似
+        rand_order = randperm(num_devices);
+        color_palette = color_palette(rand_order, :);
+    end
+    
+    %% 2D可视化优化
+    fig = figure('Position', [100 100 1200 800], 'Visible', 'off');
+    
+    % 主图区域
+    subplot(2,1,1);
+    gscatter(proj2d(:,1), proj2d(:,2), group_ids, color_palette, '.', 20);
+    title('时序轨迹图-IQ信号t-SNE 2D投影', 'FontSize', 12);
+    grid minor;
+    
+    % 图例区域
+    subplot(2,1,2);
+    axis off;
+    legend_labels = cellfun(@(x) strrep(x, '_', '\_'), unique_labels, 'UniformOutput', false);
+    legend(legend_labels, ...
+        'Interpreter', 'none', ...
+        'NumColumns', 3, ...
+        'FontSize', 9, ...
+        'Box', 'off');
+    
+    % 保存输出
+    exportgraphics(fig, fullfile(viz_dir, '时序轨迹图-2D_TSNE.png'), 'Resolution', dpi);
+    
+    %% 3D可视化优化
+    fig = figure('Position', [100 100 1200 800], 'Visible', 'off');
+    
+    % 三维散点图
+    ax = subplot(1,1,1);
+    hold on;
+    for i = 1:num_devices
+        mask = group_ids == i;
+        scatter3(proj3d(mask,1), proj3d(mask,2), proj3d(mask,3),...
+                 45, color_palette(i,:), 'filled', ...
+                 'MarkerEdgeColor', [0.2 0.2 0.2], ...
+                 'LineWidth', 0.3);
+    end
+    view(135, 30);
+    grid on;
+    title('时序轨迹图-IQ信号t-SNE 3D投影', 'FontSize', 12);
+    
+    % 添加颜色说明
+    colorbar('Ticks', linspace(0,1,num_devices), ...
+             'TickLabels', legend_labels, ...
+             'Direction', 'reverse', ...
+             'FontSize', 8);
+    
+    % 保存输出
+    exportgraphics(fig, fullfile(viz_dir, '时序轨迹图-3D_TSNE.png'), 'Resolution', dpi);
     close all;
 end
