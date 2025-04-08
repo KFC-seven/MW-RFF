@@ -1,6 +1,6 @@
 %% 参数配置
 input_folder = '..\los_data';
-output_root = '..\TSNE';
+output_root = '\TSNE';
 enable_noise = true;
 SNR_dB = 5;
 target_length = 320;
