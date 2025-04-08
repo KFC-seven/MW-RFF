@@ -72,30 +72,45 @@ visualization_engine(output_root, resolution, device_labels, projection_2d, proj
 
 fprintf('\n处理完成! 结果目录: %s\n', output_root);
 
-%% 噪声处理模块 (保持原样)
-function y = if_enable_noise(x, enable, snr)
-    y = x;
-    if enable
-        parfor i = 1:size(x,1)
-            y(i,:) = awgn(x(i,:), snr, 'measured');
-        end
-    end
-end
-
-%% 特征提取模块 (保持原样)
-function [features, valid_idx] = extract_features(signals)
-    valid_idx = find(~all(signals == 0, 2));  % 过滤全零信号
+%% 数据清洗管道（新增）
+function [processed, valid_idx] = data_cleaning_pipeline(signals, noise_flag, snr)
+    % 初步过滤全零信号
+    valid_idx = find(~all(signals == 0, 2));
     active_signals = signals(valid_idx, :);
     
-    % 时频特征组合
-    time_features = [real(active_signals), imag(active_signals)];
+    % 噪声处理（串行模式）
+    processed = active_signals;
+    if noise_flag
+        for i = 1:size(active_signals, 1)
+            processed(i,:) = awgn(active_signals(i,:), snr, 'measured');
+        end
+    end
     
-    % 频域特征
-    freq_signals = fft(active_signals, [], 2);
-    freq_features = [abs(freq_signals), angle(freq_signals)];
+    % 二次过滤异常值
+    nan_mask = any(isnan(processed), 2);
+    processed(nan_mask,:) = [];
+    valid_idx(nan_mask) = [];
+end
+
+%% 增强型特征提取（新增有效性验证）
+function [features, valid_mask] = feature_extraction_with_validation(signals)
+    % 时域特征
+    time_features = [real(signals), imag(signals)];
     
-    % 特征融合
+    % 频域特征（增加异常捕获）
+    try
+        freq_signals = fft(signals, [], 2);
+        freq_features = [abs(freq_signals), angle(freq_signals)];
+    catch
+        freq_features = [];
+    end
+    
+    % 特征融合与验证
     features = [time_features, freq_features];
+    
+    % 过滤包含NaN/Inf的特征
+    valid_mask = ~any(isnan(features) | isinf(features), 2);
+    features = features(valid_mask,:);
 end
 
 %% 统一风格的可视化引擎
