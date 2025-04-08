@@ -1,6 +1,6 @@
 %% 参数配置
 input_folder = '..\los_data';        % 输入数据文件夹
-output_root = '\TSNE';             % 输出根目录
+output_root = 'TSNE';             % 输出根目录
 enable_noise = true;                 % 噪声使能开关
 SNR_dB = 5;                         % 信噪比设置
 group_size = 320;                    % 每组样本量
@@ -51,6 +51,7 @@ for d = selected_indices
     if ~isempty(features)
         feature_matrix = [feature_matrix; features];
         device_labels = [device_labels; repmat({dev_name}, size(features,1), 1)];
+        fprintf('[%s] 有效样本: %d/%d\n', dev_name, size(features,1), target_length);
     end
 end
 

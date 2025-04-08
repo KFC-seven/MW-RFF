@@ -1,8 +1,8 @@
 %% 参数配置
 input_folder = '..\los_data';
-output_root = 'TSNE';
+output_root = '\TSNE';
 enable_noise = true;
-SNR_dB = 5;
+SNR_dB = 30;
 target_length = 320;
 tsne_perplexity = 30;
 resolution = 300;
@@ -143,16 +143,16 @@ function visualize_tsne_results(features, labels, output_dir, dpi, perplexity, o
 
     % 2D可视化
     fig = figure('Position', [100 100 800 600], 'Visible', 'off');
-    gscatter(proj_2d(:,1), proj_2d(:,2), grp2idx(labels), lines(length(unique(labels))), '.', 12);
-    title(title_base(2));
-    exportgraphics(fig, fullfile(viz_dir, [file_suffix '_2D.png']), 'Resolution', dpi);
+    gscatter(proj2d(:,1), proj2d(:,2), grp2idx(labels), lines(length(unique(labels))), '.', 15);
+    title(title_str(2));
+    exportgraphics(fig, fullfile(viz_dir, [file_prefix '_2D.png']), 'Resolution', dpi);
 
-    % 3D可视化（新增视角控制）
+    % 3D可视化
     fig = figure('Position', [100 100 800 600], 'Visible', 'off');
-    scatter3(proj_3d(:,1), proj_3d(:,2), proj_3d(:,3), 12, grp2idx(labels), 'filled');
-    title(title_base(3));
-    view(-37.5, 30);  % 优化视角参数
-    grid on; rotate3d on;
-    exportgraphics(fig, fullfile(viz_dir, [file_suffix '_3D.png']), 'Resolution', dpi);
+    scatter3(proj3d(:,1), proj3d(:,2), proj3d(:,3), 10, grp2idx(labels), 'filled');
+    title(title_str(3));
+    view(135, 30);
+    grid on;
+    exportgraphics(fig, fullfile(viz_dir, [file_prefix '_3D.png']), 'Resolution', dpi);
     close all;
 end
