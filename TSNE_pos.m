@@ -123,71 +123,29 @@ function visualization_engine(output_root, dpi, labels, proj2d, proj3d)
         mkdir(viz_dir);
     end
     
-    % 生成唯一颜色映射
+    % 生成颜色映射
     [unique_labels, ~, group_ids] = unique(labels);
-    num_devices = length(unique_labels);
+    color_palette = lines(length(unique_labels)); % 改用lines配色
     
-    % 自定义颜色生成策略
-    if num_devices <= 10
-        % 小规模设备使用高对比度颜色
-        color_palette = lines(num_devices);
-    else
-        % 大规模设备使用HSV色相环（避免相近颜色）
-        hue = linspace(0, 1, num_devices+1)';
-        hue = hue(1:end-1);
-        color_palette = hsv2rgb([hue, ones(num_devices,1), 0.85*ones(num_devices,1)]);
-        
-        % 打乱色相顺序避免连续颜色相似
-        rand_order = randperm(num_devices);
-        color_palette = color_palette(rand_order, :);
-    end
-    
-    %% 2D可视化优化
-    fig = figure('Position', [100 100 1200 800], 'Visible', 'off');
-    
-    % 主图区域
-    subplot(2,1,1);
-    gscatter(proj2d(:,1), proj2d(:,2), group_ids, color_palette, '.', 20);
-    title('长时序轨迹图-IQ信号t-SNE 2D投影', 'FontSize', 12);
-    grid minor;
-    
-    % 图例区域
-    subplot(2,1,2);
-    axis off;
-    legend_labels = cellfun(@(x) strrep(x, '_', '\_'), unique_labels, 'UniformOutput', false);
-    legend(legend_labels, ...
-        'Interpreter', 'none', ...
-        'NumColumns', 3, ...
-        'FontSize', 9, ...
-        'Box', 'off');
-    
-    % 保存输出
+    %% 2D可视化
+    fig = figure('Position', [100 100 800 600], 'Visible', 'off');
+    gscatter(proj2d(:,1), proj2d(:,2), group_ids, color_palette, '.', 8); % 统一点标记样式
+    title('长时序轨迹图-IQ信号t-SNE 2D投影'); % 中文标题
+    legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
     exportgraphics(fig, fullfile(viz_dir, '长时序轨迹图-2D_TSNE.png'), 'Resolution', dpi);
     
-    %% 3D可视化优化
-    fig = figure('Position', [100 100 1200 800], 'Visible', 'off');
-    
-    % 三维散点图
-    ax = subplot(1,1,1);
+    %% 3D可视化
+    fig = figure('Position', [100 100 800 600], 'Visible', 'off');
     hold on;
-    for i = 1:num_devices
+    for i = 1:length(unique_labels)
         mask = group_ids == i;
         scatter3(proj3d(mask,1), proj3d(mask,2), proj3d(mask,3),...
-                 45, color_palette(i,:), 'filled', ...
-                 'MarkerEdgeColor', [0.2 0.2 0.2], ...
-                 'LineWidth', 0.3);
+                 10, color_palette(i,:), 'filled'); % 保持点大小一致
     end
-    view(135, 30);
+    view(135, 30); % 固定视角参数
     grid on;
-    title('长时序轨迹图-IQ信号t-SNE 3D投影', 'FontSize', 12);
-    
-    % 添加颜色说明
-    colorbar('Ticks', linspace(0,1,num_devices), ...
-             'TickLabels', legend_labels, ...
-             'Direction', 'reverse', ...
-             'FontSize', 8);
-    
-    % 保存输出
+    title('长时序轨迹图-IQ信号t-SNE 3D投影'); % 中文标题
+    legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
     exportgraphics(fig, fullfile(viz_dir, '长时序轨迹图-3D_TSNE.png'), 'Resolution', dpi);
     close all;
 end
