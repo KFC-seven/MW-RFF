@@ -6,9 +6,11 @@ SNR_dB = 10;                         % 信噪比设置
 group_size = 320;                    % 每组样本量
 tsne_perplexity = 30;                % t-SNE困惑度参数
 resolution = 300;                    % 输出图像DPI
+random_seed = 2023;                  % 固定随机种子
 
 %% 初始化环境
-clc; close all; rng('default');
+clc; close all; 
+rng(random_seed, 'twister'); % 固定随机数生成器
 
 %% 获取设备列表
 mat_files = dir(fullfile(input_folder, '*.mat'));
@@ -21,24 +23,44 @@ fprintf('发现%d个设备数据\n', num_devices);
 for d = 1:num_devices
     % 数据加载
     [~, dev_name] = fileparts(mat_files(d).name);
-    data = load(fullfile(input_folder, mat_files(d).name));
-    raw_signals = data.data_Ineed.'; % 维度: [前导码 × 采样点]
+    try
+        data = load(fullfile(input_folder, mat_files(d).name));
+        raw_signals = data.data_Ineed.';
+    catch
+        fprintf('[%s] 数据加载失败\n', dev_name);
+        continue;
+    end
     
-    % 仅提取第一组数据
-    first_group = raw_signals(1:min(group_size, end), :);
+    %% 严格随机抽样（新增核心逻辑）
+    num_total = size(raw_signals, 1);
     
-    % 数据增强（可选加噪）
-    processed_signals = if_enable_noise(first_group, enable_noise, SNR_dB);
+    % 检查样本量是否足够
+    if num_total < group_size
+        fprintf('[%s] 前导码不足: %d < %d\n', dev_name, num_total, group_size);
+        continue;
+    end
     
-    % 特征工程
-    [features, valid_idx] = extract_features(processed_signals);
+    % 生成可重复的无放回随机索引
+    rand_idx = randperm(num_total, group_size); 
+    stable_group = raw_signals(rand_idx, :);
+    
+    %% 数据处理流程
+    [processed_signals, clean_idx] = data_cleaning_pipeline(stable_group, enable_noise, SNR_dB);
+    [features, valid_features] = feature_extraction_with_validation(processed_signals);
+    final_valid_idx = clean_idx(valid_features);
     
     % 数据收集
-    feature_matrix = [feature_matrix; features];
-    device_labels = [device_labels; repmat({dev_name}, length(valid_idx), 1)];
-    
-    fprintf('[%s] 有效样本: %d/%d\n', dev_name, length(valid_idx), size(first_group,1));
+    if ~isempty(features)
+        feature_matrix = [feature_matrix; features];
+        device_labels = [device_labels; repmat({dev_name}, size(features,1), 1)];
+        fprintf('[%s] 有效样本: %d/%d\n', dev_name, length(final_valid_idx), group_size);
+    else
+        fprintf('[%s] 无有效数据\n', dev_name);
+    end
 end
+
+%% 数据完整性校验（保持原样）
+assert(size(feature_matrix, 1) == length(device_labels),...);
 
 %% 降维分析
 fprintf('\n开始t-SNE降维...\n');

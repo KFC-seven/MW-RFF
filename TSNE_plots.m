@@ -1,4 +1,4 @@
-%% 参数配置（保持原样）
+%% 参数配置
 input_folder = '..\los_data';
 output_root = '..\TSNE';
 enable_noise = true;
@@ -6,72 +6,85 @@ SNR_dB = 10;
 target_length = 320;
 tsne_perplexity = 30;
 resolution = 300;
+fixed_seed = 2023;  % 新增固定随机种子参数
 
 %% 初始化环境
-clc; close all; rng('default');
+clc; close all; 
+rng(fixed_seed, 'twister');  % 固定随机种子
 mkdir(output_root);
 
-%% 增强型数据管道（新增数据校验）
+%% 增强型数据管道
 [feature_matrix, device_labels] = deal([]);
+mat_files = dir(fullfile(input_folder, '*.mat'));
 
-for d = 1:length(dir(fullfile(input_folder, '*.mat')))
-    % 数据加载（新增有效性检查）
+for d = 1:length(mat_files)
     [~, dev_name] = fileparts(mat_files(d).name);
     try
+        % 数据加载与校验
         data = load(fullfile(input_folder, mat_files(d).name));
         raw_data = data.data_Ineed;
+        
+        % 新增随机抽样逻辑
+        num_signals = size(raw_data, 2);
+        if num_signals < target_length
+            fprintf('[%s] 信号不足: %d < %d\n', dev_name, num_signals, target_length);
+            continue;
+        end
+        
+        % 固定种子随机抽样
+        rand_idx = randperm(num_signals, target_length);
+        selected_data = raw_data(:, rand_idx);
+        
     catch
-        fprintf('[SKIP] 设备%s数据异常\n', dev_name);
+        fprintf('[%s] 数据加载失败\n', dev_name);
         continue; 
     end
     
-    % 信号预处理（强化容错）
-    valid_signals = process_iq_signals(raw_data, target_length, enable_noise, SNR_dB);
+    % 信号预处理（使用抽样数据）
+    valid_signals = process_iq_signals(selected_data, target_length, enable_noise, SNR_dB);
     
-    % 特征提取（新增空值过滤）
+    % 特征提取
     [features, valid_idx] = extract_tsne_features(valid_signals);
     
-    % 数据收集（强制维度对齐）
+    % 数据收集
     if ~isempty(features)
         feature_matrix = [feature_matrix; features];
         device_labels = [device_labels; repmat({dev_name}, size(features,1), 1)];
+        fprintf('[%s] 有效样本: %d/%d\n', dev_name, size(features,1), target_length);
     end
 end
 
-%% 数据完整性检查（关键新增）
+%% 数据完整性检查
 assert(size(feature_matrix,1) == length(device_labels),...
-    '数据维度不匹配: 特征矩阵%d行 vs 标签%d个',...
+    '维度不匹配: 特征矩阵(%d) ≠ 标签数(%d)',...
     size(feature_matrix,1), length(device_labels));
 
 %% 可视化（保持原样）
 visualize_tsne_results(feature_matrix, device_labels, output_root, resolution, tsne_perplexity);
 
-%% 信号处理函数（新增有效性检查）
+%% 信号处理函数（优化后）
 function valid_signals = process_iq_signals(raw_data, target_len, enable_noise, snr)
     valid_signals = [];
-    if isempty(raw_data) || size(raw_data,2) < 1
+    if isempty(raw_data)
         return;
     end
     
-    processed = zeros(target_len, min(size(raw_data,2),320));
-    for col = 1:size(processed,2)
+    processed = zeros(target_len, size(raw_data,2));
+    for col = 1:size(raw_data,2)
         sig = raw_data(1:min(end,target_len), col);
         if length(sig) < target_len
             sig = [sig; zeros(target_len-length(sig),1)];
         end
         
-        % 信号有效性检查（新增）
-        if all(sig == 0)
-            continue; % 跳过全零信号
+        if ~all(sig == 0)
+            sig = sig / sqrt(mean(abs(sig).^2));
+            if enable_noise
+                sig = awgn(sig, snr, 'measured');
+            end
+            processed(:,col) = sig;
         end
-        
-        sig = sig / sqrt(mean(abs(sig).^2));
-        if enable_noise
-            sig = awgn(sig, snr, 'measured');
-        end
-        processed(:,col) = sig;
     end
-    valid_signals = processed(:, any(processed,1)); % 自动过滤全零列
+    valid_signals = processed(:, any(processed,1));
 end
 
 %% 增强型特征提取（新增空值过滤）
