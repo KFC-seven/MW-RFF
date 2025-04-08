@@ -1,7 +1,7 @@
 %% 参数配置
 input_folder = '..\los_data';        % 输入数据文件夹
 output_root = '..\FirstGroup_TSNE';  % 输出根目录
-enable_noise = false;                % 噪声使能开关
+enable_noise = true;                % 噪声使能开关
 SNR_dB = 10;                         % 信噪比设置
 group_size = 320;                    % 每组样本量
 tsne_perplexity = 30;                % t-SNE困惑度参数
