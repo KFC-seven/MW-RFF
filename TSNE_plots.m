@@ -90,3 +90,41 @@ function [features, valid_idx] = extract_tsne_features(signals)
     features(nan_mask,:) = [];
     valid_idx(nan_mask) = [];
 end
+
+%% 可视化引擎
+function visualize_tsne_results(features, labels, output_dir, dpi, perplexity)
+    % 创建输出目录
+    viz_dir = fullfile(output_dir, 'TSNE_Plots');
+    if ~exist(viz_dir, 'dir'), mkdir(viz_dir); end
+    
+    % t-SNE降维
+    fprintf('正在进行t-SNE降维...\n');
+    rng(123);  % 固定随机种子保证可重复性
+    proj_2d = tsne(features, 'NumDimensions', 2, 'Perplexity', perplexity);
+    proj_3d = tsne(features, 'NumDimensions', 3, 'Perplexity', perplexity);
+    
+    % 颜色映射
+    [unique_labels, ~, group_ids] = unique(labels);
+    colors = lines(length(unique_labels));
+    
+    % 2D可视化
+    figure('Position', [100 100 800 600], 'Visible', 'off');
+    gscatter(proj_2d(:,1), proj_2d(:,2), group_ids, colors, '.', 15);
+    title('IQ信号t-SNE 2D投影');
+    legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
+    exportgraphics(gcf, fullfile(viz_dir, '2D_TSNE.png'), 'Resolution', dpi);
+    
+    % 3D可视化
+    figure('Position', [100 100 800 600], 'Visible', 'off');
+    hold on;
+    for i = 1:length(unique_labels)
+        idx = group_ids == i;
+        scatter3(proj_3d(idx,1), proj_3d(idx,2), proj_3d(idx,3),...
+                 36, colors(i,:), 'filled');
+    end
+    view(135, 30); grid on;
+    title('IQ信号t-SNE 3D投影');
+    legend(unique_labels, 'Interpreter', 'none', 'Location', 'best');
+    exportgraphics(gcf, fullfile(viz_dir, '3D_TSNE.png'), 'Resolution', dpi);
+    close all;
+end
