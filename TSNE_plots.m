@@ -145,7 +145,7 @@ function visualize_tsne_results(features, labels, output_dir, dpi, perplexity, o
     figure('Position', [100 100 800 600], 'Visible', 'off');
     gscatter(proj_2d(:,1), proj_2d(:,2), grp2idx(labels), lines(length(unique(labels))), '.', 12);
     title(title_base(2));
-    exportgraphics(gcf, fullfile(viz_dir, ['2D_' file_suffix '.png']), 'Resolution', dpi);
+    exportgraphics(gcf, fullfile(viz_dir, [file_prefix '_2D.png']), 'Resolution', dpi);
 
     % 3D可视化（新增视角控制）
     figure('Position', [100 100 800 600], 'Visible', 'off');
@@ -153,6 +153,6 @@ function visualize_tsne_results(features, labels, output_dir, dpi, perplexity, o
     title(title_base(3));
     view(-37.5, 30);  % 优化视角参数
     grid on; rotate3d on;
-    exportgraphics(gcf, fullfile(viz_dir, ['3D_' file_suffix '.png']), 'Resolution', dpi);
+    exportgraphics(gcf, fullfile(viz_dir, [file_prefix '_3D.png']), 'Resolution', dpi);
     close all;
 end
