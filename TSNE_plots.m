@@ -109,7 +109,7 @@ function [features, valid_idx] = extract_tsne_features(signals)
     valid_idx(nan_mask) = [];
 end
 
-%% 增强型可视化引擎（新增参数记录）
+%% 增强型可视化引擎（支持完整设备名称显示）
 function visualize_tsne_results(features, labels, output_dir, dpi, perplexity, options)
     % 参数解析
     arguments
@@ -124,35 +124,63 @@ function visualize_tsne_results(features, labels, output_dir, dpi, perplexity, o
         options.Seed = 2023
     end
     
-    % 生成参数化文件名
-    file_suffix = sprintf('SNR%d_Sel%d_Act%d_Seed%d',...
-        options.SNR_DB, options.SelectedDevices, options.ActualDevices, options.Seed);
-    
-    % 创建带时间戳的目录
+    % 创建输出目录
     viz_dir = fullfile(output_dir, 'TSNE_Plots');
     if ~exist(viz_dir, 'dir'), mkdir(viz_dir); end
     
-    % 降维（保持随机一致性）
-    rng(options.Seed);
-    proj_2d = tsne(features, 'NumDimensions', 2, 'Perplexity', perplexity);
-    proj_3d = tsne(features, 'NumDimensions', 3, 'Perplexity', perplexity);
+    % 获取唯一设备名称和颜色映射
+    [unique_labels, ~, group_ids] = unique(labels);
+    color_palette = lines(length(unique_labels));
     
-    % 生成参数化标题
-    title_base = @(dim) sprintf('时序轨迹图IQ信号t-SNE %dD投影\nSNR: %ddB | 设备: 选择%d/有效%d | 种子: %d',...
-        dim, options.SNR_DB, options.SelectedDevices, options.ActualDevices, options.Seed);
-
-    % 2D可视化
-    fig = figure('Position', [100 100 800 600], 'Visible', 'off');
-    gscatter(proj_2d(:,1), proj_2d(:,2), grp2idx(labels), lines(length(unique(labels))), '.', 12);
-    title(title_base(2));
-    exportgraphics(fig, fullfile(viz_dir, [file_suffix '_2D.png']), 'Resolution', dpi);
-
-    % 3D可视化（新增视角控制）
-    fig = figure('Position', [100 100 800 600], 'Visible', 'off');
-    scatter3(proj_3d(:,1), proj_3d(:,2), proj_3d(:,3), 12, grp2idx(labels), 'filled');
-    title(title_base(3));
-    view(-37.5, 30);  % 优化视角参数
-    grid on; rotate3d on;
-    exportgraphics(fig, fullfile(viz_dir, [file_suffix '_3D.png']), 'Resolution', dpi);
+    %% 2D可视化（带完整图例）
+    fig = figure('Position', [100 100 1000 800], 'Visible', 'off');
+    
+    % 绘制散点图并获取句柄
+    h = gscatter(features(:,1), features(:,2), group_ids, color_palette, '.', 15);
+    
+    % 优化图例显示
+    legend_labels = unique_labels;
+    lgd = legend(h, legend_labels, ...
+        'Interpreter', 'none', ...
+        'Location', 'best', ...
+        'FontSize', 9);
+    title(lgd, '设备列表');
+    
+    % 添加参数标注
+    annotation('textbox', [0.15 0.15 0.3 0.1], ...
+        'String', {sprintf('SNR: %d dB', options.SNR_DB), ...
+                   sprintf('设备数: %d/%d', options.ActualDevices, options.SelectedDevices), ...
+                   sprintf('随机种子: %d', options.Seed)}, ...
+        'FitBoxToText', 'on', ...
+        'EdgeColor', 'none');
+    
+    exportgraphics(fig, fullfile(viz_dir, '2D_TSNE.png'), 'Resolution', dpi);
+    
+    %% 3D可视化（恢复完整图例）
+    fig = figure('Position', [100 100 1200 900], 'Visible', 'off');
+    ax = axes('Parent', fig);
+    hold on;
+    
+    % 存储散点对象用于图例
+    scatter_objects = gobjects(length(unique_labels), 1);
+    
+    % 分层绘制每个类别
+    for i = 1:length(unique_labels)
+        mask = group_ids == i;
+        scatter_objects(i) = scatter3(ax, ...
+            features(mask,1), features(mask,2), features(mask,3), ...
+            45, color_palette(i,:), 'filled', ...
+            'MarkerEdgeColor', 'k', ...
+            'DisplayName', unique_labels{i});
+    end
+    
+    % 添加图例和标签
+    lgd = legend(scatter_objects, 'Interpreter', 'none', 'Location', 'best');
+    title(lgd, '设备列表');
+    view(3); grid on;
+    rotate3d on;
+    
+    exportgraphics(fig, fullfile(viz_dir, '3D_TSNE.png'), 'Resolution', dpi);
     close all;
 end
+
