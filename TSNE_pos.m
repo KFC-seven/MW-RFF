@@ -122,7 +122,7 @@ function visualization_engine(output_root, dpi, labels, proj2d, proj3d, snr, num
     fig = figure('Position', [100 100 800 600], 'Visible', 'off');
     scatter3(proj3d(:,1), proj3d(:,2), proj3d(:,3), 10, grp2idx(labels), 'filled');
     title(title_str(3));
-    view(135, 30);
+    view(-37.5, 30);  % 优化视角参数
     grid on;
     exportgraphics(fig, fullfile(viz_dir, [file_prefix '_3D.png']), 'Resolution', dpi);
     close all;
