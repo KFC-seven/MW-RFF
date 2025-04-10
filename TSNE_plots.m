@@ -141,18 +141,24 @@ function visualize_tsne_results(features, labels, output_dir, dpi, perplexity, o
     title_base = @(dim) sprintf('时序轨迹图IQ信号t-SNE %dD投影\nSNR: %ddB | 设备: 选择%d/有效%d | 种子: %d',...
         dim, options.SNR_DB, options.SelectedDevices, options.ActualDevices, options.Seed);
 
-    % 2D可视化
+   %% 2D可视化（添加图例）
     fig = figure('Position', [100 100 800 600], 'Visible', 'off');
-    gscatter(proj_2d(:,1), proj_2d(:,2), grp2idx(labels), lines(length(unique(labels))), '.', 12);
-    title(title_base(2));
-    exportgraphics(fig, fullfile(viz_dir, [file_suffix '_2D.png']), 'Resolution', dpi);
+    h = gscatter(proj2d(:,1), proj2d(:,2), group_ids, lines(length(unique_labels)), '.', 15);
+    legend(h, unique_labels, 'Interpreter', 'none', 'Location', 'best');  % 新增图例
+    exportgraphics(fig, fullfile(viz_dir, [file_prefix '_2D.png']), 'Resolution', dpi);
 
-    % 3D可视化（新增视角控制）
+    %% 3D可视化（恢复图例）
     fig = figure('Position', [100 100 800 600], 'Visible', 'off');
-    scatter3(proj_3d(:,1), proj_3d(:,2), proj_3d(:,3), 12, grp2idx(labels), 'filled');
-    title(title_base(3));
-    view(-37.5, 30);  % 优化视角参数
-    grid on; rotate3d on;
-    exportgraphics(fig, fullfile(viz_dir, [file_suffix '_3D.png']), 'Resolution', dpi);
+    hold on;
+    % 分层绘制每个设备
+    scatter_handles = gobjects(length(unique_labels), 1);
+    for i = 1:length(unique_labels)
+        mask = group_ids == i;
+        scatter_handles(i) = scatter3(proj3d(mask,1), proj3d(mask,2), proj3d(mask,3),...
+            10, lines(length(unique_labels))(i,:), 'filled',...
+            'DisplayName', unique_labels{i});  % 关键命名参数
+    end
+    legend('Interpreter', 'none', 'Location', 'best');  % 新增图例
+    exportgraphics(fig, fullfile(viz_dir, [file_prefix '_3D.png']), 'Resolution', dpi);
     close all;
 end
