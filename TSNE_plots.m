@@ -1,8 +1,8 @@
 %% 参数配置
 input_folder = '..\los_data';
-output_root = 'TSNE';
-enable_noise = true;
-SNR_dB = 5;
+output_root = '.\TSNE';
+enable_noise = false;
+SNR_dB = 30;
 target_length = 320;
 tsne_perplexity = 30;
 resolution = 300;
@@ -12,7 +12,7 @@ num_selected_devices = 10;  % +++ 新增随机选择参数 +++
 %% 初始化环境
 clc; close all; 
 rng(fixed_seed, 'twister');
-mkdir(output_root);
+
 
 %% 增强型数据管道（新增设备选择逻辑）
 mat_files = dir(fullfile(input_folder, '*.mat'));
@@ -130,7 +130,9 @@ function visualize_tsne_results(features, labels, output_dir, dpi, perplexity, o
     
     % 创建带时间戳的目录
     viz_dir = fullfile(output_dir, 'TSNE_Plots');
-    if ~exist(viz_dir, 'dir'), mkdir(viz_dir); end
+    if ~exist(viz_dir, 'dir')
+        mkdir(viz_dir); 
+    end
     
     % 降维（保持随机一致性）
     rng(options.Seed);
@@ -151,7 +153,7 @@ function visualize_tsne_results(features, labels, output_dir, dpi, perplexity, o
     fig = figure('Position', [100 100 800 600], 'Visible', 'off');
     scatter3(proj_3d(:,1), proj_3d(:,2), proj_3d(:,3), 12, grp2idx(labels), 'filled');
     title(title_base(3));
-    view(-37.5, 30);  % 优化视角参数
+    view(135, 30);  % 优化视角参数
     grid on; rotate3d on;
     exportgraphics(fig, fullfile(viz_dir, [file_suffix '_3D.png']), 'Resolution', dpi);
     close all;
