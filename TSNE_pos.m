@@ -100,43 +100,30 @@ function [features, valid_mask] = feature_extraction_with_validation(signals)
     features = features(valid_mask,:);
 end
 
+%% 可视化引擎
 function visualization_engine(output_root, dpi, labels, proj2d, proj3d, snr, num_selected, actual_num, seed)
-    % 创建参数化目录
-    viz_dir = fullfile(output_root, 'TSNE_Plots');
+    file_prefix = sprintf('SNR%d_Sel%d_Act%d_Seed%d', snr, num_selected, actual_num, seed);
+    
+    viz_dir = fullfile(output_root, 'TSNE_Pos');
     if ~exist(viz_dir, 'dir')
         mkdir(viz_dir);
     end
-    
-    % 获取唯一设备标识
-    [unique_labels, ~, group_ids] = unique(labels);
-    color_palette = lines(length(unique_labels));
 
-    %% 2D可视化
-    fig = figure('Position', [100 100 1000 800], 'Visible', 'off');
-    h = gscatter(proj2d(:,1), proj2d(:,2), group_ids, color_palette, '.', 15);
-    legend(h, unique_labels, 'Interpreter','none', 'Location','best');
-    
-    % 生成文件名
-    base_name = @(dim) sprintf('SNR%d_Sel%d_Act%d_Seed%d_%s',...
-        snr, num_selected, actual_num, seed, dim);
-    exportgraphics(fig, fullfile(viz_dir, [base_name('2D') '.png']), 'Resolution', dpi);
+    title_str = @(dim) sprintf('长时序轨迹图-IQ信号t-SNE %dD投影\nSNR: %ddB | 选择/有效设备: %d/%d | 随机种子: %d',...
+        dim, snr, num_selected, actual_num, seed);
 
-    %% 3D可视化
-    fig = figure('Position', [100 100 1200 900], 'Visible', 'off');
-    ax = axes('Parent', fig, 'Projection','perspective');
-    hold on;
-    
-    % 绘制三维散点
-    scatter_handles = gobjects(length(unique_labels), 1);
-    for i = 1:length(unique_labels)
-        mask = group_ids == i;
-        scatter_handles(i) = scatter3(proj3d(mask,1), proj3d(mask,2), proj3d(mask,3),...
-            45, color_palette(i,:), 'filled', 'DisplayName', unique_labels{i});
-    end
-    
-    % 添加图例和保存
-    legend(scatter_handles, 'Interpreter','none', 'Location','best');
-    exportgraphics(fig, fullfile(viz_dir, [base_name('3D') '.png']), 'Resolution', dpi);
-    
+    % 2D可视化
+    fig = figure('Position', [100 100 800 600], 'Visible', 'off');
+    gscatter(proj2d(:,1), proj2d(:,2), grp2idx(labels), lines(length(unique(labels))), '.', 15);
+    title(title_str(2));
+    exportgraphics(fig, fullfile(viz_dir, [file_prefix '_2D.png']), 'Resolution', dpi);
+
+    % 3D可视化
+    fig = figure('Position', [100 100 800 600], 'Visible', 'off');
+    scatter3(proj3d(:,1), proj3d(:,2), proj3d(:,3), 10, grp2idx(labels), 'filled');
+    title(title_str(3));
+    view(135, 30);
+    grid on;
+    exportgraphics(fig, fullfile(viz_dir, [file_prefix '_3D.png']), 'Resolution', dpi);
     close all;
 end
