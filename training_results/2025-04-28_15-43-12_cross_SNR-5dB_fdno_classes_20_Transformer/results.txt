@@ -1,0 +1,25 @@
+=== Experiment Summary ===
+Feature Folder: trajectory_plots
+Timestamp: 2025-04-28_15-43-12
+Total Classes: 20
+SNR: -5 dB
+fd (Doppler shift): no Hz
+Epoch 1 | Train Loss: 2.9731 | Train Accuracy: 8.90% | Validation Loss: 2.9600 | Validation Accuracy: 9.80%
+Epoch 2 | Train Loss: 2.9664 | Train Accuracy: 9.08% | Validation Loss: 2.9569 | Validation Accuracy: 9.80%
+Epoch 3 | Train Loss: 2.9645 | Train Accuracy: 9.20% | Validation Loss: 2.9540 | Validation Accuracy: 9.80%
+Epoch 4 | Train Loss: 2.9628 | Train Accuracy: 9.31% | Validation Loss: 2.9565 | Validation Accuracy: 9.80%
+Epoch 5 | Train Loss: 2.9613 | Train Accuracy: 9.38% | Validation Loss: 2.9562 | Validation Accuracy: 9.80%
+Epoch 6 | Train Loss: 2.9609 | Train Accuracy: 9.40% | Validation Loss: 2.9541 | Validation Accuracy: 9.80%
+Epoch 7 | Train Loss: 2.9592 | Train Accuracy: 9.46% | Validation Loss: 2.9560 | Validation Accuracy: 9.80%
+Epoch 8 | Train Loss: 2.9588 | Train Accuracy: 9.47% | Validation Loss: 2.9543 | Validation Accuracy: 9.80%
+
+=== Experiment Summary ===
+Feature Folder: losdata
+Timestamp: 2025-04-28_15-43-12
+Total Classes: 20
+SNR: -5 dB
+fd (Doppler shift): no Hz
+Best Train Accuracy: 9.4750
+Best Val Accuracy: 9.8045
+Final Train Accuracy: 9.4750
+Final Val Accuracy: 9.8045

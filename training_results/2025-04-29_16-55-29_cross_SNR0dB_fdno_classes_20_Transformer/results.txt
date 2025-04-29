@@ -1,0 +1,9 @@
+=== Experiment Summary ===
+Feature Folder: trajectory_plots
+Timestamp: 2025-04-29_16-55-29
+Total Classes: 20
+SNR: 0 dB
+fd (Doppler shift): no Hz
+Epoch 1 | Train Loss: 3.0073 | Train Accuracy: 7.58% | Validation Loss: 2.9618 | Validation Accuracy: 6.88%
+Epoch 2 | Train Loss: 2.9879 | Train Accuracy: 8.12% | Validation Loss: 2.9609 | Validation Accuracy: 9.59%
+Epoch 3 | Train Loss: 2.9804 | Train Accuracy: 8.41% | Validation Loss: 2.9579 | Validation Accuracy: 9.59%

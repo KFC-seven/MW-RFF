@@ -1,0 +1,33 @@
+=== Experiment Summary ===
+Feature Folder: trajectory_plots
+Timestamp: 2025-04-28_16-07-22
+Total Classes: 20
+SNR: 0 dB
+fd (Doppler shift): no Hz
+Epoch 1 | Train Loss: 2.9769 | Train Accuracy: 8.75% | Validation Loss: 2.9706 | Validation Accuracy: 7.00%
+Epoch 2 | Train Loss: 2.9691 | Train Accuracy: 8.96% | Validation Loss: 2.9619 | Validation Accuracy: 9.16%
+Epoch 3 | Train Loss: 2.9668 | Train Accuracy: 9.08% | Validation Loss: 2.9601 | Validation Accuracy: 9.16%
+Epoch 4 | Train Loss: 2.8865 | Train Accuracy: 10.67% | Validation Loss: 2.6513 | Validation Accuracy: 14.34%
+Epoch 5 | Train Loss: 2.5313 | Train Accuracy: 17.24% | Validation Loss: 2.3379 | Validation Accuracy: 22.21%
+Epoch 6 | Train Loss: 2.2430 | Train Accuracy: 24.66% | Validation Loss: 2.1950 | Validation Accuracy: 25.59%
+Epoch 7 | Train Loss: 2.1272 | Train Accuracy: 27.84% | Validation Loss: 2.1202 | Validation Accuracy: 28.38%
+Epoch 8 | Train Loss: 2.0306 | Train Accuracy: 30.96% | Validation Loss: 2.0383 | Validation Accuracy: 32.08%
+Epoch 9 | Train Loss: 1.9331 | Train Accuracy: 34.45% | Validation Loss: 1.9761 | Validation Accuracy: 33.26%
+Epoch 10 | Train Loss: 1.8662 | Train Accuracy: 36.24% | Validation Loss: 1.9552 | Validation Accuracy: 34.32%
+Epoch 11 | Train Loss: 1.8026 | Train Accuracy: 38.27% | Validation Loss: 1.9534 | Validation Accuracy: 34.70%
+Epoch 12 | Train Loss: 1.7406 | Train Accuracy: 40.04% | Validation Loss: 1.9552 | Validation Accuracy: 34.81%
+Epoch 13 | Train Loss: 1.6752 | Train Accuracy: 41.99% | Validation Loss: 1.9813 | Validation Accuracy: 35.22%
+Epoch 14 | Train Loss: 1.6052 | Train Accuracy: 44.23% | Validation Loss: 2.0040 | Validation Accuracy: 35.03%
+Epoch 15 | Train Loss: 1.5281 | Train Accuracy: 46.66% | Validation Loss: 2.0625 | Validation Accuracy: 34.25%
+Epoch 16 | Train Loss: 1.4481 | Train Accuracy: 49.13% | Validation Loss: 2.1377 | Validation Accuracy: 34.00%
+
+=== Experiment Summary ===
+Feature Folder: losdata
+Timestamp: 2025-04-28_16-07-22
+Total Classes: 20
+SNR: 0 dB
+fd (Doppler shift): no Hz
+Best Train Accuracy: 49.1347
+Best Val Accuracy: 35.2160
+Final Train Accuracy: 49.1347
+Final Val Accuracy: 34.0029
