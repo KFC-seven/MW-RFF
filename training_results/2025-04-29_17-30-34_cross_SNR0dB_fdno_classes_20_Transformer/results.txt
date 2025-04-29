@@ -7,3 +7,5 @@ fd (Doppler shift): no Hz
 Epoch 1 | Train Loss: 3.0036 | Train Accuracy: 7.78% | Validation Loss: 2.9647 | Validation Accuracy: 9.64%
 Epoch 2 | Train Loss: 2.9876 | Train Accuracy: 8.27% | Validation Loss: 2.9589 | Validation Accuracy: 9.64%
 Epoch 3 | Train Loss: 2.9805 | Train Accuracy: 8.40% | Validation Loss: 2.9607 | Validation Accuracy: 9.64%
+Epoch 4 | Train Loss: 2.9743 | Train Accuracy: 8.85% | Validation Loss: 2.9568 | Validation Accuracy: 9.64%
+Epoch 5 | Train Loss: 2.9705 | Train Accuracy: 9.01% | Validation Loss: 2.9582 | Validation Accuracy: 9.64%
