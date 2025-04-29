@@ -1,0 +1,6 @@
+=== Experiment Summary ===
+Feature Folder: trajectory_plots
+Timestamp: 2025-04-29_17-35-23
+Total Classes: 20
+SNR: 0 dB
+fd (Doppler shift): no Hz
