@@ -294,3 +294,42 @@ def generate_tx_datasets(compact_dataset, capture_date, tx_list, rx_list, max_si
             dataset['data'][indx] = np.zeros((0, 256, 2))
 
     return dataset
+
+def preprocess_dataset_for_classification(compact_dataset, tx_list, rx_list, train_dates, max_sig=None, equalized=0):
+    def extract_samples(dates):
+        X = []
+        y = []
+        for rx in rx_list:
+            for tx_idx, tx in enumerate(tx_list):
+                tx_i = compact_dataset['tx_list'].index(tx)
+                rx_i = compact_dataset['rx_list'].index(rx)
+                eq_i = compact_dataset['equalized_list'].index(equalized)
+                
+                for date in dates:
+                    if date not in compact_dataset['capture_date_list']:
+                        continue
+                    date_i = compact_dataset['capture_date_list'].index(date)
+                    sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]
+
+                    if max_sig is not None:
+                        sig_data = sig_data[:max_sig]
+
+                    # 拆分成多个 (256, 2) 样本
+                    for sample in sig_data:
+                        if sample.shape == (256, 2):
+                            X.append(sample)
+                            y.append(tx_idx)
+        
+        return np.array(X), np.array(y)
+
+    # 所有日期
+    all_dates = set(compact_dataset['capture_date_list'])
+    train_dates = set(train_dates)
+    test_dates = list(all_dates - train_dates)
+
+    # 转为 list 保持顺序
+    X_train, y_train = extract_samples(list(train_dates))
+    X_test, y_test = extract_samples(test_dates)
+
+    print(f"✅ 训练样本数: {len(X_train)}, 测试样本数: {len(X_test)}")
+    return X_train, y_train, X_test, y_test
