@@ -1,5 +1,0 @@
-=== Experiment Summary ===
-Timestamp: 2025-05-19_15-53-11
-Total Classes: 20
-SNR: no dB
-fd (Doppler shift): no Hz
