@@ -3,3 +3,6 @@ Timestamp: 2025-05-20_18-17-57
 Total Classes: 20
 SNR: 0 dB
 fd (Doppler shift): 960.0 Hz
+Epoch 1 | Train Acc: 35.50% | Val Acc: 39.53%
+Epoch 2 | Train Acc: 39.39% | Val Acc: 40.44%
+Epoch 3 | Train Acc: 40.22% | Val Acc: 41.32%
