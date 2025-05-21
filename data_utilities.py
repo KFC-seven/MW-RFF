@@ -333,3 +333,51 @@ def preprocess_dataset_for_classification(compact_dataset, tx_list, rx_list, tra
 
     print(f"✅ 训练样本数: {len(X_train)}, 测试样本数: {len(X_test)}")
     return X_train, y_train, X_test, y_test
+
+def preprocess_dataset_cross_IQ_blocks(compact_dataset, tx_list, rx_list, train_dates, max_sig=None, equalized=0, block_size=250):
+    def extract_samples(dates):
+        X = []
+        y = []
+    
+        for rx in rx_list:
+            for tx_idx, tx in enumerate(tx_list):
+                tx_i = compact_dataset['tx_list'].index(tx)
+                rx_i = compact_dataset['rx_list'].index(rx)
+                eq_i = compact_dataset['equalized_list'].index(equalized)
+
+                for date in dates:
+                    if date not in compact_dataset['capture_date_list']:
+                        continue
+                    date_i = compact_dataset['capture_date_list'].index(date)
+
+                    sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]  # shape: (N, 256, 2)
+
+                    if max_sig is not None:
+                        sig_data = sig_data[:max_sig]
+
+                    num_signals = len(sig_data)
+                    num_blocks = num_signals // block_size
+
+                    for i in range(num_blocks):
+                        block = sig_data[i * block_size : (i + 1) * block_size]  # (250, 256, 2)
+                        if block.shape != (block_size, 256, 2):
+                            continue
+
+                        # 转置为 (256, 250, 2)
+                        block_transposed = block.transpose(1, 0, 2)
+
+                        # ✅ 拆成 256 个样本，每个是 (250, 2)
+                        for j in range(block_transposed.shape[0]):
+                            sample = block_transposed[j]  # shape: (250, 2)
+                            X.append(sample)
+                            y.append(tx_idx)
+
+        return np.array(X), np.array(y)
+
+    X_train, y_train = extract_samples(train_dates)
+    test_dates = [d for d in compact_dataset['capture_date_list'] if d not in train_dates]
+    X_test, y_test = extract_samples(test_dates)
+
+    return X_train, y_train, X_test, y_test
+
+
