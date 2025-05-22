@@ -381,3 +381,68 @@ def preprocess_dataset_cross_IQ_blocks(compact_dataset, tx_list, rx_list, train_
     return X_train, y_train, X_test, y_test
 
 
+def preprocess_dataset_cross_IQ_blocks_grouped_rx_fine_grained(compact_dataset, tx_list, rx_list, train_dates, max_sig=None, equalized=0, block_size=250, y=10):
+    def extract_samples(dates):
+        X = []
+        y_labels = []
+
+        for tx_idx, tx in enumerate(tx_list):
+            tx_i = compact_dataset['tx_list'].index(tx)
+            eq_i = compact_dataset['equalized_list'].index(equalized)
+
+            for date in dates:
+                if date not in compact_dataset['capture_date_list']:
+                    continue
+                date_i = compact_dataset['capture_date_list'].index(date)
+
+                # === 获取每个 rx 的信号 ===
+                rx_signals = []
+                min_len = float('inf')
+
+                for rx in rx_list:
+                    rx_i = compact_dataset['rx_list'].index(rx)
+                    sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]  # shape: (N, 256, 2)
+
+                    if max_sig is not None:
+                        sig_data = sig_data[:max_sig]
+
+                    rx_signals.append(sig_data)
+                    min_len = min(min_len, len(sig_data))
+
+                # === 计算能分多少个 step，每个 step 每个 rx 取 y 条 ===
+                num_chunks = min_len // y
+                combined_data = []
+
+                for chunk_idx in range(num_chunks):
+                    for rx_data in rx_signals:
+                        start = chunk_idx * y
+                        end = start + y
+                        combined_data.append(rx_data[start:end])  # shape: (y, 256, 2)
+
+                # 拼接成一个大的数组: shape (num_chunks * len(rx_list) * y, 256, 2)
+                combined_data = np.concatenate(combined_data, axis=0)
+
+                # === 分 block、转置、拆样本 ===
+                num_signals = len(combined_data)
+                num_blocks = num_signals // block_size
+
+                for i in range(num_blocks):
+                    block = combined_data[i * block_size : (i + 1) * block_size]  # shape: (block_size, 256, 2)
+
+                    if block.shape != (block_size, 256, 2):
+                        continue
+
+                    block_transposed = block.transpose(1, 0, 2)  # shape: (256, block_size, 2)
+
+                    for j in range(block_transposed.shape[0]):
+                        sample = block_transposed[j]  # shape: (block_size, 2)
+                        X.append(sample)
+                        y_labels.append(tx_idx)
+
+        return np.array(X), np.array(y_labels)
+
+    X_train, y_train = extract_samples(train_dates)
+    test_dates = [d for d in compact_dataset['capture_date_list'] if d not in train_dates]
+    X_test, y_test = extract_samples(test_dates)
+
+    return X_train, y_train, X_test, y_test

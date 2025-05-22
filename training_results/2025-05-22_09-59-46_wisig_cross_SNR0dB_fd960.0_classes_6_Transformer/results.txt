@@ -1,0 +1,7 @@
+=== Experiment Summary ===
+Timestamp: 2025-05-22_09-59-46
+Total Classes: 6
+SNR: 0 dB
+fd (Doppler shift): 960.0 Hz
+equalized: 1 Hz
+Epoch 1 | Train Acc: 44.47% | Val Acc: 58.89%
