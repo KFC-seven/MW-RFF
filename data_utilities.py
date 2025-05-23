@@ -446,3 +446,71 @@ def preprocess_dataset_cross_IQ_blocks_grouped_rx_fine_grained(compact_dataset, 
     X_test, y_test = extract_samples(test_dates)
 
     return X_train, y_train, X_test, y_test
+
+def preprocess_dataset_cross_IQ_blocks_date_interleaved(compact_dataset, tx_list, train_dates, max_sig=None, equalized=0, block_size=250, y=10):
+    def extract_samples(dates):
+        X = []
+        y_labels = []
+
+        for tx_idx, tx in enumerate(tx_list):
+            tx_i = compact_dataset['tx_list'].index(tx)
+            eq_i = compact_dataset['equalized_list'].index(equalized)
+
+            # === 为每个日期提取信号 ===
+            date_signal_lists = []
+
+            for date in dates:
+                if date not in compact_dataset['capture_date_list']:
+                    continue
+
+                date_i = compact_dataset['capture_date_list'].index(date)
+                all_rx_data = []
+
+                # 将所有 rx 的信号拼接（无视 rx）
+                for rx_i in range(len(compact_dataset['rx_list'])):
+                    sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]  # shape: (N, 256, 2)
+                    if max_sig is not None:
+                        sig_data = sig_data[:max_sig]
+                    all_rx_data.append(sig_data)
+
+                date_data = np.concatenate(all_rx_data, axis=0)  # shape: (total, 256, 2)
+                np.random.shuffle(date_data)  # 打乱以避免一个 rx 局部占据前几条
+                date_signal_lists.append(date_data)
+
+            # === 交错采样 ===
+            # 先找每个日期最少能提供几个 y-size 片段
+            min_chunks = min(len(date_data) // y for date_data in date_signal_lists)
+
+            combined_data = []
+            for chunk_idx in range(min_chunks):
+                for date_data in date_signal_lists:
+                    start = chunk_idx * y
+                    end = start + y
+                    combined_data.append(date_data[start:end])  # shape: (y, 256, 2)
+
+            combined_data = np.concatenate(combined_data, axis=0)  # shape: (min_chunks * len(dates) * y, 256, 2)
+
+            # === 分 block、转置、拆样本 ===
+            num_signals = len(combined_data)
+            num_blocks = num_signals // block_size
+
+            for i in range(num_blocks):
+                block = combined_data[i * block_size : (i + 1) * block_size]  # (block_size, 256, 2)
+
+                if block.shape != (block_size, 256, 2):
+                    continue
+
+                block_transposed = block.transpose(1, 0, 2)  # (256, block_size, 2)
+
+                for j in range(block_transposed.shape[0]):
+                    sample = block_transposed[j]  # shape: (block_size, 2)
+                    X.append(sample)
+                    y_labels.append(tx_idx)
+
+        return np.array(X), np.array(y_labels)
+
+    X_train, y_train = extract_samples(train_dates)
+    test_dates = [d for d in compact_dataset['capture_date_list'] if d not in train_dates]
+    X_test, y_test = extract_samples(test_dates)
+
+    return X_train, y_train, X_test, y_test
