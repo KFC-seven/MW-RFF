@@ -295,6 +295,7 @@ def generate_tx_datasets(compact_dataset, capture_date, tx_list, rx_list, max_si
 
     return dataset
 
+# 将X天的IQ信号作为训练集，其余天数作为测试集。然后现在不需要画图了，只需要原始的256个信号作为一条数据就行，然后加上这个发射机的标签。compact_dataset[‘data‘]的数据结构是（发射机数量, 接收机数量, 采集日期, 是否信道均衡化，（N,256,2） ）
 def preprocess_dataset_for_classification(compact_dataset, tx_list, rx_list, train_dates, max_sig=None, equalized=0):
     def extract_samples(dates):
         X = []
@@ -334,6 +335,7 @@ def preprocess_dataset_for_classification(compact_dataset, tx_list, rx_list, tra
     print(f"✅ 训练样本数: {len(X_train)}, 测试样本数: {len(X_test)}")
     return X_train, y_train, X_test, y_test
 
+# X_train和X_test的结构是（样本数，256,2）我现在想的是，按照每250条数据做为一个块（250，256,2），每个块里面做转置就变成了（256,250,2），这样就变成了IQ信号的跨序连接，因为对应的把每个采样点上IQ进行了连接，而不是原来的256个采样点顺序连接。
 def preprocess_dataset_cross_IQ_blocks(compact_dataset, tx_list, rx_list, train_dates, max_sig=None, equalized=0, block_size=250):
     def extract_samples(dates):
         X = []
@@ -380,7 +382,7 @@ def preprocess_dataset_cross_IQ_blocks(compact_dataset, tx_list, rx_list, train_
 
     return X_train, y_train, X_test, y_test
 
-
+# 每个rx每天有Y条信号，但是我拼接的顺序是每个rx先拿出前y个信号进行拼接。然后再按顺序拿出y个信号。直到Y被拿完。
 def preprocess_dataset_cross_IQ_blocks_grouped_rx_fine_grained(compact_dataset, tx_list, rx_list, train_dates, max_sig=None, equalized=0, block_size=250, y=10):
     def extract_samples(dates):
         X = []
@@ -447,6 +449,7 @@ def preprocess_dataset_cross_IQ_blocks_grouped_rx_fine_grained(compact_dataset, 
 
     return X_train, y_train, X_test, y_test
 
+# 每个tx的每个日期进行层次交错，每个日期都有Y个信号，按日期顺序依次拿出y个信号放一起，和rx无关
 def preprocess_dataset_cross_IQ_blocks_date_interleaved(compact_dataset, tx_list, train_dates, max_sig=None, equalized=0, block_size=250, y=10):
     def extract_samples(dates):
         X = []
