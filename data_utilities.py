@@ -517,3 +517,107 @@ def preprocess_dataset_cross_IQ_blocks_date_interleaved(compact_dataset, tx_list
     X_test, y_test = extract_samples(test_dates)
 
     return X_train, y_train, X_test, y_test
+
+def load_ltev_dataset(data_root, tx_list, rx_list, speeds):
+    X = []
+    y = []
+    
+    for tx_idx, tx in enumerate(tx_list):
+        for rx in rx_list:
+            for spd in speeds:
+                # 构造文件路径，例如 data/TX1_RX1_10kmh.mat
+                file_name = f"{tx}_{rx}_{spd}kmh.mat"
+                file_path = os.path.join(data_root, file_name)
+                
+                if not os.path.exists(file_path):
+                    print(f"文件 {file_path} 不存在，跳过")
+                    continue
+                
+                mat_data = sio.loadmat(file_path)
+                # 假设变量名是 'samples'，shape (288, N)
+                samples = mat_data['samples']  # (288, 2999)
+                
+                # 转置成 (N, 288)
+                samples = samples.T
+                
+                # 转成复数 (I, Q)
+                I = samples.real
+                Q = samples.imag
+                iq_data = np.stack([I, Q], axis=-1)  # shape (N, 288, 2)
+                
+                X.append(iq_data)
+                y.append(np.full((iq_data.shape[0],), tx_idx))
+    
+    X = np.concatenate(X, axis=0)
+    y = np.concatenate(y, axis=0)
+    
+    return X, y
+
+
+def preprocess_per_label(X_all, y_all, group_size=288):
+    """
+    对每个发射机类别分别进行随机打乱、分组、转置操作。
+    
+    X_all: np.array, shape (N, 288, 2), 所有信号数据
+    y_all: np.array, shape (N,), 标签数组
+    
+    返回：
+    X_new: np.array, shape (M, group_size, 2)
+    y_new: np.array, shape (M,)
+    """
+
+    X_new_list = []
+    y_new_list = []
+
+    unique_labels = np.unique(y_all)
+
+    for label in unique_labels:
+        # 选出该标签对应的数据
+        idxs = np.where(y_all == label)[0]
+        X_label = X_all[idxs]
+        y_label = y_all[idxs]
+
+        # 打乱该类别数据
+        perm = np.random.permutation(len(X_label))
+        X_label = X_label[perm]
+        y_label = y_label[perm]
+
+        total_signals = len(X_label)
+        num_groups = total_signals // group_size
+        truncated_len = num_groups * group_size
+
+        if truncated_len == 0:
+            # 该类别数据太少，不足一组，跳过
+            continue
+
+        X_label_trunc = X_label[:truncated_len]
+        y_label_trunc = y_label[:truncated_len]
+
+        # 重塑为组结构
+        X_groups = X_label_trunc.reshape(num_groups, group_size, 288, 2)
+
+        # 转置采样点和信号条数维度
+        X_groups_t = np.transpose(X_groups, (0, 2, 1, 3))
+
+        # 合并组和采样点维度，形成新样本
+        X_new_label = X_groups_t.reshape(num_groups * 288, group_size, 2)
+
+        # 标签扩展：每组标签取组内第一个信号标签，重复288次
+        y_groups = y_label_trunc.reshape(num_groups, group_size)
+        y_new_label = []
+        for group_labels in y_groups:
+            y_new_label.extend([group_labels[0]] * 288)
+        y_new_label = np.array(y_new_label)
+
+        # 收集
+        X_new_list.append(X_new_label)
+        y_new_list.append(y_new_label)
+
+    # 拼接所有类别的数据
+    X_new = np.concatenate(X_new_list, axis=0)
+    y_new = np.concatenate(y_new_list, axis=0)
+
+    print(f"总样本数：{len(X_all)}, 处理后新样本数：{X_new.shape[0]}, 每样本序列长度：{X_new.shape[1]}")
+
+    return X_new, y_new
+
