@@ -621,3 +621,72 @@ def preprocess_per_label(X_all, y_all, group_size=288):
 
     return X_new, y_new
 
+def preprocess_per_label_by_file_order(X_list, y_list, group_size=288):
+    """
+    按发射机类别，按文件顺序依次取每个文件前 group_size/文件数 的数据拼接，
+    对拼接后的数据做采样点转置及展开处理，形成新的训练样本。
+
+    X_list: list of np.array, 每个元素是一个文件的信号，形状 (num_samples_per_file, 288, 2)
+    y_list: list of labels，长度和X_list一致，表示每个文件的发射机标签
+    group_size: int, 每个最终样本包含多少信号条数（对应你之前288）
+
+    返回：
+    X_new: np.array, (新的样本数量, group_size, 2)
+    y_new: np.array, (新的样本数量,)
+    """
+    from collections import defaultdict
+
+    # 按类别收集对应的文件索引和数据
+    label_files = defaultdict(list)
+    for i, label in enumerate(y_list):
+        label_files[label].append(X_list[i])
+
+    X_new_list = []
+    y_new_list = []
+
+    for label, files in label_files.items():
+        num_files = len(files)
+        # 每个文件取样数
+        samples_per_file = group_size // num_files
+
+        # 每个文件截取samples_per_file个信号
+        truncated_files = []
+        for file_data in files:
+            if file_data.shape[0] < samples_per_file:
+                # 如果文件样本不够，直接舍弃该类别（或者也可以舍弃这个文件，这里简单跳过）
+                break
+            truncated_files.append(file_data[:samples_per_file])
+
+        if len(truncated_files) != num_files:
+            # 某文件样本不足，跳过该类别
+            continue
+
+        # 拼接所有文件截断后的数据，按顺序排列，shape = (group_size, 288, 2)
+        X_concat = np.concatenate(truncated_files, axis=0)
+
+        # 现在开始做采样点转置操作：
+        # 先按 group_size 分组，组数是 1 （因为总长度就是group_size）
+        # reshape成 (1, group_size, 288, 2)
+        X_group = X_concat.reshape(1, group_size, 288, 2)
+        # 转置采样点和信号条数维度，变成 (1, 288, group_size, 2)
+        X_group_t = np.transpose(X_group, (0, 2, 1, 3))
+        # 合并组和采样点维度，变成 (1 * 288, group_size, 2)
+        X_final = X_group_t.reshape(group_size * 288, group_size, 2)
+
+        # 标签扩展，group_size*288个样本，标签是该类别重复
+        y_final = np.array([label] * (group_size * 288))
+
+        X_new_list.append(X_final)
+        y_new_list.append(y_final)
+
+    # 拼接所有类别数据
+    if len(X_new_list) == 0:
+        return np.array([]), np.array([])
+
+    X_new = np.concatenate(X_new_list, axis=0)
+    y_new = np.concatenate(y_new_list, axis=0)
+
+    print(f"总文件数: {len(X_list)}, 处理后样本数: {X_new.shape[0]}, 每样本序列长度: {X_new.shape[1]}")
+
+    return X_new, y_new
+
