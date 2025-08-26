@@ -1,0 +1,23 @@
+
+模型超参数设置:
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.0005
+  num_epochs: 300
+  model_dim: 64
+  num_heads: 8
+  num_layers: 2
+  dropout: 0.1
+  patience: 5
+
+训练结束
+最佳验证集Acc: 77.67%
+测试集准确率: 77.04%
+
+训练结束
+最佳验证集Acc: 79.51%
+测试集准确率: 75.95%
+
+训练结束
+最佳验证集Acc: 78.11%
+测试集准确率: 74.75%

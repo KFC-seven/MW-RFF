@@ -1,0 +1,32 @@
+=== Experiment Summary ===
+Timestamp: 2025-08-18_17-28-49
+Total Classes: 6
+SNR: 10 dB
+fd (Doppler shift): 960.0 Hz
+equalized: 0 
+Epoch 1 | Train Acc: 33.50% | Val Acc: 63.55%
+Epoch 2 | Train Acc: 61.31% | Val Acc: 65.02%
+Epoch 3 | Train Acc: 62.68% | Val Acc: 65.26%
+Epoch 4 | Train Acc: 63.22% | Val Acc: 65.36%
+Epoch 5 | Train Acc: 63.46% | Val Acc: 65.54%
+Epoch 6 | Train Acc: 63.88% | Val Acc: 61.08%
+Epoch 7 | Train Acc: 63.99% | Val Acc: 64.48%
+Epoch 8 | Train Acc: 64.38% | Val Acc: 64.86%
+Epoch 9 | Train Acc: 64.40% | Val Acc: 64.06%
+Epoch 10 | Train Acc: 64.44% | Val Acc: 66.04%
+Epoch 11 | Train Acc: 65.04% | Val Acc: 65.52%
+Epoch 12 | Train Acc: 65.07% | Val Acc: 64.29%
+Epoch 13 | Train Acc: 65.16% | Val Acc: 65.48%
+Epoch 14 | Train Acc: 65.37% | Val Acc: 64.90%
+Epoch 15 | Train Acc: 65.32% | Val Acc: 64.97%
+Epoch 16 | Train Acc: 65.28% | Val Acc: 65.39%
+Epoch 17 | Train Acc: 65.34% | Val Acc: 64.86%
+Epoch 18 | Train Acc: 65.46% | Val Acc: 64.48%
+Epoch 19 | Train Acc: 65.52% | Val Acc: 64.79%
+Epoch 20 | Train Acc: 65.61% | Val Acc: 66.40%
+Epoch 21 | Train Acc: 65.87% | Val Acc: 63.89%
+Epoch 22 | Train Acc: 65.93% | Val Acc: 64.60%
+Epoch 23 | Train Acc: 65.86% | Val Acc: 63.99%
+Epoch 24 | Train Acc: 65.81% | Val Acc: 63.77%
+Epoch 25 | Train Acc: 65.93% | Val Acc: 64.55%
+Fold 1 Test Accuracy: 60.93%
