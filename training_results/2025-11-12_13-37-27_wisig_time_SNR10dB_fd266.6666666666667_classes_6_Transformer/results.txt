@@ -1,0 +1,49 @@
+=== Experiment Summary ===
+Timestamp: 2025-11-12_13-37-27
+Total Classes: 6
+SNR: 10 dB
+fd (Doppler shift): 266.6666666666667 Hz
+equalized: 1
+Epoch 1 | Train Acc: 49.14% | Val Acc: 57.87%
+Epoch 2 | Train Acc: 60.04% | Val Acc: 61.59%
+Epoch 3 | Train Acc: 62.75% | Val Acc: 64.25%
+Epoch 4 | Train Acc: 64.22% | Val Acc: 65.89%
+Epoch 5 | Train Acc: 65.11% | Val Acc: 66.48%
+Epoch 6 | Train Acc: 65.78% | Val Acc: 65.38%
+Epoch 7 | Train Acc: 66.26% | Val Acc: 65.92%
+Epoch 8 | Train Acc: 66.80% | Val Acc: 67.29%
+Epoch 9 | Train Acc: 67.17% | Val Acc: 66.51%
+Epoch 10 | Train Acc: 67.49% | Val Acc: 67.77%
+Epoch 11 | Train Acc: 68.25% | Val Acc: 67.98%
+Epoch 12 | Train Acc: 68.49% | Val Acc: 67.40%
+Epoch 13 | Train Acc: 68.50% | Val Acc: 69.04%
+Epoch 14 | Train Acc: 68.73% | Val Acc: 68.30%
+Epoch 15 | Train Acc: 68.79% | Val Acc: 69.38%
+Epoch 16 | Train Acc: 68.95% | Val Acc: 68.92%
+Epoch 17 | Train Acc: 69.12% | Val Acc: 67.85%
+Epoch 18 | Train Acc: 69.09% | Val Acc: 68.87%
+Epoch 19 | Train Acc: 69.36% | Val Acc: 69.30%
+Epoch 20 | Train Acc: 69.46% | Val Acc: 68.27%
+Fold 1 Test Accuracy: 65.40%
+Epoch 1 | Train Acc: 49.73% | Val Acc: 60.51%
+Epoch 2 | Train Acc: 61.19% | Val Acc: 63.16%
+Epoch 3 | Train Acc: 63.46% | Val Acc: 64.29%
+Epoch 4 | Train Acc: 64.07% | Val Acc: 65.26%
+Epoch 5 | Train Acc: 65.02% | Val Acc: 59.47%
+Epoch 6 | Train Acc: 65.42% | Val Acc: 66.02%
+Epoch 7 | Train Acc: 65.81% | Val Acc: 66.79%
+Epoch 8 | Train Acc: 66.47% | Val Acc: 67.02%
+Epoch 9 | Train Acc: 67.05% | Val Acc: 67.47%
+Epoch 10 | Train Acc: 67.52% | Val Acc: 68.36%
+Epoch 11 | Train Acc: 68.28% | Val Acc: 68.86%
+Epoch 12 | Train Acc: 68.58% | Val Acc: 68.74%
+Epoch 13 | Train Acc: 68.76% | Val Acc: 68.27%
+Epoch 14 | Train Acc: 68.82% | Val Acc: 68.75%
+Epoch 15 | Train Acc: 69.02% | Val Acc: 69.08%
+Epoch 16 | Train Acc: 69.07% | Val Acc: 67.89%
+Fold 2 Test Accuracy: 65.39%
+Epoch 1 | Train Acc: 49.08% | Val Acc: 57.41%
+Epoch 2 | Train Acc: 58.91% | Val Acc: 62.17%
+Epoch 3 | Train Acc: 62.88% | Val Acc: 65.49%
+Epoch 4 | Train Acc: 64.15% | Val Acc: 64.50%
+Epoch 5 | Train Acc: 64.89% | Val Acc: 66.04%

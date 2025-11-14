@@ -1,0 +1,37 @@
+=== Random Search Results ===
+Timestamp: 2025-11-14_06-54-44
+Total possible combinations: 486
+Randomly selected: 50
+Random seed: 777
+Parameter grid: {
+  "learning_rate": [
+    0.0001,
+    0.0005,
+    0.001
+  ],
+  "model_dim": [
+    64,
+    128,
+    256
+  ],
+  "num_layers": [
+    2,
+    4,
+    6
+  ],
+  "num_heads": [
+    4,
+    8
+  ],
+  "dropout": [
+    0.1,
+    0.3,
+    0.5
+  ],
+  "batch_size": [
+    128,
+    256,
+    512
+  ]
+}
+
