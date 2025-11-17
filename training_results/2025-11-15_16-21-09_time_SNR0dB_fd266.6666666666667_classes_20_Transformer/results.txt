@@ -1,0 +1,118 @@
+=== Experiment Summary ===
+Feature Folder: trajectory_plots
+Timestamp: 2025-11-15_16-21-09
+Total Classes: 20
+SNR: 0 dB
+fd (Doppler shift): 266.6666666666667 Hz
+Epoch 1 | Train Loss: 3.0156 | Train Acc: 7.45% | Val Loss: 2.9685 | Val Acc: 9.61%
+Epoch 2 | Train Loss: 2.9890 | Train Acc: 8.05% | Val Loss: 2.9604 | Val Acc: 9.61%
+Epoch 3 | Train Loss: 2.9763 | Train Acc: 8.65% | Val Loss: 2.9582 | Val Acc: 9.61%
+Epoch 4 | Train Loss: 2.7723 | Train Acc: 12.92% | Val Loss: 2.0991 | Val Acc: 27.18%
+Epoch 5 | Train Loss: 2.0103 | Train Acc: 29.15% | Val Loss: 1.8612 | Val Acc: 33.75%
+Epoch 6 | Train Loss: 1.8621 | Train Acc: 33.39% | Val Loss: 1.7728 | Val Acc: 37.13%
+Epoch 7 | Train Loss: 1.7347 | Train Acc: 37.46% | Val Loss: 1.6368 | Val Acc: 41.70%
+Epoch 8 | Train Loss: 1.6315 | Train Acc: 41.43% | Val Loss: 1.5657 | Val Acc: 44.40%
+Epoch 9 | Train Loss: 1.5619 | Train Acc: 43.70% | Val Loss: 1.5233 | Val Acc: 45.52%
+Epoch 10 | Train Loss: 1.5025 | Train Acc: 45.85% | Val Loss: 1.4904 | Val Acc: 46.54%
+Epoch 11 | Train Loss: 1.4310 | Train Acc: 48.03% | Val Loss: 1.4716 | Val Acc: 47.45%
+Epoch 12 | Train Loss: 1.3973 | Train Acc: 49.47% | Val Loss: 1.4644 | Val Acc: 48.03%
+Epoch 13 | Train Loss: 1.3691 | Train Acc: 50.38% | Val Loss: 1.4576 | Val Acc: 48.11%
+Epoch 14 | Train Loss: 1.3468 | Train Acc: 51.14% | Val Loss: 1.4502 | Val Acc: 48.62%
+Epoch 15 | Train Loss: 1.3226 | Train Acc: 51.80% | Val Loss: 1.4517 | Val Acc: 48.75%
+Epoch 16 | Train Loss: 1.3005 | Train Acc: 52.83% | Val Loss: 1.4415 | Val Acc: 48.97%
+Epoch 17 | Train Loss: 1.2788 | Train Acc: 53.27% | Val Loss: 1.4492 | Val Acc: 49.30%
+Epoch 18 | Train Loss: 1.2575 | Train Acc: 54.02% | Val Loss: 1.4567 | Val Acc: 49.14%
+Epoch 19 | Train Loss: 1.2341 | Train Acc: 54.96% | Val Loss: 1.4594 | Val Acc: 49.08%
+Epoch 20 | Train Loss: 1.2117 | Train Acc: 55.93% | Val Loss: 1.4593 | Val Acc: 48.92%
+Epoch 21 | Train Loss: 1.1669 | Train Acc: 57.35% | Val Loss: 1.4523 | Val Acc: 49.63%
+Epoch 1 | Train Loss: 3.0166 | Train Acc: 7.36% | Val Loss: 2.9710 | Val Acc: 9.42%
+Epoch 2 | Train Loss: 2.9900 | Train Acc: 8.00% | Val Loss: 2.9690 | Val Acc: 9.42%
+Epoch 3 | Train Loss: 2.9781 | Train Acc: 8.52% | Val Loss: 2.9633 | Val Acc: 9.42%
+Epoch 4 | Train Loss: 2.7485 | Train Acc: 13.20% | Val Loss: 2.1030 | Val Acc: 26.89%
+Epoch 5 | Train Loss: 2.0129 | Train Acc: 28.85% | Val Loss: 1.8655 | Val Acc: 33.01%
+Epoch 6 | Train Loss: 1.8568 | Train Acc: 33.37% | Val Loss: 1.7365 | Val Acc: 37.60%
+Epoch 7 | Train Loss: 1.7334 | Train Acc: 37.70% | Val Loss: 1.6240 | Val Acc: 41.74%
+Epoch 8 | Train Loss: 1.6269 | Train Acc: 41.47% | Val Loss: 1.5357 | Val Acc: 44.78%
+Epoch 9 | Train Loss: 1.5456 | Train Acc: 44.26% | Val Loss: 1.5303 | Val Acc: 45.86%
+Epoch 10 | Train Loss: 1.4916 | Train Acc: 46.28% | Val Loss: 1.4802 | Val Acc: 47.15%
+Epoch 11 | Train Loss: 1.4218 | Train Acc: 48.54% | Val Loss: 1.4505 | Val Acc: 48.14%
+Epoch 12 | Train Loss: 1.3858 | Train Acc: 49.72% | Val Loss: 1.4378 | Val Acc: 48.65%
+Epoch 13 | Train Loss: 1.3633 | Train Acc: 50.38% | Val Loss: 1.4469 | Val Acc: 48.91%
+Epoch 14 | Train Loss: 1.3394 | Train Acc: 51.38% | Val Loss: 1.4221 | Val Acc: 49.82%
+Epoch 15 | Train Loss: 1.3172 | Train Acc: 51.96% | Val Loss: 1.4277 | Val Acc: 49.70%
+Epoch 16 | Train Loss: 1.2922 | Train Acc: 52.97% | Val Loss: 1.4347 | Val Acc: 49.41%
+Epoch 17 | Train Loss: 1.2734 | Train Acc: 53.87% | Val Loss: 1.4338 | Val Acc: 49.70%
+Epoch 18 | Train Loss: 1.2478 | Train Acc: 54.55% | Val Loss: 1.4328 | Val Acc: 49.82%
+Epoch 19 | Train Loss: 1.2268 | Train Acc: 55.29% | Val Loss: 1.4453 | Val Acc: 49.76%
+Epoch 1 | Train Loss: 3.0123 | Train Acc: 7.54% | Val Loss: 2.9580 | Val Acc: 9.74%
+Epoch 2 | Train Loss: 2.9859 | Train Acc: 8.21% | Val Loss: 2.9595 | Val Acc: 9.74%
+Epoch 3 | Train Loss: 2.9734 | Train Acc: 8.80% | Val Loss: 2.9582 | Val Acc: 9.74%
+Epoch 4 | Train Loss: 2.9179 | Train Acc: 10.04% | Val Loss: 2.3553 | Val Acc: 16.87%
+Epoch 5 | Train Loss: 2.0963 | Train Acc: 26.76% | Val Loss: 1.8636 | Val Acc: 33.64%
+Epoch 6 | Train Loss: 1.8581 | Train Acc: 33.51% | Val Loss: 1.7206 | Val Acc: 38.63%
+Epoch 7 | Train Loss: 1.7169 | Train Acc: 38.41% | Val Loss: 1.6228 | Val Acc: 42.77%
+Epoch 8 | Train Loss: 1.6083 | Train Acc: 42.12% | Val Loss: 1.5219 | Val Acc: 45.35%
+Epoch 9 | Train Loss: 1.5323 | Train Acc: 44.72% | Val Loss: 1.4880 | Val Acc: 46.88%
+Epoch 10 | Train Loss: 1.4799 | Train Acc: 46.75% | Val Loss: 1.4614 | Val Acc: 47.93%
+Epoch 11 | Train Loss: 1.4042 | Train Acc: 49.38% | Val Loss: 1.4324 | Val Acc: 48.93%
+Epoch 12 | Train Loss: 1.3722 | Train Acc: 50.23% | Val Loss: 1.4232 | Val Acc: 49.39%
+Epoch 13 | Train Loss: 1.3441 | Train Acc: 51.23% | Val Loss: 1.4237 | Val Acc: 49.42%
+Epoch 14 | Train Loss: 1.3197 | Train Acc: 52.01% | Val Loss: 1.4233 | Val Acc: 49.52%
+Epoch 15 | Train Loss: 1.2951 | Train Acc: 52.88% | Val Loss: 1.4176 | Val Acc: 49.71%
+Epoch 16 | Train Loss: 1.2724 | Train Acc: 53.60% | Val Loss: 1.4148 | Val Acc: 49.90%
+Epoch 17 | Train Loss: 1.2490 | Train Acc: 54.56% | Val Loss: 1.4296 | Val Acc: 49.58%
+Epoch 18 | Train Loss: 1.2269 | Train Acc: 55.44% | Val Loss: 1.4261 | Val Acc: 49.78%
+Epoch 19 | Train Loss: 1.2016 | Train Acc: 56.19% | Val Loss: 1.4236 | Val Acc: 50.18%
+Epoch 20 | Train Loss: 1.1761 | Train Acc: 57.18% | Val Loss: 1.4352 | Val Acc: 49.96%
+Epoch 21 | Train Loss: 1.1323 | Train Acc: 58.70% | Val Loss: 1.4353 | Val Acc: 49.97%
+Epoch 1 | Train Loss: 3.0160 | Train Acc: 7.51% | Val Loss: 2.9730 | Val Acc: 8.95%
+Epoch 2 | Train Loss: 2.9921 | Train Acc: 8.03% | Val Loss: 2.9695 | Val Acc: 8.95%
+Epoch 3 | Train Loss: 2.9807 | Train Acc: 8.57% | Val Loss: 2.9657 | Val Acc: 8.95%
+Epoch 4 | Train Loss: 2.6475 | Train Acc: 14.95% | Val Loss: 2.0772 | Val Acc: 27.36%
+Epoch 5 | Train Loss: 2.0136 | Train Acc: 28.58% | Val Loss: 1.8630 | Val Acc: 33.11%
+Epoch 6 | Train Loss: 1.8776 | Train Acc: 32.73% | Val Loss: 1.7774 | Val Acc: 36.36%
+Epoch 7 | Train Loss: 1.7647 | Train Acc: 36.76% | Val Loss: 1.6688 | Val Acc: 41.30%
+Epoch 8 | Train Loss: 1.6555 | Train Acc: 40.57% | Val Loss: 1.5564 | Val Acc: 44.52%
+Epoch 9 | Train Loss: 1.5753 | Train Acc: 43.46% | Val Loss: 1.5058 | Val Acc: 46.31%
+Epoch 10 | Train Loss: 1.5212 | Train Acc: 45.12% | Val Loss: 1.4926 | Val Acc: 47.17%
+Epoch 11 | Train Loss: 1.4473 | Train Acc: 47.65% | Val Loss: 1.4497 | Val Acc: 48.47%
+Epoch 12 | Train Loss: 1.4151 | Train Acc: 48.52% | Val Loss: 1.4383 | Val Acc: 48.88%
+Epoch 13 | Train Loss: 1.3844 | Train Acc: 49.85% | Val Loss: 1.4351 | Val Acc: 49.22%
+Epoch 14 | Train Loss: 1.3630 | Train Acc: 50.62% | Val Loss: 1.4229 | Val Acc: 49.19%
+Epoch 15 | Train Loss: 1.3419 | Train Acc: 51.15% | Val Loss: 1.4278 | Val Acc: 49.77%
+Epoch 16 | Train Loss: 1.3186 | Train Acc: 52.04% | Val Loss: 1.4310 | Val Acc: 49.91%
+Epoch 17 | Train Loss: 1.2984 | Train Acc: 52.59% | Val Loss: 1.4188 | Val Acc: 50.10%
+Epoch 18 | Train Loss: 1.2749 | Train Acc: 53.52% | Val Loss: 1.4204 | Val Acc: 50.09%
+Epoch 19 | Train Loss: 1.2509 | Train Acc: 54.34% | Val Loss: 1.4264 | Val Acc: 50.19%
+Epoch 20 | Train Loss: 1.2275 | Train Acc: 55.13% | Val Loss: 1.4237 | Val Acc: 50.52%
+Epoch 21 | Train Loss: 1.1909 | Train Acc: 56.56% | Val Loss: 1.4354 | Val Acc: 50.49%
+Epoch 22 | Train Loss: 1.1728 | Train Acc: 57.24% | Val Loss: 1.4409 | Val Acc: 50.53%
+Epoch 1 | Train Loss: 3.0160 | Train Acc: 7.39% | Val Loss: 2.9674 | Val Acc: 9.21%
+Epoch 2 | Train Loss: 2.9918 | Train Acc: 8.20% | Val Loss: 2.9702 | Val Acc: 9.21%
+Epoch 3 | Train Loss: 2.9783 | Train Acc: 8.63% | Val Loss: 2.9612 | Val Acc: 9.21%
+Epoch 4 | Train Loss: 2.8930 | Train Acc: 10.54% | Val Loss: 2.2839 | Val Acc: 23.33%
+Epoch 5 | Train Loss: 2.0834 | Train Acc: 26.82% | Val Loss: 1.8844 | Val Acc: 33.49%
+Epoch 6 | Train Loss: 1.8842 | Train Acc: 32.70% | Val Loss: 1.7871 | Val Acc: 36.61%
+Epoch 7 | Train Loss: 1.7554 | Train Acc: 37.06% | Val Loss: 1.6297 | Val Acc: 41.84%
+Epoch 8 | Train Loss: 1.6408 | Train Acc: 41.17% | Val Loss: 1.5263 | Val Acc: 45.17%
+Epoch 9 | Train Loss: 1.5640 | Train Acc: 43.89% | Val Loss: 1.5010 | Val Acc: 46.04%
+Epoch 10 | Train Loss: 1.5087 | Train Acc: 45.71% | Val Loss: 1.4654 | Val Acc: 47.46%
+Epoch 11 | Train Loss: 1.4317 | Train Acc: 48.33% | Val Loss: 1.4432 | Val Acc: 48.45%
+Epoch 12 | Train Loss: 1.3962 | Train Acc: 49.38% | Val Loss: 1.4376 | Val Acc: 48.98%
+Epoch 13 | Train Loss: 1.3707 | Train Acc: 50.24% | Val Loss: 1.4408 | Val Acc: 49.03%
+Epoch 14 | Train Loss: 1.3477 | Train Acc: 50.97% | Val Loss: 1.4262 | Val Acc: 49.32%
+Epoch 15 | Train Loss: 1.3238 | Train Acc: 51.77% | Val Loss: 1.4352 | Val Acc: 49.15%
+Epoch 16 | Train Loss: 1.2989 | Train Acc: 52.73% | Val Loss: 1.4176 | Val Acc: 49.65%
+Epoch 17 | Train Loss: 1.2787 | Train Acc: 53.54% | Val Loss: 1.4222 | Val Acc: 49.90%
+Epoch 18 | Train Loss: 1.2526 | Train Acc: 54.34% | Val Loss: 1.4298 | Val Acc: 49.79%
+Epoch 19 | Train Loss: 1.2300 | Train Acc: 55.17% | Val Loss: 1.4399 | Val Acc: 49.67%
+Epoch 20 | Train Loss: 1.2074 | Train Acc: 55.93% | Val Loss: 1.4341 | Val Acc: 50.03%
+Epoch 21 | Train Loss: 1.1666 | Train Acc: 57.45% | Val Loss: 1.4477 | Val Acc: 50.12%
+Fold 1: Val Acc=49.63%, Test Acc=49.99%
+Fold 2: Val Acc=49.76%, Test Acc=49.70%
+Fold 3: Val Acc=49.97%, Test Acc=50.16%
+Fold 4: Val Acc=50.53%, Test Acc=50.01%
+Fold 5: Val Acc=50.12%, Test Acc=50.33%
+
+Average Val Accuracy: 50.00%
+Average Test Accuracy: 50.04%
