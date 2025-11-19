@@ -758,10 +758,11 @@ def preprocess_dataset_for_classification_with_diff(compact_dataset, tx_list, rx
         print("✅ 已启用IQ信号差分功能")
     return X_train, y_train, X_test, y_test
 
-def preprocess_dataset_for_classification(compact_dataset, tx_list, rx_list, train_dates, max_sig=None, equalized=0, use_differential=False):
+def preprocess_dataset_for_classification(compact_dataset, tx_list, rx_list, train_dates, max_sig=None, equalized=0, use_phase_differential=False):
     def extract_samples(dates):
         X = []
         y = []
+        sample_count = 0
         for rx in rx_list:
             for tx_idx, tx in enumerate(tx_list):
                 tx_i = compact_dataset['tx_list'].index(tx)
@@ -777,51 +778,60 @@ def preprocess_dataset_for_classification(compact_dataset, tx_list, rx_list, tra
                     if max_sig is not None:
                         sig_data = sig_data[:max_sig]
 
-                    # 拆分成多个 (256, 2) 样本
                     for sample_idx, sample in enumerate(sig_data):
                         if sample.shape == (256, 2):
-                            # 如果是第一个样本且启用了差分，输出差分前后的值
-                            if use_differential and sample_idx == 0:
-                                print("差分前的前10个IQ样本值:")
-                                for i in range(min(10, len(sample))):
-                                    print(f"  样本{i}: I={sample[i, 0]:.6f}, Q={sample[i, 1]:.6f}")
+                            original_sample = sample.copy()
                             
-                            # 应用差分功能
-                            if use_differential:
-                                original_sample = sample.copy()  # 保存原始样本用于比较
-                                sample = apply_differential(sample)
+                            # 应用相位差分
+                            if use_phase_differential:
+                                sample = apply_phase_differential(sample)
+                            
+                            # 输出第一个样本的对比信息
+                            if sample_count == 0 and use_phase_differential:
+                                print("=== 相位差分前后对比 ===")
+                                print("差分前的前5个IQ样本值:")
+                                for i in range(min(5, len(original_sample))):
+                                    print(f"  样本{i}: I={original_sample[i, 0]:.6f}, Q={original_sample[i, 1]:.6f}")
                                 
-                                # 输出差分后的值（仅第一个样本）
-                                if sample_idx == 0:
-                                    print("差分后的前10个IQ样本值:")
-                                    for i in range(min(10, len(sample))):
-                                        print(f"  样本{i}: I={sample[i, 0]:.6f}, Q={sample[i, 1]:.6f}")
+                                print(f"\n相位差分后的前5个样本值:")
+                                for i in range(min(5, len(sample))):
+                                    print(f"  样本{i}: I={sample[i, 0]:.6f}, Q={sample[i, 1]:.6f}")
+                                
+                                # 输出数值范围信息
+                                print(f"\n数值范围信息:")
+                                print(f"  原始信号I范围: [{np.min(original_sample[:, 0]):.6f}, {np.max(original_sample[:, 0]):.6f}]")
+                                print(f"  原始信号Q范围: [{np.min(original_sample[:, 1]):.6f}, {np.max(original_sample[:, 1]):.6f}]")
+                                print(f"  差分后I范围: [{np.min(sample[:, 0]):.6f}, {np.max(sample[:, 0]):.6f}]")
+                                print(f"  差分后Q范围: [{np.min(sample[:, 1]):.6f}, {np.max(sample[:, 1]):.6f}]")
                             
                             X.append(sample)
                             y.append(tx_idx)
+                            sample_count += 1
         
         return np.array(X), np.array(y)
     
-    def apply_differential(signal):
+    def apply_phase_differential(signal):
         """
-        对IQ信号应用差分操作
-        signal: 形状为 (256, 2) 的数组，其中第0列是I分量，第1列是Q分量
-        返回: 差分后的信号，形状为 (255, 2)
+        相位差分：保持幅度信息，消除载波频偏
+        signal: 形状为 (256, 2) 的数组
+        返回: 形状为 (255, 2) 的相位差分信号
         """
-        # 计算差分：x_diff[n] = x[n] * conj(x[n-1])
-        iq_complex = signal[:, 0] + 1j * signal[:, 1]  # 转换为复数形式
+        iq_complex = signal[:, 0] + 1j * signal[:, 1]
         
-        # 计算差分信号（长度变为255）
-        diff_signal = iq_complex[1:] * np.conj(iq_complex[:-1])
+        # 计算相位差
+        phase_original = np.angle(iq_complex)
+        phase_diff = np.diff(phase_original)
         
-        # 将差分信号转换回IQ格式
-        diff_i = np.real(diff_signal)
-        diff_q = np.imag(diff_signal)
+        # 将相位差包装到[-π, π]范围内
+        phase_diff = np.angle(np.exp(1j * phase_diff))
         
-        # 创建新的信号数组，长度为255
+        # 使用原始信号的幅度，结合相位差
+        magnitude = np.abs(iq_complex[1:])
+        diff_complex = magnitude * np.exp(1j * phase_diff)
+        
         result = np.zeros((len(signal)-1, 2))
-        result[:, 0] = diff_i
-        result[:, 1] = diff_q
+        result[:, 0] = np.real(diff_complex)
+        result[:, 1] = np.imag(diff_complex)
         
         return result
 
@@ -835,7 +845,10 @@ def preprocess_dataset_for_classification(compact_dataset, tx_list, rx_list, tra
     X_test, y_test = extract_samples(test_dates)
 
     print(f"✅ 训练样本数: {len(X_train)}, 测试样本数: {len(X_test)}")
-    if use_differential:
-        print("✅ 已启用IQ信号差分功能")
-        print(f"✅ 差分后样本长度从256变为255")
+    if use_phase_differential:
+        print("✅ 已启用相位差分功能")
+        print("✅ 相位差分：保持幅度信息，消除载波频偏")
+        if len(X_train) > 0:
+            print(f"✅ 差分后样本长度: {X_train.shape[1]}")
+    
     return X_train, y_train, X_test, y_test
