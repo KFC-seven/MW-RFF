@@ -690,3 +690,70 @@ def preprocess_per_label_by_file_order(X_list, y_list, group_size=288):
 
     return X_new, y_new
 
+def preprocess_dataset_for_classification_with_diff(compact_dataset, tx_list, rx_list, train_dates, max_sig=None, equalized=0, use_differential=False):
+    def extract_samples(dates):
+        X = []
+        y = []
+        for rx in rx_list:
+            for tx_idx, tx in enumerate(tx_list):
+                tx_i = compact_dataset['tx_list'].index(tx)
+                rx_i = compact_dataset['rx_list'].index(rx)
+                eq_i = compact_dataset['equalized_list'].index(equalized)
+                
+                for date in dates:
+                    if date not in compact_dataset['capture_date_list']:
+                        continue
+                    date_i = compact_dataset['capture_date_list'].index(date)
+                    sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]
+
+                    if max_sig is not None:
+                        sig_data = sig_data[:max_sig]
+
+                    # 拆分成多个 (256, 2) 样本
+                    for sample in sig_data:
+                        if sample.shape == (256, 2):
+                            # 应用差分功能
+                            if use_differential:
+                                sample = apply_differential(sample)
+                            
+                            X.append(sample)
+                            y.append(tx_idx)
+        
+        return np.array(X), np.array(y)
+    
+    def apply_differential(signal):
+        """
+        对IQ信号应用差分操作
+        signal: 形状为 (256, 2) 的数组，其中第0列是I分量，第1列是Q分量
+        返回: 差分后的信号，形状与输入相同
+        """
+        # 计算差分：x_diff[n] = x[n] * conj(x[n-1])
+        iq_complex = signal[:, 0] + 1j * signal[:, 1]  # 转换为复数形式
+        
+        # 计算差分信号
+        diff_signal = iq_complex[1:] * np.conj(iq_complex[:-1])
+        
+        # 将差分信号转换回IQ格式
+        diff_i = np.real(diff_signal)
+        diff_q = np.imag(diff_signal)
+        
+        # 创建新的信号数组，第一个样本用0填充以保持长度一致
+        result = np.zeros_like(signal)
+        result[1:, 0] = diff_i
+        result[1:, 1] = diff_q
+        
+        return result
+
+    # 所有日期
+    all_dates = set(compact_dataset['capture_date_list'])
+    train_dates = set(train_dates)
+    test_dates = list(all_dates - train_dates)
+
+    # 转为 list 保持顺序
+    X_train, y_train = extract_samples(list(train_dates))
+    X_test, y_test = extract_samples(test_dates)
+
+    print(f"✅ 训练样本数: {len(X_train)}, 测试样本数: {len(X_test)}")
+    if use_differential:
+        print("✅ 已启用IQ信号差分功能")
+    return X_train, y_train, X_test, y_test
