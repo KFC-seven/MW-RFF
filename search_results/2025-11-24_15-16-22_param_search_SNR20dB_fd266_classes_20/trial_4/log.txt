@@ -1,0 +1,22 @@
+Config:
+{
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "batch_size": 32,
+  "channels": 32,
+  "dropout": 0.5,
+  "epochs": 200,
+  "patience": 10
+}
+
+Epoch 1/200 | TrainAcc=55.85% | ValAcc=73.74% | TrainLoss=1.2020 | ValLoss=0.6773
+Epoch 2/200 | TrainAcc=73.51% | ValAcc=79.66% | TrainLoss=0.6997 | ValLoss=0.5429
+Epoch 3/200 | TrainAcc=76.99% | ValAcc=81.79% | TrainLoss=0.6053 | ValLoss=0.4997
+Epoch 4/200 | TrainAcc=78.67% | ValAcc=83.06% | TrainLoss=0.5616 | ValLoss=0.4551
+Epoch 5/200 | TrainAcc=79.96% | ValAcc=84.77% | TrainLoss=0.5301 | ValLoss=0.4013
+Epoch 6/200 | TrainAcc=80.91% | ValAcc=86.87% | TrainLoss=0.5046 | ValLoss=0.3566
+Epoch 7/200 | TrainAcc=81.58% | ValAcc=80.62% | TrainLoss=0.4867 | ValLoss=0.4818
+Epoch 8/200 | TrainAcc=82.21% | ValAcc=85.80% | TrainLoss=0.4716 | ValLoss=0.3765
+Epoch 9/200 | TrainAcc=82.61% | ValAcc=88.55% | TrainLoss=0.4615 | ValLoss=0.3152
+Epoch 10/200 | TrainAcc=83.19% | ValAcc=83.43% | TrainLoss=0.4521 | ValLoss=0.4183
+Epoch 11/200 | TrainAcc=83.19% | ValAcc=84.35% | TrainLoss=0.4452 | ValLoss=0.4002

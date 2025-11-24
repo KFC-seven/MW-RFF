@@ -1,0 +1,79 @@
+=== Experiment Parameters ===
+Timestamp: 2025-11-24_15-01-38
+SNR_dB: 20, Apply AWGN: True
+Velocity_kmh: 120, Apply Doppler: True
+Carrier frequency: 5900000000.0 Hz, Sampling rate: 5000000.0 Hz
+Expected DMRS length: 288
+Wavelet: db6, Level: 6, Use Log: False
+Training params: batch_size=64, epochs=200, lr=0.003, weight_decay=0.0001, patience=5
+Number of classes: 9
+============================
+
+Fold1 Epoch1 TrainAcc=17.11% ValAcc=20.49% TrainLoss=2.1467 ValLoss=2.1047
+Fold1 Epoch2 TrainAcc=20.52% ValAcc=21.25% TrainLoss=2.0853 ValLoss=2.0611
+Fold1 Epoch3 TrainAcc=22.99% ValAcc=22.13% TrainLoss=2.0329 ValLoss=2.0576
+Fold1 Epoch4 TrainAcc=25.30% ValAcc=25.81% TrainLoss=1.9868 ValLoss=1.9756
+Fold1 Epoch5 TrainAcc=27.08% ValAcc=26.97% TrainLoss=1.9503 ValLoss=1.9440
+Fold1 Epoch6 TrainAcc=28.50% ValAcc=28.13% TrainLoss=1.9224 ValLoss=1.9207
+Fold1 Epoch7 TrainAcc=29.43% ValAcc=28.96% TrainLoss=1.9006 ValLoss=1.9038
+Fold1 Epoch8 TrainAcc=30.25% ValAcc=25.63% TrainLoss=1.8792 ValLoss=2.0071
+Fold1 Epoch9 TrainAcc=31.11% ValAcc=29.85% TrainLoss=1.8607 ValLoss=1.8935
+Fold1 Epoch10 TrainAcc=31.92% ValAcc=29.93% TrainLoss=1.8434 ValLoss=1.9001
+Fold1 Epoch11 TrainAcc=34.31% ValAcc=31.85% TrainLoss=1.7867 ValLoss=1.8491
+Fold1 Epoch12 TrainAcc=34.91% ValAcc=32.66% TrainLoss=1.7699 ValLoss=1.8254
+Fold1 Epoch13 TrainAcc=35.52% ValAcc=33.23% TrainLoss=1.7578 ValLoss=1.8063
+Fold1 Epoch14 TrainAcc=35.88% ValAcc=33.00% TrainLoss=1.7490 ValLoss=1.8144
+Fold1 Epoch15 TrainAcc=36.13% ValAcc=33.63% TrainLoss=1.7432 ValLoss=1.8065
+Fold1 Epoch16 TrainAcc=36.44% ValAcc=31.60% TrainLoss=1.7367 ValLoss=1.8516
+Fold1 Epoch17 TrainAcc=36.71% ValAcc=34.27% TrainLoss=1.7299 ValLoss=1.7880
+Fold1 Epoch18 TrainAcc=37.01% ValAcc=33.10% TrainLoss=1.7257 ValLoss=1.8141
+Fold1 Epoch19 TrainAcc=37.08% ValAcc=31.99% TrainLoss=1.7201 ValLoss=1.8479
+Fold1 Epoch20 TrainAcc=37.26% ValAcc=33.07% TrainLoss=1.7157 ValLoss=1.8254
+Fold1 Epoch21 TrainAcc=38.94% ValAcc=34.62% TrainLoss=1.6778 ValLoss=1.7755
+Fold1 Epoch22 TrainAcc=39.25% ValAcc=34.56% TrainLoss=1.6703 ValLoss=1.7857
+Fold1 Epoch23 TrainAcc=39.26% ValAcc=35.01% TrainLoss=1.6671 ValLoss=1.7689
+Fold1 Epoch24 TrainAcc=39.51% ValAcc=35.24% TrainLoss=1.6631 ValLoss=1.7794
+Fold1 Epoch25 TrainAcc=39.71% ValAcc=34.89% TrainLoss=1.6606 ValLoss=1.7795
+Fold1 Epoch26 TrainAcc=39.72% ValAcc=35.33% TrainLoss=1.6587 ValLoss=1.7651
+Fold1 Epoch27 TrainAcc=39.94% ValAcc=34.40% TrainLoss=1.6540 ValLoss=1.8006
+Fold1 Epoch28 TrainAcc=39.96% ValAcc=34.90% TrainLoss=1.6520 ValLoss=1.7844
+Fold1 Epoch29 TrainAcc=39.98% ValAcc=34.93% TrainLoss=1.6505 ValLoss=1.7899
+Fold1 Epoch30 TrainAcc=40.11% ValAcc=35.17% TrainLoss=1.6490 ValLoss=1.7685
+Fold1 Epoch31 TrainAcc=41.13% ValAcc=35.78% TrainLoss=1.6236 ValLoss=1.7607
+Fold1 Epoch32 TrainAcc=41.39% ValAcc=35.79% TrainLoss=1.6190 ValLoss=1.7640
+Fold1 Epoch33 TrainAcc=41.53% ValAcc=35.81% TrainLoss=1.6174 ValLoss=1.7706
+Fold1 Epoch34 TrainAcc=41.48% ValAcc=35.59% TrainLoss=1.6158 ValLoss=1.7717
+Fold1 Epoch35 TrainAcc=41.50% ValAcc=35.71% TrainLoss=1.6146 ValLoss=1.7608
+Fold1 Epoch36 TrainAcc=41.63% ValAcc=35.52% TrainLoss=1.6130 ValLoss=1.7709
+Fold1 Epoch37 TrainAcc=41.56% ValAcc=35.15% TrainLoss=1.6113 ValLoss=1.7716
+Fold1 Epoch38 TrainAcc=41.77% ValAcc=35.59% TrainLoss=1.6107 ValLoss=1.7808
+Fold1 Final | TrainAcc=42.81% ValAcc=35.59% TestAcc=35.44%
+Fold2 Epoch1 TrainAcc=17.49% ValAcc=18.52% TrainLoss=2.1458 ValLoss=2.1279
+Fold2 Epoch2 TrainAcc=20.89% ValAcc=21.03% TrainLoss=2.0831 ValLoss=2.0775
+Fold2 Epoch3 TrainAcc=23.32% ValAcc=23.03% TrainLoss=2.0311 ValLoss=2.0347
+Fold2 Epoch4 TrainAcc=25.27% ValAcc=23.46% TrainLoss=1.9875 ValLoss=2.0230
+Fold2 Epoch5 TrainAcc=26.97% ValAcc=26.75% TrainLoss=1.9541 ValLoss=1.9506
+Fold2 Epoch6 TrainAcc=28.65% ValAcc=25.23% TrainLoss=1.9237 ValLoss=1.9994
+Fold2 Epoch7 TrainAcc=29.76% ValAcc=27.15% TrainLoss=1.8970 ValLoss=1.9530
+Fold2 Epoch8 TrainAcc=30.73% ValAcc=26.68% TrainLoss=1.8741 ValLoss=1.9550
+Fold2 Epoch9 TrainAcc=31.45% ValAcc=29.43% TrainLoss=1.8561 ValLoss=1.9084
+Fold2 Epoch10 TrainAcc=32.31% ValAcc=28.04% TrainLoss=1.8401 ValLoss=1.9455
+Fold2 Epoch11 TrainAcc=34.79% ValAcc=33.03% TrainLoss=1.7847 ValLoss=1.8293
+Fold2 Epoch12 TrainAcc=35.44% ValAcc=32.29% TrainLoss=1.7696 ValLoss=1.8335
+Fold2 Epoch13 TrainAcc=35.81% ValAcc=32.44% TrainLoss=1.7571 ValLoss=1.8359
+Fold2 Epoch14 TrainAcc=36.11% ValAcc=32.51% TrainLoss=1.7494 ValLoss=1.8279
+Fold2 Epoch15 TrainAcc=36.31% ValAcc=33.25% TrainLoss=1.7424 ValLoss=1.8165
+Fold2 Epoch16 TrainAcc=36.75% ValAcc=33.13% TrainLoss=1.7349 ValLoss=1.8127
+Fold2 Epoch17 TrainAcc=36.97% ValAcc=33.24% TrainLoss=1.7299 ValLoss=1.8269
+Fold2 Epoch18 TrainAcc=37.06% ValAcc=32.38% TrainLoss=1.7253 ValLoss=1.8293
+Fold2 Epoch19 TrainAcc=37.35% ValAcc=33.65% TrainLoss=1.7200 ValLoss=1.8136
+Fold2 Epoch20 TrainAcc=37.41% ValAcc=33.41% TrainLoss=1.7166 ValLoss=1.8146
+Fold2 Epoch21 TrainAcc=39.08% ValAcc=34.65% TrainLoss=1.6770 ValLoss=1.7941
+Fold2 Epoch22 TrainAcc=39.48% ValAcc=33.86% TrainLoss=1.6685 ValLoss=1.8142
+Fold2 Epoch23 TrainAcc=39.62% ValAcc=34.93% TrainLoss=1.6645 ValLoss=1.7772
+Fold2 Epoch24 TrainAcc=39.82% ValAcc=34.66% TrainLoss=1.6613 ValLoss=1.7877
+Fold2 Epoch25 TrainAcc=39.94% ValAcc=35.09% TrainLoss=1.6573 ValLoss=1.7756
+Fold2 Epoch26 TrainAcc=40.06% ValAcc=34.97% TrainLoss=1.6545 ValLoss=1.7939
+Fold2 Epoch27 TrainAcc=40.12% ValAcc=34.63% TrainLoss=1.6515 ValLoss=1.7940
+Fold2 Epoch28 TrainAcc=40.29% ValAcc=35.18% TrainLoss=1.6477 ValLoss=1.7856
+Fold2 Epoch29 TrainAcc=40.37% ValAcc=35.07% TrainLoss=1.6473 ValLoss=1.7836

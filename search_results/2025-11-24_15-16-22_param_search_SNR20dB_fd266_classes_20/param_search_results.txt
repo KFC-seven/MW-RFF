@@ -1,0 +1,7 @@
+Param search started at 2025-11-24_15-16-22
+Mode: grid
+Total trials: 8
+
+{"lr": 0.001, "weight_decay": 1e-05, "batch_size": 32, "channels": 16, "dropout": 0.0, "epochs": 200, "patience": 10, "trial": 1, "best_val_acc": 87.67604049493814, "test_acc": 87.49145099168497, "model_path": "./search_results\\2025-11-24_15-16-22_param_search_SNR20dB_fd266_classes_20\\trial_1\\best_model.pth", "trial_folder": "./search_results\\2025-11-24_15-16-22_param_search_SNR20dB_fd266_classes_20\\trial_1", "elapsed_sec": 268.565021276474}
+{"lr": 0.0003, "weight_decay": 1e-05, "batch_size": 64, "channels": 16, "dropout": 0.1, "epochs": 200, "patience": 10, "trial": 2, "best_val_acc": 91.93250843644545, "test_acc": 91.72455995104568, "model_path": "./search_results\\2025-11-24_15-16-22_param_search_SNR20dB_fd266_classes_20\\trial_2\\best_model.pth", "trial_folder": "./search_results\\2025-11-24_15-16-22_param_search_SNR20dB_fd266_classes_20\\trial_2", "elapsed_sec": 733.521728515625}
+{"lr": 0.0003, "weight_decay": 0.0001, "batch_size": 64, "channels": 32, "dropout": 0.0, "epochs": 200, "patience": 10, "trial": 3, "best_val_acc": 81.5883014623172, "test_acc": 82.07767898923724, "model_path": "./search_results\\2025-11-24_15-16-22_param_search_SNR20dB_fd266_classes_20\\trial_3\\best_model.pth", "trial_folder": "./search_results\\2025-11-24_15-16-22_param_search_SNR20dB_fd266_classes_20\\trial_3", "elapsed_sec": 202.52983689308167}
