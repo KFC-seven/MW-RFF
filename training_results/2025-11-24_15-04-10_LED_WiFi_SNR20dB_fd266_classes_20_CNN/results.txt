@@ -247,3 +247,27 @@ Fold5 Epoch32 | TrainAcc=87.16% | ValAcc=85.56% | TrainLoss=0.3452 | ValLoss=0.3
 Fold5 Epoch33 | TrainAcc=87.25% | ValAcc=85.79% | TrainLoss=0.3457 | ValLoss=0.3759
 Fold5 Epoch34 | TrainAcc=87.22% | ValAcc=84.73% | TrainLoss=0.3421 | ValLoss=0.3995
 Fold5 Epoch35 | TrainAcc=87.26% | ValAcc=85.83% | TrainLoss=0.3417 | ValLoss=0.3741
+Fold5 Epoch36 | TrainAcc=87.21% | ValAcc=85.20% | TrainLoss=0.3420 | ValLoss=0.3935
+Fold5 Epoch37 | TrainAcc=87.32% | ValAcc=85.75% | TrainLoss=0.3416 | ValLoss=0.3753
+Fold5 Epoch38 | TrainAcc=87.35% | ValAcc=85.70% | TrainLoss=0.3431 | ValLoss=0.3732
+Fold5 Epoch39 | TrainAcc=87.29% | ValAcc=86.11% | TrainLoss=0.3405 | ValLoss=0.3716
+Fold5 Epoch40 | TrainAcc=87.29% | ValAcc=84.25% | TrainLoss=0.3397 | ValLoss=0.4146
+Fold5 Epoch41 | TrainAcc=87.60% | ValAcc=86.08% | TrainLoss=0.3341 | ValLoss=0.3699
+Fold5 Epoch42 | TrainAcc=87.66% | ValAcc=86.51% | TrainLoss=0.3333 | ValLoss=0.3630
+Fold5 Epoch43 | TrainAcc=87.60% | ValAcc=85.94% | TrainLoss=0.3327 | ValLoss=0.3724
+Fold5 Epoch44 | TrainAcc=87.76% | ValAcc=86.64% | TrainLoss=0.3328 | ValLoss=0.3572
+Fold5 Epoch45 | TrainAcc=87.69% | ValAcc=86.18% | TrainLoss=0.3339 | ValLoss=0.3642
+Fold5 Epoch46 | TrainAcc=87.80% | ValAcc=86.37% | TrainLoss=0.3309 | ValLoss=0.3626
+Fold5 Epoch47 | TrainAcc=87.75% | ValAcc=86.33% | TrainLoss=0.3335 | ValLoss=0.3631
+Fold5 Epoch48 | TrainAcc=87.73% | ValAcc=86.18% | TrainLoss=0.3322 | ValLoss=0.3656
+Fold5 Epoch49 | TrainAcc=87.67% | ValAcc=85.95% | TrainLoss=0.3305 | ValLoss=0.3711
+Fold5 Epoch50 | TrainAcc=87.72% | ValAcc=86.17% | TrainLoss=0.3301 | ValLoss=0.3689
+Fold5 Epoch51 | TrainAcc=87.90% | ValAcc=86.24% | TrainLoss=0.3262 | ValLoss=0.3687
+Fold5 Epoch52 | TrainAcc=87.85% | ValAcc=86.58% | TrainLoss=0.3272 | ValLoss=0.3600
+Fold5 Epoch53 | TrainAcc=87.90% | ValAcc=86.57% | TrainLoss=0.3267 | ValLoss=0.3582
+Fold5 Epoch54 | TrainAcc=87.98% | ValAcc=86.32% | TrainLoss=0.3249 | ValLoss=0.3611
+Fold 5 TestAcc=86.51%
+
+=== Overall Summary ===
+Val Acc: 85.25 ± 0.67
+Test Acc: 85.73 ± 0.54
