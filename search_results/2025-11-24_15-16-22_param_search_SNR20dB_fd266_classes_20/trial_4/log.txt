@@ -20,3 +20,4 @@ Epoch 8/200 | TrainAcc=82.21% | ValAcc=85.80% | TrainLoss=0.4716 | ValLoss=0.376
 Epoch 9/200 | TrainAcc=82.61% | ValAcc=88.55% | TrainLoss=0.4615 | ValLoss=0.3152
 Epoch 10/200 | TrainAcc=83.19% | ValAcc=83.43% | TrainLoss=0.4521 | ValLoss=0.4183
 Epoch 11/200 | TrainAcc=83.19% | ValAcc=84.35% | TrainLoss=0.4452 | ValLoss=0.4002
+Epoch 12/200 | TrainAcc=83.68% | ValAcc=84.10% | TrainLoss=0.4356 | ValLoss=0.4172

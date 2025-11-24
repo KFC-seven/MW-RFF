@@ -245,3 +245,5 @@ Fold5 Epoch30 | TrainAcc=86.80% | ValAcc=78.77% | TrainLoss=0.3543 | ValLoss=0.5
 Fold5 Epoch31 | TrainAcc=87.22% | ValAcc=85.13% | TrainLoss=0.3454 | ValLoss=0.3946
 Fold5 Epoch32 | TrainAcc=87.16% | ValAcc=85.56% | TrainLoss=0.3452 | ValLoss=0.3809
 Fold5 Epoch33 | TrainAcc=87.25% | ValAcc=85.79% | TrainLoss=0.3457 | ValLoss=0.3759
+Fold5 Epoch34 | TrainAcc=87.22% | ValAcc=84.73% | TrainLoss=0.3421 | ValLoss=0.3995
+Fold5 Epoch35 | TrainAcc=87.26% | ValAcc=85.83% | TrainLoss=0.3417 | ValLoss=0.3741
