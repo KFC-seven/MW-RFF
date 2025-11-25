@@ -85,3 +85,4 @@ Fold2 Epoch34 TrainAcc=42.06% ValAcc=35.44% TrainLoss=1.6093 ValLoss=1.7765
 Fold2 Epoch35 TrainAcc=42.09% ValAcc=35.30% TrainLoss=1.6078 ValLoss=1.7845
 Fold2 Epoch36 TrainAcc=42.15% ValAcc=35.23% TrainLoss=1.6058 ValLoss=1.7803
 Fold2 Epoch37 TrainAcc=42.24% ValAcc=35.23% TrainLoss=1.6035 ValLoss=1.7752
+Fold2 Final | TrainAcc=43.31% ValAcc=35.23% TestAcc=35.39%

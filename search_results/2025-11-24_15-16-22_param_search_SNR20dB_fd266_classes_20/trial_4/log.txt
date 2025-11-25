@@ -36,3 +36,4 @@ Epoch 24/200 | TrainAcc=85.26% | ValAcc=91.24% | TrainLoss=0.3951 | ValLoss=0.25
 Epoch 25/200 | TrainAcc=85.50% | ValAcc=91.49% | TrainLoss=0.3894 | ValLoss=0.2421
 Epoch 26/200 | TrainAcc=85.44% | ValAcc=89.50% | TrainLoss=0.3886 | ValLoss=0.2869
 Epoch 27/200 | TrainAcc=85.40% | ValAcc=89.76% | TrainLoss=0.3912 | ValLoss=0.2845
+Epoch 28/200 | TrainAcc=85.57% | ValAcc=89.94% | TrainLoss=0.3876 | ValLoss=0.2738

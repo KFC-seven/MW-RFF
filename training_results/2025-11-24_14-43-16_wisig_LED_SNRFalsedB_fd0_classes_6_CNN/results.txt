@@ -117,3 +117,4 @@ Fold5 Epoch8 | TrainAcc=99.30% | ValAcc=99.16% | TrainLoss=0.0209 | ValLoss=0.02
 Fold5 Epoch9 | TrainAcc=99.31% | ValAcc=97.41% | TrainLoss=0.0204 | ValLoss=0.0693 | AvgGrad=0.0352
 Fold5 Epoch10 | TrainAcc=99.36% | ValAcc=97.70% | TrainLoss=0.0193 | ValLoss=0.0719 | AvgGrad=0.0343
 Fold5 Epoch11 | TrainAcc=99.53% | ValAcc=99.37% | TrainLoss=0.0137 | ValLoss=0.0200 | AvgGrad=0.0265
+Fold5 Epoch12 | TrainAcc=99.55% | ValAcc=99.38% | TrainLoss=0.0134 | ValLoss=0.0189 | AvgGrad=0.0293
