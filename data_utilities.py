@@ -1138,3 +1138,73 @@ def preprocess_dataset_for_classification_random_split(compact_dataset, tx_list,
         print(f"✅ 差分后样本长度: {X_train.shape[1]}")
 
     return X_train, y_train, X_test, y_test
+
+def preprocess_dataset_cross_IQ_blocks_single_date_per_rx_cyclic(compact_dataset, tx_list, train_dates, test_dates,
+                                                          max_sig=None, equalized=0, block_size=240, y=10):
+    import numpy as np
+
+    def extract_samples(dates):
+        X = []
+        y_labels = []
+
+        for tx_idx, tx in enumerate(tx_list):
+            try:
+                tx_i = compact_dataset['tx_list'].index(tx)
+            except ValueError:
+                continue  # 如果 tx 不在列表中，跳过
+            try:
+                eq_i = compact_dataset['equalized_list'].index(equalized)
+            except ValueError:
+                continue
+
+            for date in dates:
+                if date not in compact_dataset['capture_date_list']:
+                    continue
+                date_i = compact_dataset['capture_date_list'].index(date)
+
+                # === 提取该日期下每个 RX 的信号，并打乱 ===
+                rx_signals = []
+                for rx_i in range(len(compact_dataset['rx_list'])):
+                    sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]
+                    if max_sig is not None:
+                        sig_data = sig_data[:max_sig]
+                    sig_data = list(sig_data)
+                    np.random.shuffle(sig_data)
+                    rx_signals.append(sig_data)
+
+                num_rx = len(rx_signals)
+                rx_pointer = 0  # 当前从哪个 RX 开始抽
+                accum_block = []
+
+                while any(len(sig_list) > 0 for sig_list in rx_signals):
+                    rx_idx = rx_pointer % num_rx
+                    sig_list = rx_signals[rx_idx]
+                    if len(sig_list) > 0:
+                        take_n = min(y, len(sig_list))
+                        sampled = [sig_list.pop(0) for _ in range(take_n)]
+                        accum_block.extend(sampled)
+                    rx_pointer += 1
+
+                    # 当累积到 block_size 时生成 block
+                    while len(accum_block) >= block_size:
+                        block_chunk = accum_block[:block_size]
+                        accum_block = accum_block[block_size:]
+                        block_array = np.array(block_chunk)  # (block_size, 256, 2)
+                        block_transposed = block_array.transpose(1, 0, 2)  # (256, block_size, 2)
+                        for j in range(block_transposed.shape[0]):
+                            X.append(block_transposed[j])
+                            y_labels.append(tx_idx)
+
+                # 最后剩余的 accum_block 不足 block_size 时丢弃
+                accum_block = []
+
+        return np.array(X), np.array(y_labels)
+
+    # 训练集
+    X_train, y_train = extract_samples(train_dates)
+
+    # 测试集
+    X_test, y_test = extract_samples(test_dates)
+
+    return X_train, y_train, X_test, y_test
+
