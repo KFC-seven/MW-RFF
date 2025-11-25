@@ -37,3 +37,22 @@ Epoch 25/200 | TrainAcc=85.50% | ValAcc=91.49% | TrainLoss=0.3894 | ValLoss=0.24
 Epoch 26/200 | TrainAcc=85.44% | ValAcc=89.50% | TrainLoss=0.3886 | ValLoss=0.2869
 Epoch 27/200 | TrainAcc=85.40% | ValAcc=89.76% | TrainLoss=0.3912 | ValLoss=0.2845
 Epoch 28/200 | TrainAcc=85.57% | ValAcc=89.94% | TrainLoss=0.3876 | ValLoss=0.2738
+Epoch 29/200 | TrainAcc=85.60% | ValAcc=87.78% | TrainLoss=0.3879 | ValLoss=0.3194
+Epoch 30/200 | TrainAcc=85.52% | ValAcc=91.66% | TrainLoss=0.3887 | ValLoss=0.2416
+Epoch 31/200 | TrainAcc=86.69% | ValAcc=91.68% | TrainLoss=0.3585 | ValLoss=0.2404
+Epoch 32/200 | TrainAcc=86.93% | ValAcc=91.87% | TrainLoss=0.3522 | ValLoss=0.2326
+Epoch 33/200 | TrainAcc=86.87% | ValAcc=89.84% | TrainLoss=0.3527 | ValLoss=0.2741
+Epoch 34/200 | TrainAcc=86.87% | ValAcc=90.59% | TrainLoss=0.3505 | ValLoss=0.2547
+Epoch 35/200 | TrainAcc=86.88% | ValAcc=92.13% | TrainLoss=0.3535 | ValLoss=0.2256
+Epoch 36/200 | TrainAcc=87.18% | ValAcc=91.97% | TrainLoss=0.3474 | ValLoss=0.2232
+Epoch 37/200 | TrainAcc=86.99% | ValAcc=91.47% | TrainLoss=0.3493 | ValLoss=0.2408
+Epoch 38/200 | TrainAcc=87.10% | ValAcc=91.96% | TrainLoss=0.3465 | ValLoss=0.2272
+Epoch 39/200 | TrainAcc=86.97% | ValAcc=91.16% | TrainLoss=0.3489 | ValLoss=0.2458
+Epoch 40/200 | TrainAcc=87.19% | ValAcc=91.12% | TrainLoss=0.3459 | ValLoss=0.2454
+Epoch 41/200 | TrainAcc=87.00% | ValAcc=91.65% | TrainLoss=0.3479 | ValLoss=0.2333
+Epoch 42/200 | TrainAcc=87.02% | ValAcc=92.22% | TrainLoss=0.3467 | ValLoss=0.2215
+Epoch 43/200 | TrainAcc=87.06% | ValAcc=90.00% | TrainLoss=0.3448 | ValLoss=0.2668
+Epoch 44/200 | TrainAcc=87.13% | ValAcc=90.30% | TrainLoss=0.3466 | ValLoss=0.2559
+Epoch 45/200 | TrainAcc=87.23% | ValAcc=91.80% | TrainLoss=0.3455 | ValLoss=0.2257
+
+Trial Summary: BestValAcc=92.13 | TestAcc=91.82

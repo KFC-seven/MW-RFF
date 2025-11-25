@@ -852,3 +852,289 @@ def preprocess_dataset_for_classification(compact_dataset, tx_list, rx_list, tra
             print(f"✅ 差分后样本长度: {X_train.shape[1]}")
     
     return X_train, y_train, X_test, y_test
+
+def preprocess_dataset_cross_IQ_blocks_all_mix_random(compact_dataset, tx_list, 
+                                                      max_sig=None, equalized=0, 
+                                                      block_size=256, y=10, 
+                                                      test_ratio=0.2, seed=42):
+    """
+    将所有日期、所有 RX 的信号混合后随机划分训练/测试集
+    每个 block 大小为 block_size，每个样本长度为 256
+    """
+    import numpy as np
+    np.random.seed(seed)
+
+    X = []
+    y_labels = []
+
+    for tx_idx, tx in enumerate(tx_list):
+        tx_i = compact_dataset['tx_list'].index(tx)
+        eq_i = compact_dataset['equalized_list'].index(equalized)
+
+        all_tx_data = []
+
+        # 汇总所有日期、所有 RX
+        for date_i, date in enumerate(compact_dataset['capture_date_list']):
+            for rx_i in range(len(compact_dataset['rx_list'])):
+                sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]  # shape: (N, 256, 2)
+                if max_sig is not None:
+                    sig_data = sig_data[:max_sig]
+                all_tx_data.append(sig_data)
+
+        if not all_tx_data:
+            continue
+
+        all_tx_data = np.concatenate(all_tx_data, axis=0)  # shape: (total_samples, 256, 2)
+        np.random.shuffle(all_tx_data)  # 全局打乱
+
+        # 将信号划分为 y 个一组
+        num_chunks = len(all_tx_data) // y
+        chunks = [all_tx_data[i*y:(i+1)*y] for i in range(num_chunks)]
+        combined_data = np.concatenate(chunks, axis=0)
+
+        # 分 block、转置、拆样本
+        num_signals = len(combined_data)
+        num_blocks = num_signals // block_size
+
+        for i in range(num_blocks):
+            block = combined_data[i*block_size:(i+1)*block_size]
+            if block.shape != (block_size, 256, 2):
+                continue
+            block_transposed = block.transpose(1, 0, 2)  # (256, block_size, 2)
+            for j in range(block_transposed.shape[0]):
+                X.append(block_transposed[j])
+                y_labels.append(tx_idx)
+
+    # 转为 numpy
+    X = np.array(X)
+    y = np.array(y_labels)
+
+    # 全局打乱
+    perm = np.random.permutation(len(X))
+    X, y = X[perm], y[perm]
+
+    # 划分训练/测试集
+    test_size = int(len(X) * test_ratio)
+    X_test = X[:test_size]
+    y_test = y[:test_size]
+    X_train = X[test_size:]
+    y_train = y[test_size:]
+
+    print(f"✅ 总样本数: {len(X)}, 训练集: {len(X_train)}, 测试集: {len(X_test)}")
+    
+    return X_train, y_train, X_test, y_test
+
+
+def preprocess_dataset_cross_IQ_blocks_date_interleaved_random_rx(compact_dataset, tx_list, train_dates, 
+                                                                 max_sig=None, equalized=0, block_size=240, y=10):
+    import numpy as np
+    
+    def extract_samples(dates):
+        X = []
+        y_labels = []
+
+        for tx_idx, tx in enumerate(tx_list):
+            tx_i = compact_dataset['tx_list'].index(tx)
+            eq_i = compact_dataset['equalized_list'].index(equalized)
+
+            # === 为每个日期和每个 RX 提取信号，并打乱 ===
+            date_rx_signal_dict = {}  # date -> list of rx signals
+            for date in dates:
+                if date not in compact_dataset['capture_date_list']:
+                    continue
+                date_i = compact_dataset['capture_date_list'].index(date)
+                rx_signals = []
+                for rx_i in range(len(compact_dataset['rx_list'])):
+                    sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]
+                    if max_sig is not None:
+                        sig_data = sig_data[:max_sig]
+                    np.random.shuffle(sig_data)
+                    rx_signals.append(list(sig_data))  # 转成 list 方便 pop
+                date_rx_signal_dict[date] = rx_signals
+
+            # === 构建 block ===
+            combined_data = []
+            while True:
+                block_chunk = []
+                for date, rx_signals in date_rx_signal_dict.items():
+                    for rx_idx in range(len(rx_signals)):
+                        sig_list = rx_signals[rx_idx]
+                        if len(sig_list) >= y:
+                            # 随机抽 y 条
+                            sampled = [sig_list.pop(np.random.randint(len(sig_list))) for _ in range(y)]
+                            block_chunk.extend(sampled)
+                        else:
+                            # 如果剩余信号不足 y，就用剩下的全部
+                            block_chunk.extend(sig_list)
+                            rx_signals[rx_idx] = []
+                if len(block_chunk) == 0:
+                    break  # 没有可用信号了
+                combined_data.extend(block_chunk)
+
+            # === 分 block、转置、拆样本 ===
+            num_signals = len(combined_data)
+            num_blocks = num_signals // block_size
+            combined_data = np.array(combined_data)
+
+            for i in range(num_blocks):
+                block = combined_data[i * block_size : (i + 1) * block_size]
+                if block.shape != (block_size, 256, 2):
+                    continue
+                block_transposed = block.transpose(1, 0, 2)  # (256, block_size, 2)
+                for j in range(block_transposed.shape[0]):
+                    X.append(block_transposed[j])
+                    y_labels.append(tx_idx)
+
+        return np.array(X), np.array(y_labels)
+
+    X_train, y_train = extract_samples(train_dates)
+    test_dates = [d for d in compact_dataset['capture_date_list'] if d not in train_dates]
+    X_test, y_test = extract_samples(test_dates)
+
+    return X_train, y_train, X_test, y_test
+
+def preprocess_dataset_cross_IQ_blocks_date_per_rx_cyclic(compact_dataset, tx_list, train_dates, 
+                                                          max_sig=None, equalized=0, block_size=240, y=10):
+    import numpy as np
+
+    def extract_samples(dates):
+        X = []
+        y_labels = []
+
+        for tx_idx, tx in enumerate(tx_list):
+            tx_i = compact_dataset['tx_list'].index(tx)
+            eq_i = compact_dataset['equalized_list'].index(equalized)
+
+            for date in dates:
+                if date not in compact_dataset['capture_date_list']:
+                    continue
+                date_i = compact_dataset['capture_date_list'].index(date)
+
+                # === 提取该日期下每个 RX 的信号，并打乱 ===
+                rx_signals = []
+                for rx_i in range(len(compact_dataset['rx_list'])):
+                    sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]
+                    if max_sig is not None:
+                        sig_data = sig_data[:max_sig]
+                    np.random.shuffle(sig_data)
+                    rx_signals.append(list(sig_data))
+
+                num_rx = len(rx_signals)
+                rx_pointer = 0  # 记录当前从哪个 RX 开始抽
+                accum_block = []
+
+                while any(len(sig_list) > 0 for sig_list in rx_signals):
+                    # 从 rx_pointer 开始循环抽取
+                    rx_idx = rx_pointer % num_rx
+                    sig_list = rx_signals[rx_idx]
+                    if len(sig_list) > 0:
+                        take_n = min(y, len(sig_list))
+                        sampled = [sig_list.pop(0) for _ in range(take_n)]  # 顺序抽取
+                        accum_block.extend(sampled)
+
+                    rx_pointer += 1
+
+                    # 当累积到 block_size 时生成 block
+                    while len(accum_block) >= block_size:
+                        block_chunk = accum_block[:block_size]
+                        accum_block = accum_block[block_size:]
+                        block_array = np.array(block_chunk)  # (block_size, 256, 2)
+                        block_transposed = block_array.transpose(1, 0, 2)  # (256, block_size, 2)
+                        for j in range(block_transposed.shape[0]):
+                            X.append(block_transposed[j])
+                            y_labels.append(tx_idx)
+
+                # === 如果最后剩余的 accum_block 不足 block_size，这里选择丢弃 ===
+                accum_block = []
+
+        return np.array(X), np.array(y_labels)
+
+    X_train, y_train = extract_samples(train_dates)
+    test_dates = [d for d in compact_dataset['capture_date_list'] if d not in train_dates]
+    X_test, y_test = extract_samples(test_dates)
+
+    return X_train, y_train, X_test, y_test
+
+def preprocess_dataset_for_classification_random_split(compact_dataset, tx_list, rx_list, 
+                                                        test_ratio=0.25, max_sig=None, 
+                                                        equalized=0, use_phase_differential=False, seed=42):
+    import numpy as np
+
+    def extract_all_samples():
+        X = []
+        y = []
+        sample_count = 0
+        rng = np.random.default_rng(seed)
+
+        for rx in rx_list:
+            for tx_idx, tx in enumerate(tx_list):
+                tx_i = compact_dataset['tx_list'].index(tx)
+                rx_i = compact_dataset['rx_list'].index(rx)
+                eq_i = compact_dataset['equalized_list'].index(equalized)
+
+                for date_i, date in enumerate(compact_dataset['capture_date_list']):
+                    sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]
+                    if max_sig is not None:
+                        sig_data = sig_data[:max_sig]
+
+                    for sample_idx, sample in enumerate(sig_data):
+                        if sample.shape == (256, 2):
+                            original_sample = sample.copy()
+
+                            if use_phase_differential:
+                                sample = apply_phase_differential(sample)
+
+                                # 输出第一个样本的对比信息
+                                if sample_count == 0:
+                                    print("=== 相位差分前后对比 ===")
+                                    print("差分前的前5个IQ样本值:")
+                                    for i in range(min(5, len(original_sample))):
+                                        print(f"  样本{i}: I={original_sample[i, 0]:.6f}, Q={original_sample[i, 1]:.6f}")
+                                    print(f"\n相位差分后的前5个样本值:")
+                                    for i in range(min(5, len(sample))):
+                                        print(f"  样本{i}: I={sample[i, 0]:.6f}, Q={sample[i, 1]:.6f}")
+                                    print(f"\n数值范围信息:")
+                                    print(f"  原始信号I范围: [{np.min(original_sample[:, 0]):.6f}, {np.max(original_sample[:, 0]):.6f}]")
+                                    print(f"  原始信号Q范围: [{np.min(original_sample[:, 1]):.6f}, {np.max(original_sample[:, 1]):.6f}]")
+                                    print(f"  差分后I范围: [{np.min(sample[:, 0]):.6f}, {np.max(sample[:, 0]):.6f}]")
+                                    print(f"  差分后Q范围: [{np.min(sample[:, 1]):.6f}, {np.max(sample[:, 1]):.6f}]")
+                            
+                            X.append(sample)
+                            y.append(tx_idx)
+                            sample_count += 1
+        return np.array(X), np.array(y)
+
+    def apply_phase_differential(signal):
+        iq_complex = signal[:, 0] + 1j * signal[:, 1]
+        phase_original = np.angle(iq_complex)
+        phase_diff = np.diff(phase_original)
+        phase_diff = np.angle(np.exp(1j * phase_diff))
+        magnitude = np.abs(iq_complex[1:])
+        diff_complex = magnitude * np.exp(1j * phase_diff)
+        result = np.zeros((len(signal)-1, 2))
+        result[:, 0] = np.real(diff_complex)
+        result[:, 1] = np.imag(diff_complex)
+        return result
+
+    # === 提取所有样本 ===
+    X_all, y_all = extract_all_samples()
+    print(f"✅ 总样本数: {len(X_all)}")
+
+    # === 随机划分训练/测试集 ===
+    rng = np.random.default_rng(seed)
+    indices = rng.permutation(len(X_all))
+    test_size = int(len(X_all) * test_ratio)
+    test_idx = indices[:test_size]
+    train_idx = indices[test_size:]
+
+    X_train = X_all[train_idx]
+    y_train = y_all[train_idx]
+    X_test = X_all[test_idx]
+    y_test = y_all[test_idx]
+
+    print(f"✅ 训练样本数: {len(X_train)}, 测试样本数: {len(X_test)}")
+    if use_phase_differential:
+        print("✅ 已启用相位差分功能")
+        print(f"✅ 差分后样本长度: {X_train.shape[1]}")
+
+    return X_train, y_train, X_test, y_test
