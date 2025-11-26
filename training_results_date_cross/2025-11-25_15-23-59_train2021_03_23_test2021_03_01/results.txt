@@ -1,0 +1,87 @@
+Experiment Timestamp: 2025-11-25_15-23-59
+Train Date: 2021_03_23
+Test Date: 2021_03_01
+========================
+Num train samples: 76800
+Num test samples: 76800
+Num classes (from train): 6
+========================
+=== Experiment Parameters ===
+Timestamp: 2025-11-25 15:24:03
+Device: cuda
+Batch: 256, Epochs: 100, LR: 0.001, WD: 0.0001
+K-Fold: 5, Patience: 5
+============================
+
+Fold1 Epoch1 | TrainAcc=95.22% | ValAcc=99.64% | TrainLoss=0.1645 | ValLoss=0.0104 | AvgGrad=0.0768
+Fold1 Epoch2 | TrainAcc=99.83% | ValAcc=99.90% | TrainLoss=0.0051 | ValLoss=0.0031 | AvgGrad=0.0190
+Fold1 Epoch3 | TrainAcc=99.98% | ValAcc=99.95% | TrainLoss=0.0011 | ValLoss=0.0014 | AvgGrad=0.0062
+Fold1 Epoch4 | TrainAcc=99.95% | ValAcc=99.91% | TrainLoss=0.0018 | ValLoss=0.0027 | AvgGrad=0.0082
+Fold1 Epoch5 | TrainAcc=99.92% | ValAcc=99.86% | TrainLoss=0.0027 | ValLoss=0.0033 | AvgGrad=0.0106
+Fold1 Epoch6 | TrainAcc=99.97% | ValAcc=99.99% | TrainLoss=0.0010 | ValLoss=0.0005 | AvgGrad=0.0056
+Fold1 Epoch7 | TrainAcc=99.90% | ValAcc=99.82% | TrainLoss=0.0029 | ValLoss=0.0055 | AvgGrad=0.0114
+
+=== Fold 1 Summary ===
+TrainAcc (last) = 99.90%
+ValAcc (best) = 99.90%
+TestAcc = 94.05%
+===========================
+
+Fold2 Epoch1 | TrainAcc=95.36% | ValAcc=99.94% | TrainLoss=0.1416 | ValLoss=0.0029 | AvgGrad=0.0790
+Fold2 Epoch2 | TrainAcc=99.91% | ValAcc=99.93% | TrainLoss=0.0032 | ValLoss=0.0021 | AvgGrad=0.0129
+Fold2 Epoch3 | TrainAcc=99.93% | ValAcc=99.75% | TrainLoss=0.0024 | ValLoss=0.0069 | AvgGrad=0.0108
+Fold2 Epoch4 | TrainAcc=100.00% | ValAcc=99.99% | TrainLoss=0.0004 | ValLoss=0.0003 | AvgGrad=0.0028
+Fold2 Epoch5 | TrainAcc=100.00% | ValAcc=99.99% | TrainLoss=0.0001 | ValLoss=0.0004 | AvgGrad=0.0009
+Fold2 Epoch6 | TrainAcc=99.77% | ValAcc=99.45% | TrainLoss=0.0073 | ValLoss=0.0157 | AvgGrad=0.0191
+
+=== Fold 2 Summary ===
+TrainAcc (last) = 99.77%
+ValAcc (best) = 99.94%
+TestAcc = 85.51%
+===========================
+
+Fold3 Epoch1 | TrainAcc=95.84% | ValAcc=99.86% | TrainLoss=0.1344 | ValLoss=0.0052 | AvgGrad=0.0731
+Fold3 Epoch2 | TrainAcc=99.86% | ValAcc=99.92% | TrainLoss=0.0040 | ValLoss=0.0027 | AvgGrad=0.0166
+Fold3 Epoch3 | TrainAcc=99.96% | ValAcc=99.90% | TrainLoss=0.0012 | ValLoss=0.0033 | AvgGrad=0.0062
+Fold3 Epoch4 | TrainAcc=99.89% | ValAcc=99.93% | TrainLoss=0.0033 | ValLoss=0.0021 | AvgGrad=0.0132
+Fold3 Epoch5 | TrainAcc=99.90% | ValAcc=99.91% | TrainLoss=0.0030 | ValLoss=0.0032 | AvgGrad=0.0118
+Fold3 Epoch6 | TrainAcc=99.93% | ValAcc=99.96% | TrainLoss=0.0022 | ValLoss=0.0015 | AvgGrad=0.0092
+
+=== Fold 3 Summary ===
+TrainAcc (last) = 99.93%
+ValAcc (best) = 99.86%
+TestAcc = 93.26%
+===========================
+
+Fold4 Epoch1 | TrainAcc=96.70% | ValAcc=99.27% | TrainLoss=0.1081 | ValLoss=0.0249 | AvgGrad=0.0723
+Fold4 Epoch2 | TrainAcc=99.89% | ValAcc=99.97% | TrainLoss=0.0031 | ValLoss=0.0012 | AvgGrad=0.0146
+Fold4 Epoch3 | TrainAcc=99.83% | ValAcc=99.90% | TrainLoss=0.0054 | ValLoss=0.0037 | AvgGrad=0.0173
+Fold4 Epoch4 | TrainAcc=99.91% | ValAcc=99.90% | TrainLoss=0.0029 | ValLoss=0.0045 | AvgGrad=0.0109
+Fold4 Epoch5 | TrainAcc=99.96% | ValAcc=99.96% | TrainLoss=0.0011 | ValLoss=0.0009 | AvgGrad=0.0061
+Fold4 Epoch6 | TrainAcc=99.99% | ValAcc=99.98% | TrainLoss=0.0002 | ValLoss=0.0007 | AvgGrad=0.0014
+Fold4 Epoch7 | TrainAcc=100.00% | ValAcc=99.95% | TrainLoss=0.0001 | ValLoss=0.0012 | AvgGrad=0.0008
+
+=== Fold 4 Summary ===
+TrainAcc (last) = 100.00%
+ValAcc (best) = 99.97%
+TestAcc = 93.88%
+===========================
+
+Fold5 Epoch1 | TrainAcc=96.69% | ValAcc=99.89% | TrainLoss=0.1077 | ValLoss=0.0039 | AvgGrad=0.0780
+Fold5 Epoch2 | TrainAcc=99.87% | ValAcc=99.90% | TrainLoss=0.0041 | ValLoss=0.0028 | AvgGrad=0.0185
+Fold5 Epoch3 | TrainAcc=99.93% | ValAcc=99.94% | TrainLoss=0.0020 | ValLoss=0.0017 | AvgGrad=0.0103
+Fold5 Epoch4 | TrainAcc=99.94% | ValAcc=99.86% | TrainLoss=0.0019 | ValLoss=0.0051 | AvgGrad=0.0105
+Fold5 Epoch5 | TrainAcc=99.97% | ValAcc=99.98% | TrainLoss=0.0010 | ValLoss=0.0006 | AvgGrad=0.0054
+Fold5 Epoch6 | TrainAcc=99.90% | ValAcc=99.93% | TrainLoss=0.0032 | ValLoss=0.0018 | AvgGrad=0.0137
+
+=== Fold 5 Summary ===
+TrainAcc (last) = 99.90%
+ValAcc (best) = 99.89%
+TestAcc = 92.58%
+===========================
+
+
+=== Overall Summary ===
+Val Acc: 99.82 ± 0.20
+Test Acc: 91.86 ± 3.21
+=======================

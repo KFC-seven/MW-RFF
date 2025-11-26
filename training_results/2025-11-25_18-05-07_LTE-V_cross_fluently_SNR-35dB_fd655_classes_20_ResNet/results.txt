@@ -1,0 +1,63 @@
+
+================ SNR=-35 dB =================
+Fold 1, Epoch 1: Train Loss=0.0422, Train Acc=98.73%, Val Loss=0.0962, Val Acc=96.64%, Grad Norm=0.5179
+Fold 1, Epoch 2: Train Loss=0.0085, Train Acc=99.86%, Val Loss=0.0060, Val Acc=99.88%, Grad Norm=0.2029
+Fold 1, Epoch 3: Train Loss=0.0053, Train Acc=99.90%, Val Loss=0.0121, Val Acc=99.74%, Grad Norm=0.1754
+Fold 1, Epoch 4: Train Loss=0.0035, Train Acc=99.95%, Val Loss=0.0006, Val Acc=100.00%, Grad Norm=0.1126
+Fold 1, Epoch 5: Train Loss=0.0048, Train Acc=99.92%, Val Loss=0.0006, Val Acc=100.00%, Grad Norm=0.2010
+Fold 1, Epoch 6: Train Loss=0.0031, Train Acc=99.96%, Val Loss=0.0007, Val Acc=100.00%, Grad Norm=0.1396
+Fold 1, Epoch 7: Train Loss=0.0032, Train Acc=99.96%, Val Loss=0.0005, Val Acc=100.00%, Grad Norm=0.1420
+Fold 1, Epoch 8: Train Loss=0.0034, Train Acc=99.96%, Val Loss=0.0005, Val Acc=100.00%, Grad Norm=0.1615
+Fold 1, Epoch 9: Train Loss=0.0031, Train Acc=99.96%, Val Loss=0.0005, Val Acc=100.00%, Grad Norm=0.1667
+Fold 1, Epoch 10: Train Loss=0.0018, Train Acc=99.99%, Val Loss=0.0004, Val Acc=100.00%, Grad Norm=0.0665
+Fold 1, Epoch 11: Train Loss=0.0020, Train Acc=99.99%, Val Loss=0.0019, Val Acc=99.99%, Grad Norm=0.1137
+Fold 1, Epoch 12: Train Loss=0.0018, Train Acc=100.00%, Val Loss=0.0004, Val Acc=99.99%, Grad Norm=0.0889
+早停，连续 8 个 epoch 验证集未提升
+Fold 1 Test Acc=100.00%
+Fold 2, Epoch 1: Train Loss=0.0447, Train Acc=98.65%, Val Loss=0.0077, Val Acc=99.97%, Grad Norm=0.5254
+Fold 2, Epoch 2: Train Loss=0.0083, Train Acc=99.86%, Val Loss=0.0009, Val Acc=100.00%, Grad Norm=0.1903
+Fold 2, Epoch 3: Train Loss=0.0048, Train Acc=99.93%, Val Loss=0.0008, Val Acc=100.00%, Grad Norm=0.1420
+Fold 2, Epoch 4: Train Loss=0.0044, Train Acc=99.93%, Val Loss=0.0006, Val Acc=100.00%, Grad Norm=0.1431
+Fold 2, Epoch 5: Train Loss=0.0036, Train Acc=99.95%, Val Loss=0.0006, Val Acc=100.00%, Grad Norm=0.1346
+Fold 2, Epoch 6: Train Loss=0.0044, Train Acc=99.94%, Val Loss=0.0036, Val Acc=99.91%, Grad Norm=0.1844
+Fold 2, Epoch 7: Train Loss=0.0030, Train Acc=99.97%, Val Loss=0.0005, Val Acc=100.00%, Grad Norm=0.1439
+Fold 2, Epoch 8: Train Loss=0.0032, Train Acc=99.96%, Val Loss=0.0005, Val Acc=100.00%, Grad Norm=0.1535
+Fold 2, Epoch 9: Train Loss=0.0033, Train Acc=99.95%, Val Loss=0.0004, Val Acc=100.00%, Grad Norm=0.1853
+Fold 2, Epoch 10: Train Loss=0.0032, Train Acc=99.96%, Val Loss=0.0078, Val Acc=99.84%, Grad Norm=0.1713
+早停，连续 8 个 epoch 验证集未提升
+Fold 2 Test Acc=99.84%
+Fold 3, Epoch 1: Train Loss=0.0408, Train Acc=98.78%, Val Loss=0.0037, Val Acc=99.99%, Grad Norm=0.4967
+Fold 3, Epoch 2: Train Loss=0.0076, Train Acc=99.85%, Val Loss=0.0045, Val Acc=99.96%, Grad Norm=0.1752
+Fold 3, Epoch 3: Train Loss=0.0056, Train Acc=99.89%, Val Loss=0.0008, Val Acc=100.00%, Grad Norm=0.1791
+Fold 3, Epoch 4: Train Loss=0.0049, Train Acc=99.92%, Val Loss=0.0068, Val Acc=99.93%, Grad Norm=0.1607
+Fold 3, Epoch 5: Train Loss=0.0039, Train Acc=99.94%, Val Loss=0.0011, Val Acc=100.00%, Grad Norm=0.1579
+Fold 3, Epoch 6: Train Loss=0.0036, Train Acc=99.95%, Val Loss=0.0006, Val Acc=99.99%, Grad Norm=0.1497
+Fold 3, Epoch 7: Train Loss=0.0034, Train Acc=99.96%, Val Loss=0.0026, Val Acc=99.97%, Grad Norm=0.1579
+Fold 3, Epoch 8: Train Loss=0.0029, Train Acc=99.97%, Val Loss=0.0070, Val Acc=99.85%, Grad Norm=0.1314
+Fold 3, Epoch 9: Train Loss=0.0028, Train Acc=99.97%, Val Loss=0.0006, Val Acc=100.00%, Grad Norm=0.1316
+早停，连续 8 个 epoch 验证集未提升
+Fold 3 Test Acc=100.00%
+Fold 4, Epoch 1: Train Loss=0.0427, Train Acc=98.71%, Val Loss=0.0023, Val Acc=99.98%, Grad Norm=0.5460
+Fold 4, Epoch 2: Train Loss=0.0074, Train Acc=99.86%, Val Loss=0.0009, Val Acc=100.00%, Grad Norm=0.1764
+Fold 4, Epoch 3: Train Loss=0.0056, Train Acc=99.91%, Val Loss=0.0008, Val Acc=100.00%, Grad Norm=0.1454
+Fold 4, Epoch 4: Train Loss=0.0056, Train Acc=99.90%, Val Loss=0.0006, Val Acc=100.00%, Grad Norm=0.1703
+Fold 4, Epoch 5: Train Loss=0.0035, Train Acc=99.95%, Val Loss=0.0007, Val Acc=100.00%, Grad Norm=0.1435
+Fold 4, Epoch 6: Train Loss=0.0034, Train Acc=99.95%, Val Loss=0.0006, Val Acc=100.00%, Grad Norm=0.1593
+Fold 4, Epoch 7: Train Loss=0.0032, Train Acc=99.96%, Val Loss=0.0006, Val Acc=100.00%, Grad Norm=0.1577
+Fold 4, Epoch 8: Train Loss=0.0036, Train Acc=99.94%, Val Loss=0.0149, Val Acc=99.51%, Grad Norm=0.1878
+Fold 4, Epoch 9: Train Loss=0.0029, Train Acc=99.97%, Val Loss=0.0006, Val Acc=100.00%, Grad Norm=0.1365
+Fold 4, Epoch 10: Train Loss=0.0032, Train Acc=99.96%, Val Loss=0.0004, Val Acc=100.00%, Grad Norm=0.1655
+早停，连续 8 个 epoch 验证集未提升
+Fold 4 Test Acc=100.00%
+Fold 5, Epoch 1: Train Loss=0.0436, Train Acc=98.67%, Val Loss=0.0330, Val Acc=99.24%, Grad Norm=0.5278
+Fold 5, Epoch 2: Train Loss=0.0084, Train Acc=99.85%, Val Loss=0.0012, Val Acc=99.99%, Grad Norm=0.1982
+Fold 5, Epoch 3: Train Loss=0.0053, Train Acc=99.91%, Val Loss=0.0030, Val Acc=99.97%, Grad Norm=0.1494
+Fold 5, Epoch 4: Train Loss=0.0042, Train Acc=99.94%, Val Loss=0.0009, Val Acc=100.00%, Grad Norm=0.1649
+Fold 5, Epoch 5: Train Loss=0.0041, Train Acc=99.94%, Val Loss=0.0036, Val Acc=99.91%, Grad Norm=0.1597
+Fold 5, Epoch 6: Train Loss=0.0030, Train Acc=99.97%, Val Loss=0.0007, Val Acc=100.00%, Grad Norm=0.1308
+Fold 5, Epoch 7: Train Loss=0.0041, Train Acc=99.95%, Val Loss=0.0005, Val Acc=100.00%, Grad Norm=0.1986
+Fold 5, Epoch 8: Train Loss=0.0030, Train Acc=99.97%, Val Loss=0.0004, Val Acc=100.00%, Grad Norm=0.1391
+Fold 5, Epoch 9: Train Loss=0.0029, Train Acc=99.97%, Val Loss=0.0005, Val Acc=100.00%, Grad Norm=0.1485
+Fold 5, Epoch 10: Train Loss=0.0033, Train Acc=99.95%, Val Loss=0.0003, Val Acc=100.00%, Grad Norm=0.1718
+早停，连续 8 个 epoch 验证集未提升
+Fold 5 Test Acc=99.99%
