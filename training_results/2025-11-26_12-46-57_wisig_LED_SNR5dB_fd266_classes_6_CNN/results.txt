@@ -1,0 +1,131 @@
+=== Experiment Parameters ===
+Timestamp: 2025-11-26_12-46-57
+Device: cuda
+SNR_dB: 5
+Doppler_fd: 266.67 Hz
+FS: 20000000.0
+FC: 2400000000.0
+Wavelet: db6, Level: 6
+Batch size: 256, Epochs: 200, LR: 0.001, Weight decay: 0.0001
+K-Fold: 5, Patience: 8, Num classes: 6
+============================
+
+Fold1 Epoch1 | TrainAcc=73.21% | ValAcc=74.88% | TrainLoss=0.7068 | ValLoss=0.7012 | AvgGrad=0.1770
+Fold1 Epoch2 | TrainAcc=83.98% | ValAcc=74.17% | TrainLoss=0.4307 | ValLoss=0.7022 | AvgGrad=0.2035
+Fold1 Epoch3 | TrainAcc=86.10% | ValAcc=75.45% | TrainLoss=0.3780 | ValLoss=0.7206 | AvgGrad=0.1993
+Fold1 Epoch4 | TrainAcc=87.20% | ValAcc=82.07% | TrainLoss=0.3462 | ValLoss=0.4942 | AvgGrad=0.1924
+Fold1 Epoch5 | TrainAcc=87.97% | ValAcc=77.50% | TrainLoss=0.3263 | ValLoss=0.6168 | AvgGrad=0.1904
+Fold1 Epoch6 | TrainAcc=88.60% | ValAcc=70.83% | TrainLoss=0.3090 | ValLoss=0.8879 | AvgGrad=0.1863
+Fold1 Epoch7 | TrainAcc=88.97% | ValAcc=57.82% | TrainLoss=0.2980 | ValLoss=1.8471 | AvgGrad=0.1817
+Fold1 Epoch8 | TrainAcc=89.50% | ValAcc=69.68% | TrainLoss=0.2877 | ValLoss=0.9266 | AvgGrad=0.1771
+Fold1 Epoch9 | TrainAcc=89.68% | ValAcc=68.29% | TrainLoss=0.2800 | ValLoss=1.0529 | AvgGrad=0.1748
+Fold1 Epoch10 | TrainAcc=90.05% | ValAcc=79.04% | TrainLoss=0.2699 | ValLoss=0.5918 | AvgGrad=0.1707
+Fold1 Epoch11 | TrainAcc=91.31% | ValAcc=79.56% | TrainLoss=0.2382 | ValLoss=0.6004 | AvgGrad=0.1644
+Fold1 Epoch12 | TrainAcc=91.46% | ValAcc=84.97% | TrainLoss=0.2332 | ValLoss=0.4230 | AvgGrad=0.1724
+Fold1 Epoch13 | TrainAcc=91.62% | ValAcc=82.65% | TrainLoss=0.2292 | ValLoss=0.5017 | AvgGrad=0.1764
+Fold1 Epoch14 | TrainAcc=91.69% | ValAcc=76.50% | TrainLoss=0.2261 | ValLoss=0.8018 | AvgGrad=0.1788
+Fold1 Epoch15 | TrainAcc=91.82% | ValAcc=83.77% | TrainLoss=0.2227 | ValLoss=0.4732 | AvgGrad=0.1810
+Fold1 Epoch16 | TrainAcc=91.96% | ValAcc=77.52% | TrainLoss=0.2197 | ValLoss=0.7592 | AvgGrad=0.1827
+Fold1 Epoch17 | TrainAcc=92.05% | ValAcc=62.62% | TrainLoss=0.2175 | ValLoss=1.4681 | AvgGrad=0.1858
+Fold1 Epoch18 | TrainAcc=92.17% | ValAcc=82.46% | TrainLoss=0.2142 | ValLoss=0.5191 | AvgGrad=0.1858
+Fold1 Epoch19 | TrainAcc=92.25% | ValAcc=64.47% | TrainLoss=0.2125 | ValLoss=1.8419 | AvgGrad=0.1882
+Fold1 Epoch20 | TrainAcc=92.34% | ValAcc=87.93% | TrainLoss=0.2095 | ValLoss=0.3482 | AvgGrad=0.1880
+Fold1 Epoch21 | TrainAcc=93.06% | ValAcc=80.63% | TrainLoss=0.1913 | ValLoss=0.6122 | AvgGrad=0.1814
+Fold1 Epoch22 | TrainAcc=93.15% | ValAcc=86.75% | TrainLoss=0.1891 | ValLoss=0.3731 | AvgGrad=0.1876
+Fold1 Epoch23 | TrainAcc=93.20% | ValAcc=88.15% | TrainLoss=0.1871 | ValLoss=0.3339 | AvgGrad=0.1913
+Fold1 Epoch24 | TrainAcc=93.20% | ValAcc=89.61% | TrainLoss=0.1866 | ValLoss=0.2880 | AvgGrad=0.1968
+Fold1 Epoch25 | TrainAcc=93.36% | ValAcc=84.31% | TrainLoss=0.1836 | ValLoss=0.4873 | AvgGrad=0.1962
+Fold1 Epoch26 | TrainAcc=93.32% | ValAcc=88.27% | TrainLoss=0.1832 | ValLoss=0.3321 | AvgGrad=0.2003
+Fold1 Epoch27 | TrainAcc=93.40% | ValAcc=84.43% | TrainLoss=0.1813 | ValLoss=0.4685 | AvgGrad=0.2001
+Fold1 Epoch28 | TrainAcc=93.39% | ValAcc=83.73% | TrainLoss=0.1810 | ValLoss=0.4656 | AvgGrad=0.2051
+Fold1 Epoch29 | TrainAcc=93.39% | ValAcc=88.13% | TrainLoss=0.1799 | ValLoss=0.3480 | AvgGrad=0.2079
+Fold1 Epoch30 | TrainAcc=93.49% | ValAcc=84.90% | TrainLoss=0.1780 | ValLoss=0.4421 | AvgGrad=0.2077
+Fold1 Epoch31 | TrainAcc=93.97% | ValAcc=90.97% | TrainLoss=0.1675 | ValLoss=0.2497 | AvgGrad=0.2018
+Fold1 Epoch32 | TrainAcc=94.02% | ValAcc=90.67% | TrainLoss=0.1664 | ValLoss=0.2600 | AvgGrad=0.2057
+Fold1 Epoch33 | TrainAcc=94.04% | ValAcc=89.69% | TrainLoss=0.1652 | ValLoss=0.2905 | AvgGrad=0.2069
+Fold1 Epoch34 | TrainAcc=94.09% | ValAcc=89.56% | TrainLoss=0.1648 | ValLoss=0.2978 | AvgGrad=0.2092
+Fold1 Epoch35 | TrainAcc=94.11% | ValAcc=90.56% | TrainLoss=0.1644 | ValLoss=0.2629 | AvgGrad=0.2120
+Fold1 Epoch36 | TrainAcc=94.10% | ValAcc=90.62% | TrainLoss=0.1636 | ValLoss=0.2623 | AvgGrad=0.2135
+Fold1 Epoch37 | TrainAcc=94.17% | ValAcc=90.47% | TrainLoss=0.1624 | ValLoss=0.2672 | AvgGrad=0.2130
+Fold1 Epoch38 | TrainAcc=94.14% | ValAcc=90.84% | TrainLoss=0.1619 | ValLoss=0.2578 | AvgGrad=0.2168
+Fold1 Epoch39 | TrainAcc=94.16% | ValAcc=89.02% | TrainLoss=0.1621 | ValLoss=0.3157 | AvgGrad=0.2191
+Fold1 TestAcc=88.92%
+Fold2 Epoch1 | TrainAcc=73.63% | ValAcc=62.37% | TrainLoss=0.6986 | ValLoss=1.0105 | AvgGrad=0.1683
+Fold2 Epoch2 | TrainAcc=83.94% | ValAcc=71.07% | TrainLoss=0.4281 | ValLoss=0.8535 | AvgGrad=0.1969
+Fold2 Epoch3 | TrainAcc=86.17% | ValAcc=77.68% | TrainLoss=0.3725 | ValLoss=0.6088 | AvgGrad=0.1959
+Fold2 Epoch4 | TrainAcc=87.27% | ValAcc=71.92% | TrainLoss=0.3408 | ValLoss=0.8136 | AvgGrad=0.1923
+Fold2 Epoch5 | TrainAcc=88.13% | ValAcc=73.01% | TrainLoss=0.3199 | ValLoss=0.7590 | AvgGrad=0.1869
+Fold2 Epoch6 | TrainAcc=88.70% | ValAcc=80.18% | TrainLoss=0.3050 | ValLoss=0.5490 | AvgGrad=0.1833
+Fold2 Epoch7 | TrainAcc=89.12% | ValAcc=82.51% | TrainLoss=0.2938 | ValLoss=0.4881 | AvgGrad=0.1789
+Fold2 Epoch8 | TrainAcc=89.51% | ValAcc=83.74% | TrainLoss=0.2823 | ValLoss=0.4467 | AvgGrad=0.1755
+Fold2 Epoch9 | TrainAcc=89.76% | ValAcc=78.92% | TrainLoss=0.2754 | ValLoss=0.6334 | AvgGrad=0.1726
+Fold2 Epoch10 | TrainAcc=90.25% | ValAcc=80.70% | TrainLoss=0.2660 | ValLoss=0.5531 | AvgGrad=0.1689
+Fold2 Epoch11 | TrainAcc=91.48% | ValAcc=88.70% | TrainLoss=0.2349 | ValLoss=0.3212 | AvgGrad=0.1635
+Fold2 Epoch12 | TrainAcc=91.58% | ValAcc=83.55% | TrainLoss=0.2300 | ValLoss=0.4814 | AvgGrad=0.1706
+Fold2 Epoch13 | TrainAcc=91.69% | ValAcc=81.94% | TrainLoss=0.2270 | ValLoss=0.5118 | AvgGrad=0.1759
+Fold2 Epoch14 | TrainAcc=91.83% | ValAcc=83.68% | TrainLoss=0.2233 | ValLoss=0.4908 | AvgGrad=0.1778
+Fold2 Epoch15 | TrainAcc=92.02% | ValAcc=85.80% | TrainLoss=0.2193 | ValLoss=0.4129 | AvgGrad=0.1782
+Fold2 Epoch16 | TrainAcc=92.11% | ValAcc=85.06% | TrainLoss=0.2168 | ValLoss=0.4269 | AvgGrad=0.1808
+Fold2 Epoch17 | TrainAcc=92.15% | ValAcc=88.25% | TrainLoss=0.2141 | ValLoss=0.3193 | AvgGrad=0.1825
+Fold2 Epoch18 | TrainAcc=92.31% | ValAcc=86.11% | TrainLoss=0.2102 | ValLoss=0.3861 | AvgGrad=0.1826
+Fold2 Epoch19 | TrainAcc=92.41% | ValAcc=86.31% | TrainLoss=0.2080 | ValLoss=0.3927 | AvgGrad=0.1853
+Fold2 TestAcc=86.14%
+Fold3 Epoch1 | TrainAcc=73.11% | ValAcc=46.26% | TrainLoss=0.7108 | ValLoss=1.7991 | AvgGrad=0.1712
+Fold3 Epoch2 | TrainAcc=83.92% | ValAcc=79.45% | TrainLoss=0.4311 | ValLoss=0.5538 | AvgGrad=0.1968
+Fold3 Epoch3 | TrainAcc=86.26% | ValAcc=46.19% | TrainLoss=0.3720 | ValLoss=2.0705 | AvgGrad=0.1962
+Fold3 Epoch4 | TrainAcc=87.33% | ValAcc=84.87% | TrainLoss=0.3413 | ValLoss=0.4007 | AvgGrad=0.1921
+Fold3 Epoch5 | TrainAcc=88.13% | ValAcc=81.63% | TrainLoss=0.3206 | ValLoss=0.4905 | AvgGrad=0.1863
+Fold3 Epoch6 | TrainAcc=88.75% | ValAcc=77.62% | TrainLoss=0.3050 | ValLoss=0.6193 | AvgGrad=0.1805
+Fold3 Epoch7 | TrainAcc=89.21% | ValAcc=56.45% | TrainLoss=0.2921 | ValLoss=1.8816 | AvgGrad=0.1772
+Fold3 Epoch8 | TrainAcc=89.63% | ValAcc=86.67% | TrainLoss=0.2812 | ValLoss=0.3540 | AvgGrad=0.1746
+Fold3 Epoch9 | TrainAcc=90.01% | ValAcc=61.15% | TrainLoss=0.2716 | ValLoss=1.3193 | AvgGrad=0.1695
+Fold3 Epoch10 | TrainAcc=90.24% | ValAcc=73.93% | TrainLoss=0.2642 | ValLoss=0.7054 | AvgGrad=0.1671
+Fold3 Epoch11 | TrainAcc=91.37% | ValAcc=81.76% | TrainLoss=0.2346 | ValLoss=0.5319 | AvgGrad=0.1620
+Fold3 Epoch12 | TrainAcc=91.53% | ValAcc=80.95% | TrainLoss=0.2300 | ValLoss=0.5472 | AvgGrad=0.1726
+Fold3 Epoch13 | TrainAcc=91.72% | ValAcc=78.84% | TrainLoss=0.2259 | ValLoss=0.6967 | AvgGrad=0.1742
+Fold3 Epoch14 | TrainAcc=91.82% | ValAcc=85.32% | TrainLoss=0.2228 | ValLoss=0.4340 | AvgGrad=0.1765
+Fold3 Epoch15 | TrainAcc=92.00% | ValAcc=61.86% | TrainLoss=0.2183 | ValLoss=1.4771 | AvgGrad=0.1796
+Fold3 Epoch16 | TrainAcc=92.10% | ValAcc=84.86% | TrainLoss=0.2159 | ValLoss=0.4214 | AvgGrad=0.1811
+Fold3 TestAcc=85.18%
+Fold4 Epoch1 | TrainAcc=73.37% | ValAcc=73.89% | TrainLoss=0.7035 | ValLoss=0.6791 | AvgGrad=0.1680
+Fold4 Epoch2 | TrainAcc=83.81% | ValAcc=69.64% | TrainLoss=0.4327 | ValLoss=1.0309 | AvgGrad=0.1966
+Fold4 Epoch3 | TrainAcc=86.09% | ValAcc=68.89% | TrainLoss=0.3764 | ValLoss=1.0308 | AvgGrad=0.1909
+Fold4 Epoch4 | TrainAcc=87.06% | ValAcc=76.15% | TrainLoss=0.3481 | ValLoss=0.6585 | AvgGrad=0.1866
+Fold4 Epoch5 | TrainAcc=87.92% | ValAcc=82.75% | TrainLoss=0.3272 | ValLoss=0.4650 | AvgGrad=0.1813
+Fold4 Epoch6 | TrainAcc=88.46% | ValAcc=51.69% | TrainLoss=0.3128 | ValLoss=1.8633 | AvgGrad=0.1778
+Fold4 Epoch7 | TrainAcc=88.98% | ValAcc=72.28% | TrainLoss=0.2995 | ValLoss=0.8064 | AvgGrad=0.1738
+Fold4 Epoch8 | TrainAcc=89.31% | ValAcc=62.45% | TrainLoss=0.2899 | ValLoss=1.4362 | AvgGrad=0.1693
+Fold4 Epoch9 | TrainAcc=89.75% | ValAcc=87.23% | TrainLoss=0.2786 | ValLoss=0.3392 | AvgGrad=0.1656
+Fold4 Epoch10 | TrainAcc=89.94% | ValAcc=82.55% | TrainLoss=0.2727 | ValLoss=0.4973 | AvgGrad=0.1654
+Fold4 Epoch11 | TrainAcc=91.17% | ValAcc=83.97% | TrainLoss=0.2423 | ValLoss=0.4637 | AvgGrad=0.1590
+Fold4 Epoch12 | TrainAcc=91.34% | ValAcc=79.74% | TrainLoss=0.2380 | ValLoss=0.5861 | AvgGrad=0.1673
+Fold4 Epoch13 | TrainAcc=91.49% | ValAcc=82.49% | TrainLoss=0.2337 | ValLoss=0.5125 | AvgGrad=0.1710
+Fold4 Epoch14 | TrainAcc=91.71% | ValAcc=85.09% | TrainLoss=0.2290 | ValLoss=0.4179 | AvgGrad=0.1697
+Fold4 Epoch15 | TrainAcc=91.78% | ValAcc=83.72% | TrainLoss=0.2261 | ValLoss=0.4536 | AvgGrad=0.1753
+Fold4 Epoch16 | TrainAcc=91.91% | ValAcc=86.94% | TrainLoss=0.2212 | ValLoss=0.3710 | AvgGrad=0.1745
+Fold4 Epoch17 | TrainAcc=91.97% | ValAcc=80.39% | TrainLoss=0.2210 | ValLoss=0.6049 | AvgGrad=0.1801
+Fold4 TestAcc=80.41%
+Fold5 Epoch1 | TrainAcc=73.00% | ValAcc=57.59% | TrainLoss=0.7104 | ValLoss=1.3048 | AvgGrad=0.1690
+Fold5 Epoch2 | TrainAcc=83.73% | ValAcc=43.43% | TrainLoss=0.4352 | ValLoss=1.9265 | AvgGrad=0.1976
+Fold5 Epoch3 | TrainAcc=85.95% | ValAcc=59.19% | TrainLoss=0.3782 | ValLoss=1.6098 | AvgGrad=0.1960
+Fold5 Epoch4 | TrainAcc=87.12% | ValAcc=57.01% | TrainLoss=0.3471 | ValLoss=1.5514 | AvgGrad=0.1894
+Fold5 Epoch5 | TrainAcc=87.96% | ValAcc=48.53% | TrainLoss=0.3261 | ValLoss=2.7987 | AvgGrad=0.1855
+Fold5 Epoch6 | TrainAcc=88.41% | ValAcc=76.15% | TrainLoss=0.3113 | ValLoss=0.6776 | AvgGrad=0.1823
+Fold5 Epoch7 | TrainAcc=89.05% | ValAcc=68.54% | TrainLoss=0.2967 | ValLoss=1.0196 | AvgGrad=0.1756
+Fold5 Epoch8 | TrainAcc=89.45% | ValAcc=87.13% | TrainLoss=0.2877 | ValLoss=0.3435 | AvgGrad=0.1740
+Fold5 Epoch9 | TrainAcc=89.69% | ValAcc=61.69% | TrainLoss=0.2793 | ValLoss=1.4715 | AvgGrad=0.1716
+Fold5 Epoch10 | TrainAcc=89.82% | ValAcc=74.81% | TrainLoss=0.2739 | ValLoss=0.7412 | AvgGrad=0.1684
+Fold5 Epoch11 | TrainAcc=91.19% | ValAcc=87.85% | TrainLoss=0.2416 | ValLoss=0.3426 | AvgGrad=0.1609
+Fold5 Epoch12 | TrainAcc=91.35% | ValAcc=82.14% | TrainLoss=0.2356 | ValLoss=0.5475 | AvgGrad=0.1702
+Fold5 Epoch13 | TrainAcc=91.44% | ValAcc=83.33% | TrainLoss=0.2330 | ValLoss=0.4858 | AvgGrad=0.1743
+Fold5 Epoch14 | TrainAcc=91.58% | ValAcc=86.83% | TrainLoss=0.2284 | ValLoss=0.3550 | AvgGrad=0.1757
+Fold5 Epoch15 | TrainAcc=91.77% | ValAcc=85.02% | TrainLoss=0.2242 | ValLoss=0.4074 | AvgGrad=0.1778
+Fold5 Epoch16 | TrainAcc=91.87% | ValAcc=86.76% | TrainLoss=0.2219 | ValLoss=0.3816 | AvgGrad=0.1811
+Fold5 Epoch17 | TrainAcc=91.95% | ValAcc=75.50% | TrainLoss=0.2187 | ValLoss=0.8037 | AvgGrad=0.1825
+Fold5 Epoch18 | TrainAcc=92.04% | ValAcc=66.49% | TrainLoss=0.2160 | ValLoss=1.2595 | AvgGrad=0.1829
+Fold5 Epoch19 | TrainAcc=92.18% | ValAcc=75.71% | TrainLoss=0.2136 | ValLoss=0.8616 | AvgGrad=0.1855
+Fold5 TestAcc=75.85%
+
+=== Overall Summary ===
+Val Acc: 83.26 ± 4.70
+Test Acc: 83.30 ± 4.63
