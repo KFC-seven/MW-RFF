@@ -1,0 +1,53 @@
+
+================ SNR=10 dB =================
+Fold 1, Epoch 1: Train Loss=2.1669, Train Acc=14.92%, Val Loss=2.1527, Val Acc=16.50%, Grad Norm=3.0496
+Fold 1, Epoch 2: Train Loss=2.0623, Train Acc=20.71%, Val Loss=2.0998, Val Acc=20.20%, Grad Norm=2.6890
+Fold 1, Epoch 3: Train Loss=1.9446, Train Acc=27.12%, Val Loss=2.2667, Val Acc=20.99%, Grad Norm=2.9907
+Fold 1, Epoch 4: Train Loss=1.8521, Train Acc=31.33%, Val Loss=1.8614, Val Acc=31.22%, Grad Norm=3.2306
+Fold 1, Epoch 5: Train Loss=1.7908, Train Acc=33.91%, Val Loss=1.8919, Val Acc=31.30%, Grad Norm=3.3097
+Fold 1, Epoch 6: Train Loss=1.7477, Train Acc=35.95%, Val Loss=1.8319, Val Acc=32.18%, Grad Norm=3.4203
+Fold 1, Epoch 7: Train Loss=1.7125, Train Acc=37.31%, Val Loss=1.8480, Val Acc=31.65%, Grad Norm=3.5814
+Fold 1, Epoch 8: Train Loss=1.6800, Train Acc=38.57%, Val Loss=1.7884, Val Acc=34.87%, Grad Norm=3.7346
+Fold 1, Epoch 9: Train Loss=1.6544, Train Acc=39.61%, Val Loss=1.7392, Val Acc=35.93%, Grad Norm=3.8720
+Fold 1, Epoch 10: Train Loss=1.6294, Train Acc=40.76%, Val Loss=1.7991, Val Acc=34.45%, Grad Norm=4.0691
+Fold 1, Epoch 11: Train Loss=1.5709, Train Acc=43.10%, Val Loss=1.9053, Val Acc=32.21%, Grad Norm=4.4525
+Fold 1, Epoch 12: Train Loss=1.5501, Train Acc=43.82%, Val Loss=1.7876, Val Acc=35.65%, Grad Norm=4.8529
+Fold 1, Epoch 13: Train Loss=1.5306, Train Acc=44.67%, Val Loss=1.8345, Val Acc=35.27%, Grad Norm=5.1776
+Fold 1, Epoch 14: Train Loss=1.5179, Train Acc=45.13%, Val Loss=1.7436, Val Acc=37.89%, Grad Norm=5.4285
+Fold 1, Epoch 15: Train Loss=1.5045, Train Acc=45.61%, Val Loss=1.9789, Val Acc=31.25%, Grad Norm=5.6638
+Fold 1, Epoch 16: Train Loss=1.4917, Train Acc=46.12%, Val Loss=1.8005, Val Acc=34.92%, Grad Norm=5.8717
+Fold 1, Epoch 17: Train Loss=1.4802, Train Acc=46.68%, Val Loss=2.0537, Val Acc=30.82%, Grad Norm=6.1004
+Fold 1, Epoch 18: Train Loss=1.4682, Train Acc=47.08%, Val Loss=1.7783, Val Acc=37.64%, Grad Norm=6.2904
+Fold 1, Epoch 19: Train Loss=1.4586, Train Acc=47.42%, Val Loss=1.6729, Val Acc=39.90%, Grad Norm=6.4260
+Fold 1, Epoch 20: Train Loss=1.4473, Train Acc=47.95%, Val Loss=1.5852, Val Acc=42.40%, Grad Norm=6.6562
+Fold 1, Epoch 21: Train Loss=1.4121, Train Acc=49.27%, Val Loss=1.7568, Val Acc=38.11%, Grad Norm=6.9371
+Fold 1, Epoch 22: Train Loss=1.3969, Train Acc=49.74%, Val Loss=1.7536, Val Acc=38.74%, Grad Norm=7.2752
+Fold 1, Epoch 23: Train Loss=1.3893, Train Acc=50.03%, Val Loss=1.7454, Val Acc=38.59%, Grad Norm=7.5546
+Fold 1, Epoch 24: Train Loss=1.3812, Train Acc=50.33%, Val Loss=1.7942, Val Acc=36.13%, Grad Norm=7.7317
+Fold 1, Epoch 25: Train Loss=1.3721, Train Acc=50.67%, Val Loss=1.9970, Val Acc=33.26%, Grad Norm=7.9971
+Fold 1, Epoch 26: Train Loss=1.3661, Train Acc=50.97%, Val Loss=1.4990, Val Acc=46.16%, Grad Norm=8.2366
+Fold 1, Epoch 27: Train Loss=1.3562, Train Acc=51.38%, Val Loss=1.7065, Val Acc=38.96%, Grad Norm=8.4389
+Fold 1, Epoch 28: Train Loss=1.3518, Train Acc=51.47%, Val Loss=2.0818, Val Acc=30.89%, Grad Norm=8.6989
+Fold 1, Epoch 29: Train Loss=1.3449, Train Acc=51.94%, Val Loss=1.9475, Val Acc=34.60%, Grad Norm=8.8537
+Fold 1, Epoch 30: Train Loss=1.3424, Train Acc=51.83%, Val Loss=1.7280, Val Acc=39.30%, Grad Norm=9.0806
+Fold 1, Epoch 31: Train Loss=1.3155, Train Acc=52.88%, Val Loss=1.9958, Val Acc=34.04%, Grad Norm=9.1718
+Fold 1, Epoch 32: Train Loss=1.3092, Train Acc=53.05%, Val Loss=1.8279, Val Acc=37.35%, Grad Norm=9.4968
+Fold 1, Epoch 33: Train Loss=1.3013, Train Acc=53.31%, Val Loss=2.0425, Val Acc=33.09%, Grad Norm=9.8041
+Fold 1, Epoch 34: Train Loss=1.2957, Train Acc=53.59%, Val Loss=1.6529, Val Acc=41.72%, Grad Norm=9.9560
+Fold 1, Epoch 35: Train Loss=1.2922, Train Acc=53.67%, Val Loss=1.8363, Val Acc=36.90%, Grad Norm=10.2394
+Fold 1, Epoch 36: Train Loss=1.2839, Train Acc=54.09%, Val Loss=1.7519, Val Acc=38.76%, Grad Norm=10.3795
+Fold 1, Epoch 37: Train Loss=1.2808, Train Acc=54.17%, Val Loss=1.6393, Val Acc=43.08%, Grad Norm=10.5804
+Fold 1, Epoch 38: Train Loss=1.2769, Train Acc=54.26%, Val Loss=1.5398, Val Acc=46.01%, Grad Norm=10.8112
+Fold 1, Epoch 39: Train Loss=1.2697, Train Acc=54.51%, Val Loss=2.2057, Val Acc=30.17%, Grad Norm=10.9390
+Fold 1, Epoch 40: Train Loss=1.2678, Train Acc=54.66%, Val Loss=1.7415, Val Acc=39.94%, Grad Norm=11.2154
+Fold 1, Epoch 41: Train Loss=1.2521, Train Acc=55.26%, Val Loss=2.0010, Val Acc=34.49%, Grad Norm=11.3822
+早停，连续 15 个 epoch 验证集未提升
+Fold 1 Test Acc=33.34%
+Fold 2, Epoch 1: Train Loss=2.1693, Train Acc=14.74%, Val Loss=2.1486, Val Acc=14.81%, Grad Norm=3.2006
+Fold 2, Epoch 2: Train Loss=2.0694, Train Acc=20.40%, Val Loss=2.0586, Val Acc=23.55%, Grad Norm=2.7722
+Fold 2, Epoch 3: Train Loss=1.9506, Train Acc=26.68%, Val Loss=2.0159, Val Acc=27.19%, Grad Norm=3.0287
+Fold 2, Epoch 4: Train Loss=1.8601, Train Acc=30.95%, Val Loss=1.8649, Val Acc=31.36%, Grad Norm=3.2042
+Fold 2, Epoch 5: Train Loss=1.8004, Train Acc=33.68%, Val Loss=1.8830, Val Acc=31.05%, Grad Norm=3.3349
+Fold 2, Epoch 6: Train Loss=1.7516, Train Acc=35.80%, Val Loss=1.9443, Val Acc=29.77%, Grad Norm=3.4396
+Fold 2, Epoch 7: Train Loss=1.7155, Train Acc=37.26%, Val Loss=1.8068, Val Acc=33.73%, Grad Norm=3.5729
+Fold 2, Epoch 8: Train Loss=1.6873, Train Acc=38.31%, Val Loss=1.8924, Val Acc=32.27%, Grad Norm=3.7202

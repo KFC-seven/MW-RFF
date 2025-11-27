@@ -1,3 +1,0 @@
-in_planes,dropout_p,weight_decay,learning_rate,batch_size,test_acc
-64,0.3,0.005,0.0001,128,45.23
-32,0.7,0.001,0.0001,64,35.08

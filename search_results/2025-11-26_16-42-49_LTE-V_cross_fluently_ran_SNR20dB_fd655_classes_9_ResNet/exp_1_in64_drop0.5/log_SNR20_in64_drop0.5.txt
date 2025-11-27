@@ -1,0 +1,25 @@
+Training log for params: {'in_planes': 64, 'dropout_p': 0.5, 'weight_decay': 0.001, 'learning_rate': 0.0001, 'batch_size': 256}
+Epoch 1/200 - Train Acc: 20.41% | Val Acc: 26.01%
+Epoch 2/200 - Train Acc: 33.92% | Val Acc: 34.36%
+Epoch 3/200 - Train Acc: 40.91% | Val Acc: 40.37%
+Epoch 4/200 - Train Acc: 44.66% | Val Acc: 43.21%
+Epoch 5/200 - Train Acc: 47.25% | Val Acc: 44.79%
+Epoch 6/200 - Train Acc: 49.34% | Val Acc: 44.06%
+Epoch 7/200 - Train Acc: 50.74% | Val Acc: 45.62%
+Epoch 8/200 - Train Acc: 52.15% | Val Acc: 44.45%
+Epoch 9/200 - Train Acc: 53.42% | Val Acc: 47.91%
+Epoch 10/200 - Train Acc: 54.62% | Val Acc: 44.12%
+Epoch 11/200 - Train Acc: 58.30% | Val Acc: 47.26%
+Epoch 12/200 - Train Acc: 60.00% | Val Acc: 48.34%
+Epoch 13/200 - Train Acc: 61.53% | Val Acc: 48.71%
+Epoch 14/200 - Train Acc: 63.43% | Val Acc: 49.00%
+Epoch 15/200 - Train Acc: 65.37% | Val Acc: 47.43%
+Epoch 16/200 - Train Acc: 67.36% | Val Acc: 48.87%
+Epoch 17/200 - Train Acc: 69.49% | Val Acc: 48.11%
+Epoch 18/200 - Train Acc: 71.78% | Val Acc: 46.38%
+Epoch 19/200 - Train Acc: 73.96% | Val Acc: 45.77%
+Epoch 20/200 - Train Acc: 76.22% | Val Acc: 46.44%
+Epoch 21/200 - Train Acc: 82.41% | Val Acc: 47.76%
+Epoch 22/200 - Train Acc: 84.60% | Val Acc: 46.27%
+Early stopping at epoch 22
+Final Test Acc: 46.27%
