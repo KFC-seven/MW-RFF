@@ -1,0 +1,57 @@
+=== Experiment Parameters ===
+Timestamp: 2025-11-27_05-02-45
+SNR_dB: -25, Apply AWGN: True
+Velocity_kmh: 120, Apply Doppler: True
+Carrier frequency: 5900000000.0 Hz, Sampling rate: 5000000.0 Hz
+Expected DMRS length: 288
+Wavelet: db6, Level: 6, Use Log: True
+Training params: batch_size=64, epochs=200, lr=0.003, weight_decay=0.0001, patience=5
+Number of classes: 9
+============================
+
+Fold1 Epoch1 TrainAcc=11.02% ValAcc=11.17% TrainLoss=2.2013 ValLoss=2.1979
+Fold1 Epoch2 TrainAcc=11.07% ValAcc=11.02% TrainLoss=2.1977 ValLoss=2.1975
+Fold1 Epoch3 TrainAcc=10.91% ValAcc=11.05% TrainLoss=2.1975 ValLoss=2.1975
+Fold1 Epoch4 TrainAcc=11.02% ValAcc=11.05% TrainLoss=2.1975 ValLoss=2.1973
+Fold1 Epoch5 TrainAcc=11.02% ValAcc=11.05% TrainLoss=2.1975 ValLoss=2.1978
+Fold1 Epoch6 TrainAcc=11.19% ValAcc=11.05% TrainLoss=2.1975 ValLoss=2.1976
+Fold1 Final | TrainAcc=11.13% ValAcc=11.05% TestAcc=11.11%
+Fold2 Epoch1 TrainAcc=11.07% ValAcc=10.91% TrainLoss=2.2009 ValLoss=2.1981
+Fold2 Epoch2 TrainAcc=11.04% ValAcc=11.18% TrainLoss=2.1978 ValLoss=2.1977
+Fold2 Epoch3 TrainAcc=11.08% ValAcc=11.05% TrainLoss=2.1976 ValLoss=2.1973
+Fold2 Epoch4 TrainAcc=10.91% ValAcc=11.09% TrainLoss=2.1975 ValLoss=2.1974
+Fold2 Epoch5 TrainAcc=11.01% ValAcc=11.04% TrainLoss=2.1975 ValLoss=2.1974
+Fold2 Epoch6 TrainAcc=10.98% ValAcc=11.05% TrainLoss=2.1976 ValLoss=2.1978
+Fold2 Epoch7 TrainAcc=11.06% ValAcc=10.90% TrainLoss=2.1976 ValLoss=2.1974
+Fold2 Final | TrainAcc=11.16% ValAcc=10.90% TestAcc=11.11%
+Fold3 Epoch1 TrainAcc=11.19% ValAcc=10.83% TrainLoss=2.2007 ValLoss=2.1984
+Fold3 Epoch2 TrainAcc=11.08% ValAcc=10.84% TrainLoss=2.1977 ValLoss=2.1975
+Fold3 Epoch3 TrainAcc=11.17% ValAcc=11.09% TrainLoss=2.1975 ValLoss=2.1974
+Fold3 Epoch4 TrainAcc=10.96% ValAcc=11.23% TrainLoss=2.1975 ValLoss=2.1973
+Fold3 Epoch5 TrainAcc=11.10% ValAcc=11.12% TrainLoss=2.1975 ValLoss=2.1975
+Fold3 Epoch6 TrainAcc=11.16% ValAcc=11.12% TrainLoss=2.1975 ValLoss=2.1975
+Fold3 Epoch7 TrainAcc=11.16% ValAcc=11.09% TrainLoss=2.1976 ValLoss=2.1977
+Fold3 Epoch8 TrainAcc=11.00% ValAcc=11.09% TrainLoss=2.1976 ValLoss=2.1975
+Fold3 Epoch9 TrainAcc=11.06% ValAcc=11.00% TrainLoss=2.1976 ValLoss=2.1975
+Fold3 Final | TrainAcc=11.14% ValAcc=11.00% TestAcc=11.11%
+Fold4 Epoch1 TrainAcc=11.23% ValAcc=11.13% TrainLoss=2.2009 ValLoss=2.1977
+Fold4 Epoch2 TrainAcc=11.03% ValAcc=10.99% TrainLoss=2.1979 ValLoss=2.1974
+Fold4 Epoch3 TrainAcc=10.97% ValAcc=11.24% TrainLoss=2.1975 ValLoss=2.1977
+Fold4 Epoch4 TrainAcc=11.18% ValAcc=11.24% TrainLoss=2.1975 ValLoss=2.1975
+Fold4 Epoch5 TrainAcc=11.18% ValAcc=11.23% TrainLoss=2.1975 ValLoss=2.1975
+Fold4 Epoch6 TrainAcc=11.04% ValAcc=10.89% TrainLoss=2.1975 ValLoss=2.1982
+Fold4 Epoch7 TrainAcc=11.18% ValAcc=11.08% TrainLoss=2.1976 ValLoss=2.1976
+Fold4 Epoch8 TrainAcc=11.05% ValAcc=11.17% TrainLoss=2.1976 ValLoss=2.1974
+Fold4 Final | TrainAcc=11.10% ValAcc=11.17% TestAcc=11.11%
+Fold5 Epoch1 TrainAcc=11.17% ValAcc=11.07% TrainLoss=2.2008 ValLoss=2.1984
+Fold5 Epoch2 TrainAcc=10.97% ValAcc=11.23% TrainLoss=2.1977 ValLoss=2.1976
+Fold5 Epoch3 TrainAcc=10.91% ValAcc=11.14% TrainLoss=2.1976 ValLoss=2.1973
+Fold5 Epoch4 TrainAcc=10.94% ValAcc=11.00% TrainLoss=2.1975 ValLoss=2.1974
+Fold5 Epoch5 TrainAcc=11.08% ValAcc=11.11% TrainLoss=2.1976 ValLoss=2.1975
+Fold5 Epoch6 TrainAcc=11.01% ValAcc=11.07% TrainLoss=2.1975 ValLoss=2.1976
+Fold5 Epoch7 TrainAcc=11.09% ValAcc=11.11% TrainLoss=2.1977 ValLoss=2.1974
+Fold5 Final | TrainAcc=11.11% ValAcc=11.11% TestAcc=11.11%
+
+=== Overall Summary ===
+Val Acc: 11.05 ± 0.09
+Test Acc: 11.11 ± 0.00
