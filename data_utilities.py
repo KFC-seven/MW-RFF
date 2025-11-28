@@ -1208,3 +1208,201 @@ def preprocess_dataset_cross_IQ_blocks_single_date_per_rx_cyclic(compact_dataset
 
     return X_train, y_train, X_test, y_test
 
+def preprocess_dataset_for_classification_cross_date(compact_dataset, tx_list, rx_list, train_dates, test_dates, max_sig=None, equalized=0, use_phase_differential=False):
+    def extract_samples(dates):
+        X = []
+        y = []
+        sample_count = 0
+        for rx in rx_list:
+            for tx_idx, tx in enumerate(tx_list):
+                tx_i = compact_dataset['tx_list'].index(tx)
+                rx_i = compact_dataset['rx_list'].index(rx)
+                eq_i = compact_dataset['equalized_list'].index(equalized)
+                
+                for date in dates:
+                    if date not in compact_dataset['capture_date_list']:
+                        continue
+                    date_i = compact_dataset['capture_date_list'].index(date)
+                    sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]
+
+                    if max_sig is not None:
+                        sig_data = sig_data[:max_sig]
+
+                    for sample_idx, sample in enumerate(sig_data):
+                        if sample.shape == (256, 2):
+                            original_sample = sample.copy()
+                            
+                            # 应用相位差分
+                            if use_phase_differential:
+                                sample = apply_phase_differential(sample)
+                            
+                            # 输出第一个样本的对比信息
+                            if sample_count == 0 and use_phase_differential:
+                                print("=== 相位差分前后对比 ===")
+                                print("差分前的前5个IQ样本值:")
+                                for i in range(min(5, len(original_sample))):
+                                    print(f"  样本{i}: I={original_sample[i, 0]:.6f}, Q={original_sample[i, 1]:.6f}")
+                                
+                                print(f"\n相位差分后的前5个样本值:")
+                                for i in range(min(5, len(sample))):
+                                    print(f"  样本{i}: I={sample[i, 0]:.6f}, Q={sample[i, 1]:.6f}")
+                                
+                                # 输出数值范围信息
+                                print(f"\n数值范围信息:")
+                                print(f"  原始信号I范围: [{np.min(original_sample[:, 0]):.6f}, {np.max(original_sample[:, 0]):.6f}]")
+                                print(f"  原始信号Q范围: [{np.min(original_sample[:, 1]):.6f}, {np.max(original_sample[:, 1]):.6f}]")
+                                print(f"  差分后I范围: [{np.min(sample[:, 0]):.6f}, {np.max(sample[:, 0]):.6f}]")
+                                print(f"  差分后Q范围: [{np.min(sample[:, 1]):.6f}, {np.max(sample[:, 1]):.6f}]")
+                            
+                            X.append(sample)
+                            y.append(tx_idx)
+                            sample_count += 1
+        
+        return np.array(X), np.array(y)
+    
+    def apply_phase_differential(signal):
+        """
+        相位差分：保持幅度信息，消除载波频偏
+        signal: 形状为 (256, 2) 的数组
+        返回: 形状为 (255, 2) 的相位差分信号
+        """
+        iq_complex = signal[:, 0] + 1j * signal[:, 1]
+        
+        # 计算相位差
+        phase_original = np.angle(iq_complex)
+        phase_diff = np.diff(phase_original)
+        
+        # 将相位差包装到[-π, π]范围内
+        phase_diff = np.angle(np.exp(1j * phase_diff))
+        
+        # 使用原始信号的幅度，结合相位差
+        magnitude = np.abs(iq_complex[1:])
+        diff_complex = magnitude * np.exp(1j * phase_diff)
+        
+        result = np.zeros((len(signal)-1, 2))
+        result[:, 0] = np.real(diff_complex)
+        result[:, 1] = np.imag(diff_complex)
+        
+        return result
+
+    # 所有日期
+    all_dates = set(compact_dataset['capture_date_list'])
+    train_dates = set(train_dates)
+    test_dates = set(test_dates)
+
+    # 转为 list 保持顺序
+    X_train, y_train = extract_samples(list(train_dates))
+    X_test, y_test = extract_samples(list(test_dates))
+
+    print(f"✅ 训练样本数: {len(X_train)}, 测试样本数: {len(X_test)}")
+    if use_phase_differential:
+        print("✅ 已启用相位差分功能")
+        print("✅ 相位差分：保持幅度信息，消除载波频偏")
+        if len(X_train) > 0:
+            print(f"✅ 差分后样本长度: {X_train.shape[1]}")
+    
+    return X_train, y_train, X_test, y_test
+
+# ------------------------ 数据集处理函数（block-level，严格 TX-日期-RX 顺序） ------------------------
+def preprocess_dataset_cross_IQ_independent_blocks_per_tx_day(compact_dataset, tx_list, 
+                                                              max_sig=None, equalized=0, 
+                                                              block_size=256, y=10, 
+                                                              test_ratio=0.2, seed=42):
+    """
+    返回训练集 block、训练标签 block、测试集 block、测试标签 block
+
+    每个 block 严格按照：
+    TX -> 日期 -> RX 顺序抽取，每个 RX 抽 y 条信号循环填充 block_size
+    block shape: (256, block_size, 2)
+
+    核心改进：
+    - 支持跨多轮 RX 循环累积信号填满 block_size
+    - 不会出现空训练集
+    """
+    import numpy as np
+    np.random.seed(seed)
+
+    train_blocks, train_block_labels = [], []
+    test_blocks, test_block_labels = [], []
+
+    # 遍历每个 TX
+    for tx_idx, tx in enumerate(tx_list):
+        tx_i = compact_dataset['tx_list'].index(tx)
+        eq_i = compact_dataset['equalized_list'].index(equalized)
+
+        # 遍历每个日期
+        for date_i, date in enumerate(compact_dataset['capture_date_list']):
+            # 收集当前 TX 当前日期下所有 RX 的信号
+            rx_signals = []
+            for rx_i in range(len(compact_dataset['rx_list'])):
+                sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]  # shape: (N_sig, 256, 2)
+                if max_sig is not None:
+                    sig_data = sig_data[:max_sig]
+                rx_signals.append(sig_data)
+
+            # 每个 RX 的指针，表示已经抽取的信号位置
+            rx_pointers = [0] * len(rx_signals)
+            rx_lengths = [len(arr) for arr in rx_signals]
+
+            # 循环生成 block，直到所有 RX 信号都抽完
+            while True:
+                block_list = []  # 存放本次 block 累积的信号
+                # 标记是否还有信号可以抽
+                any_signal_left = False
+
+                # 循环 RX，直到 block 达到 block_size
+                while sum([b.shape[0] for b in block_list]) < block_size:
+                    finished = True  # 假设所有 RX 都抽完
+                    for rx_idx, arr in enumerate(rx_signals):
+                        start = rx_pointers[rx_idx]
+                        end = min(start + y, rx_lengths[rx_idx])
+                        if start >= rx_lengths[rx_idx]:
+                            continue  # 当前 RX 没有剩余信号
+                        finished = False
+                        any_signal_left = True
+                        block_list.append(arr[start:end])
+                        rx_pointers[rx_idx] = end
+
+                        # 如果 block 已经达到 block_size，提前停止循环
+                        if sum([b.shape[0] for b in block_list]) >= block_size:
+                            break
+                    if finished:
+                        break  # 所有 RX 都抽完信号
+
+                if not any_signal_left:
+                    # 所有 RX 信号都用完，退出循环
+                    break
+
+                # 拼接 block
+                block_array = np.concatenate(block_list, axis=0)
+
+                # 截取到 block_size
+                if block_array.shape[0] >= block_size:
+                    block_array = block_array[:block_size]
+                else:
+                    # 理论上不会走到这里，但保险起见跳过不足 block_size 的 block
+                    continue
+
+                # 转置 block: (block_size, 256, 2) -> (256, block_size, 2)
+                block_transposed = block_array.transpose(1, 0, 2)
+
+                # 随机分配到训练/测试
+                if np.random.rand() < test_ratio:
+                    test_blocks.append(block_transposed)
+                    test_block_labels.append(tx_idx)
+                else:
+                    train_blocks.append(block_transposed)
+                    train_block_labels.append(tx_idx)
+
+    # 转成 numpy array
+    train_blocks = np.array(train_blocks)   # [N_block, 256, block_size, 2]
+    train_block_labels = np.array(train_block_labels)
+    test_blocks = np.array(test_blocks)
+    test_block_labels = np.array(test_block_labels)
+
+    print(f"✅ 总 block 数: {len(train_blocks)+len(test_blocks)}, "
+          f"训练集 block: {len(train_blocks)}, 测试集 block: {len(test_blocks)}")
+    if len(train_blocks) > 0:
+        print(f"✅ 每个 block shape: {train_blocks[0].shape}")
+    return train_blocks, train_block_labels, test_blocks, test_block_labels
+
