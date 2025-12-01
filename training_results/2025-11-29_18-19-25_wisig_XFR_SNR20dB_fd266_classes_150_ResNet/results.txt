@@ -1,0 +1,11 @@
+=== Experiment Parameters ===
+Timestamp: 2025-11-29_18-19-25
+SNR_dB: 20, ADD_NOISE: True, ADD_DOPPLER: True
+FS: 20000000.0, FC: 2400000000.0, Velocity_kmh: 120
+Batch: 256, Epochs: 200, LR: 0.0001, WD: 0.001
+Num classes: 150, K-Fold: 5, Patience: 5, MinDelta: 0.1
+============================
+
+Fold1 Epoch1 | TrainAcc=76.96% | ValAcc=78.43% | TrainLoss=0.9043 | ValLoss=0.8913 | AvgGrad=0.1995
+Fold1 Epoch2 | TrainAcc=96.90% | ValAcc=80.79% | TrainLoss=0.1180 | ValLoss=0.8105 | AvgGrad=0.1139
+Fold1 Epoch3 | TrainAcc=98.67% | ValAcc=81.93% | TrainLoss=0.0543 | ValLoss=0.8041 | AvgGrad=0.0863
