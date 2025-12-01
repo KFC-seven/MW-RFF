@@ -1821,3 +1821,93 @@ def preprocess_dataset_for_classification_tx_split(
         print("✔ 已启用相位差分，样本长度变为:", X_train.shape[1])
 
     return X_train, y_train, X_test, y_test
+
+def preprocess_dataset_cross_IQ_balanced_blocks_per_tx_day(
+        compact_dataset, tx_list, max_sig=None, equalized=0,
+        block_size=180, y=10, test_ratio=0.25, seed=42):
+    import numpy as np
+    np.random.seed(seed)
+
+    train_blocks, train_block_labels = [], []
+    test_blocks, test_block_labels = [], []
+
+    for tx_idx, tx in enumerate(tx_list):
+        tx_i = compact_dataset['tx_list'].index(tx)
+        eq_i = compact_dataset['equalized_list'].index(equalized)
+
+        for date_i, date in enumerate(compact_dataset['capture_date_list']):
+            rx_signals = []
+            rx_lengths = []
+            for rx_i in range(len(compact_dataset['rx_list'])):
+                sig_data = compact_dataset['data'][tx_i][rx_i][date_i][eq_i]
+                if max_sig is not None:
+                    sig_data = sig_data[:max_sig]
+                if len(sig_data) > 0:
+                    rx_signals.append(sig_data)
+                    rx_lengths.append(len(sig_data))
+
+            if len(rx_signals) == 0:
+                continue
+
+            # --------- 检查：只保留长度相同的 RX，否则跳过该日期 ---------
+            if len(set(rx_lengths)) > 1:
+                continue
+
+            # 初始化 RX 指针
+            rx_ptrs = [0] * len(rx_signals)
+            all_blocks_for_tx_date = []
+
+            # 生成当前 TX+日期的所有 block
+            while True:
+                block_list = []
+                any_left = False
+                while sum([b.shape[0] for b in block_list]) < block_size:
+                    finished = True
+                    for i, arr in enumerate(rx_signals):
+                        start = rx_ptrs[i]
+                        end = min(start + y, len(arr))
+                        if start >= len(arr):
+                            continue
+                        finished = False
+                        any_left = True
+                        block_list.append(arr[start:end])
+                        rx_ptrs[i] = end
+                        if sum([b.shape[0] for b in block_list]) >= block_size:
+                            break
+                    if finished:
+                        break
+                if not any_left:
+                    break
+
+                block_array = np.concatenate(block_list, axis=0)
+                if block_array.shape[0] < block_size:
+                    continue
+                block_array = block_array[:block_size]
+                block_transposed = block_array.transpose(1, 0, 2)
+                all_blocks_for_tx_date.append(block_transposed)
+
+            # --------- 严格按比例划分 train/test ---------
+            n_blocks = len(all_blocks_for_tx_date)
+            if n_blocks == 0:
+                continue
+            n_test = int(n_blocks * test_ratio)
+            n_train = n_blocks - n_test
+
+            test_blocks.extend(all_blocks_for_tx_date[:n_test])
+            test_block_labels.extend([tx_idx] * n_test)
+            train_blocks.extend(all_blocks_for_tx_date[n_test:])
+            train_block_labels.extend([tx_idx] * n_train)
+
+    train_blocks = np.array(train_blocks)
+    train_block_labels = np.array(train_block_labels)
+    test_blocks = np.array(test_blocks)
+    test_block_labels = np.array(test_block_labels)
+
+    print(f"✅ 总 block 数: {len(train_blocks)+len(test_blocks)}, "
+          f"训练集 block: {len(train_blocks)}, 测试集 block: {len(test_blocks)}")
+    if len(train_blocks) > 0:
+        print(f"✅ 每个 block shape: {train_blocks[0].shape}")
+
+    return train_blocks, train_block_labels, test_blocks, test_block_labels
+
+
