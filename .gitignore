@@ -1,0 +1,40 @@
+# 根目录下的实验结果目录
+/debug_plots/
+/training_results/
+/training_results_10dB/
+/training_results_date_cross/
+/TSNE/
+/TSNE_WISIG_20dB_TRAIN_TEST/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Env / IDE
+.venv/
+venv/
+env/
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Large artifacts
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.npy
+*.npz
+*.mat
+*.h5
+*.pkl
+
+# Archives
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
