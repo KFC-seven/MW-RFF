@@ -1,0 +1,4 @@
+d149dbec64df1f02c7a022189a3437269cbc32c38db606dab0786636913e1b25  data/wisig-test.npz
+00c1ea50a9d4731c7304a5d1592f79b069693721ead5cc7c5406f558cfc8db32  data/ltev-sd-20db-test.npz
+757f338847fd044832b55f1a61ad72326c048ac3028bee64f5f9b93ece64ad5f  data/ltev-cd-20db-test.npz
+b508eb86aebf5822e2b9539d038e0b8370f95523b7ab5dcb8c3f9dc2ca557f33  data/ltev-multiframe-test.npz

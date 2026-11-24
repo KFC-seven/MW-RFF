@@ -1,0 +1,42 @@
+{
+  "dataset": "wisig",
+  "m": 240,
+  "L": 256,
+  "n_classes": 6,
+  "snr_db": -12,
+  "seed": 42,
+  "chunk": 5,
+  "source_date": "2021_03_15",
+  "target_date": "2021_03_01",
+  "data": {
+    "filename": "ManySig.pkl",
+    "equalized": 0,
+    "blocks_per_date": 300,
+    "source_sha256": "2b0a7a7488dd3650bcae7b1d80efbcffd1598aaa671ae6b0a0df2a24dc0f694f",
+    "conditioning": "XFR row-RMS/AWGN, then population I/Q standardization",
+    "noise_coordinates": "global original packet ID, I/Q, position; MT19937 float64 randn",
+    "split_manifest": "configs/wisig/folds.json"
+  },
+  "checkpoints": {
+    "1": {
+      "file": "weights/wisig/xfr_fold1.pt",
+      "sha256": "171256f5d110ca54958560d514c7ab4a4ed79b99f2da2dabd96dfae239b82870"
+    },
+    "2": {
+      "file": "weights/wisig/xfr_fold2.pt",
+      "sha256": "7e4bd0fe6fc2cf09c641be55dd768957c5da61dc8aa4725193305bacaa4eb7d5"
+    },
+    "3": {
+      "file": "weights/wisig/xfr_fold3.pt",
+      "sha256": "8fdb3dadeaf9419bb58feb06aea97f9445049cc0898a240c7ab23465473f651a"
+    },
+    "4": {
+      "file": "weights/wisig/xfr_fold4.pt",
+      "sha256": "3fc146807f8410e06c377a2ec93b026010505e09c280189b848f6fdcf1d7c222"
+    },
+    "5": {
+      "file": "weights/wisig/xfr_fold5.pt",
+      "sha256": "e8745973e0023bfc1d18ce3aefa7b713aead9a9ab15f873b6aa82c88a288cdda"
+    }
+  }
+}

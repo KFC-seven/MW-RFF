@@ -1,0 +1,48 @@
+{
+  "m": 240,
+  "L": 256,
+  "rx_chunk": 1,
+  "shuffle_rx_pools": false,
+  "conditioning": "rms_phase_awgn_iq_standardization",
+  "seed": 42,
+  "data": {
+    "filename": "ManySig.pkl",
+    "source_sha256": "2b0a7a7488dd3650bcae7b1d80efbcffd1598aaa671ae6b0a0df2a24dc0f694f"
+  },
+  "snr_db": 20,
+  "fd_hz": 266,
+  "fs_hz": 20000000,
+  "runs": [
+    {
+      "source_date": "2021-03-15",
+      "target_date": "2021-03-01",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2026-01-17_04-21-33_wisig_XFR_Block_block240_SNR20dB_fd266_classes_6_ResNet/model_fold1.pth",
+          "sha256": "5dc4881360cbfe36c523ee6336a42ed0e5a191657abc9bbbf27eae5a8201a250"
+        },
+        {
+          "fold": 2,
+          "path": "2026-01-17_04-21-33_wisig_XFR_Block_block240_SNR20dB_fd266_classes_6_ResNet/model_fold2.pth",
+          "sha256": "e6f4964f62d178dd1331452aa034ba67d9c0ef9ce1b116aac763976ac7c396f3"
+        },
+        {
+          "fold": 3,
+          "path": "2026-01-17_04-21-33_wisig_XFR_Block_block240_SNR20dB_fd266_classes_6_ResNet/model_fold3.pth",
+          "sha256": "8c85d7cd19f806fa73d420afa1c9325791c9764337428a87675f4d2d06feaba2"
+        },
+        {
+          "fold": 4,
+          "path": "2026-01-17_04-21-33_wisig_XFR_Block_block240_SNR20dB_fd266_classes_6_ResNet/model_fold4.pth",
+          "sha256": "cf293f1d99152234fe186123a7c0deb9971d5fe7eafefbf981f00b9c426ef1d9"
+        },
+        {
+          "fold": 5,
+          "path": "2026-01-17_04-21-33_wisig_XFR_Block_block240_SNR20dB_fd266_classes_6_ResNet/model_fold5.pth",
+          "sha256": "ace3813c098302397d080e932d563167247b6dea794b9e6b32cb447496e0afed"
+        }
+      ]
+    }
+  ]
+}

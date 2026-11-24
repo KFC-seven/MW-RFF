@@ -1,0 +1,14 @@
+{
+  "construction": "SD",
+  "m": 256,
+  "L": 256,
+  "n_classes": 9,
+  "snr_db": 20,
+  "doppler_hz": 655.5555555555557,
+  "fs_hz": 1400000.0,
+  "noise_seed": 42,
+  "split_seed": 42,
+  "registry": "records_raw256.json",
+  "data_version": "SD: variable-length raw256 extraction; 256 positions, phase sampling rate 1.4 MHz.",
+  "test_bundle_sha256": "00c1ea50a9d4731c7304a5d1592f79b069693721ead5cc7c5406f558cfc8db32"
+}

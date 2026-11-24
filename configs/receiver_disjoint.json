@@ -1,0 +1,202 @@
+{
+  "experiment": "wisig-unseen",
+  "date": "2021_03_15",
+  "equalized": 0,
+  "crop": [
+    20,
+    180
+  ],
+  "m": 160,
+  "L": 160,
+  "references_per_TX_RX": 1000,
+  "rows_per_case": 24000,
+  "data_sha256": "2b0a7a7488dd3650bcae7b1d80efbcffd1598aaa671ae6b0a0df2a24dc0f694f",
+  "transmitters": [
+    "14-10",
+    "14-7",
+    "20-15",
+    "20-19",
+    "6-15",
+    "8-20"
+  ],
+  "receivers": [
+    "1-1",
+    "1-19",
+    "14-7",
+    "18-2",
+    "19-2",
+    "2-1",
+    "2-19",
+    "20-1",
+    "3-19",
+    "7-14",
+    "7-7",
+    "8-8"
+  ],
+  "construction": "Eight cycles of the four G2 receivers, five ordered packets per receiver per cycle; 40 packets/RX/block; 25 blocks/TX.",
+  "preprocessing": {
+    "rms": "G0-only complex RMS; no test-fitted statistic",
+    "spectrum": "fftshift(FFT160)/sqrt160; ln(abs(spectrum)+1e-8/sqrt160)",
+    "wavelet": "db6 level3 symmetric; zero A3; reconstruct/truncate160",
+    "reference_Z": "For refZ members, within-reference float64 population z-score with std+1e-8, then float32",
+    "channels": "Wlog/zero2 + clipped same-reference offsets -8..-1,+1..+8 + sin/cos frequency2 + PCA32",
+    "PCA": "24000 G0 references; float64 mean/covariance/eigh; 32 descending components; largest-absolute loading positive; unwhitened; float32 projections"
+  },
+  "selection": {
+    "epoch": "G1 max (macro-F1,worst-TX recall,accuracy,-CE,-epoch) over30 epochs",
+    "family": "G1 max (macro-F1,worst-TX recall,accuracy,-CE) among original/refZ/mixRX/refZ_mixRX",
+    "reported_assignments": "Top5 of15 by G2 accuracy after testing: a test-selected illustrative subset",
+    "O05": "Receiver set explored before the four-candidate family comparison",
+    "mixRX": "Training-only regrouping; inference uses canonical four-RX schedule"
+  },
+  "evaluation": {
+    "role": "G2 test only",
+    "unit": "One frequency-row prediction jointly uses160 physical references; no block-logit fusion",
+    "batch_size": 256,
+    "precision": "float32; deterministic cuDNN; cuDNN TF32 enabled; matmul TF32 disabled",
+    "aggregation": "Equal assignment weights; mean and sample SD (ddof=1) when reporting the five cases",
+    "backend": "CPU arithmetic may change boundary decisions relative to historical CUDA"
+  },
+  "cases": [
+    {
+      "case": "N09",
+      "variant": "refZ_mixRX",
+      "receiver_indices": {
+        "train": [
+          1,
+          8,
+          9,
+          11
+        ],
+        "val": [
+          2,
+          3,
+          6,
+          10
+        ],
+        "test": [
+          0,
+          4,
+          5,
+          7
+        ]
+      },
+      "train_complex_rms": 0.056681148765866496,
+      "selected_epoch": 3,
+      "model_sha256": "a7bb161d84226b2dfc81aa0c1a7897cb89e12595343993f9c39e1d0d7792acfe",
+      "pca_sha256": "bb4d42f0750bcf88185654937fe5bfa93b41d24dba8b61a4950e94c8158c29a3"
+    },
+    {
+      "case": "N10",
+      "variant": "mixRX",
+      "receiver_indices": {
+        "train": [
+          3,
+          7,
+          8,
+          11
+        ],
+        "val": [
+          0,
+          4,
+          5,
+          9
+        ],
+        "test": [
+          1,
+          2,
+          6,
+          10
+        ]
+      },
+      "train_complex_rms": 0.051136089278190175,
+      "selected_epoch": 26,
+      "model_sha256": "adf3b26cf4c845f5493050d713494b478686b5e16e8459bdb432e57cc14555d1",
+      "pca_sha256": "eb25cc3ec4a8ab8cfe8dd63cafafb931c09dffe9ab837473536bcd41c7634765"
+    },
+    {
+      "case": "O05",
+      "variant": "original",
+      "receiver_indices": {
+        "train": [
+          2,
+          3,
+          7,
+          9
+        ],
+        "val": [
+          0,
+          1,
+          6,
+          11
+        ],
+        "test": [
+          4,
+          5,
+          8,
+          10
+        ]
+      },
+      "train_complex_rms": 0.03935853658056085,
+      "selected_epoch": 26,
+      "model_sha256": "9d9ca7e2e3667a05e5d2decfec58d3e76a4758bca8218daedc8e315e097500b1",
+      "pca_sha256": "a3d55ad9ff95147d7a920cb9a09441632b6ab22fe55747698753fae9599eef49"
+    },
+    {
+      "case": "N05",
+      "variant": "refZ_mixRX",
+      "receiver_indices": {
+        "train": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "val": [
+          0,
+          5,
+          7,
+          9
+        ],
+        "test": [
+          6,
+          8,
+          10,
+          11
+        ]
+      },
+      "train_complex_rms": 0.03871467893880598,
+      "selected_epoch": 16,
+      "model_sha256": "f2ee06f35564c47073744d319825e6839d6618a1f9d595896ff89edf20484120",
+      "pca_sha256": "55bb8699eba71cdb139abea799ded9c8aba14db962d76770fb71e1feb2726c39"
+    },
+    {
+      "case": "N08",
+      "variant": "mixRX",
+      "receiver_indices": {
+        "train": [
+          5,
+          6,
+          7,
+          8
+        ],
+        "val": [
+          0,
+          4,
+          10,
+          11
+        ],
+        "test": [
+          1,
+          2,
+          3,
+          9
+        ]
+      },
+      "train_complex_rms": 0.05249840170998101,
+      "selected_epoch": 14,
+      "model_sha256": "0c84220557a6943a1e76d3d611673c3050d9dec2d773988c85e84d90100093b3",
+      "pca_sha256": "f40e500e83cf77cf47f9020f553a40d8bb20d43cff58987781a01d83aaf07e02"
+    }
+  ]
+}

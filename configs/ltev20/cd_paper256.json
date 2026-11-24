@@ -1,0 +1,13 @@
+{
+  "construction": "CD",
+  "m": 256,
+  "L": 256,
+  "n_classes": 9,
+  "snr_db": 20,
+  "doppler_hz": 655.5555555555557,
+  "fs_hz": 5000000.0,
+  "noise_seed": 42,
+  "split_seed": 42,
+  "registry": "records_iq256.json",
+  "data_version": "CD: IQ256 extraction; 2999 frames by 256 positions per recording, phase sampling rate 5 MHz."
+}

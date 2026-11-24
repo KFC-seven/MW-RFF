@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use XFR in your research, please cite the associated paper."
+title: "XFR: Cross-Frame RFF Representation under Channel Variation and Domain Shift"
+type: software
+authors:
+  - family-names: Zhong
+    given-names: Yuan
+  - family-names: Li
+    given-names: Long
+  - family-names: Li
+    given-names: Dongming
+  - family-names: Wei
+    given-names: Dong
+  - family-names: Zhang
+    given-names: Meng
+repository-code: "https://github.com/KFC-seven/MW-RFF"

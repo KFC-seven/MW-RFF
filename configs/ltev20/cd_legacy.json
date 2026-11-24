@@ -1,0 +1,14 @@
+{
+  "construction": "CD",
+  "m": 288,
+  "L": 288,
+  "n_classes": 9,
+  "snr_db": 20,
+  "doppler_hz": 655.5555555555557,
+  "fs_hz": 5000000.0,
+  "noise_seed": 42,
+  "split_seed": 42,
+  "registry": "records_legacy288.json",
+  "test_bundle_sha256": "757f338847fd044832b55f1a61ad72326c048ac3028bee64f5f9b93ece64ad5f",
+  "data_version": "CD: legacy288 extraction; 2999 frames by 288 positions per recording, phase sampling rate 5 MHz."
+}

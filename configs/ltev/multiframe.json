@@ -1,0 +1,37 @@
+{
+  "dataset": "ltev",
+  "m": 256,
+  "L": 256,
+  "n_classes": 9,
+  "snr_db": -6.0,
+  "seed": 42,
+  "condition": {
+    "snr_db": -6.0,
+    "doppler_hz": 655.5555555555557,
+    "fs_hz": 5000000.0,
+    "seed": 42
+  },
+  "checkpoints": {
+    "1": {
+      "file": "weights/ltev/xfr_fold1.pt",
+      "sha256": "51dab1dda2dd28ea54711cfdced26cf654bacc4d1afebef12b2ee7d4fe211b49"
+    },
+    "2": {
+      "file": "weights/ltev/xfr_fold2.pt",
+      "sha256": "43d67c97b874205927e2b0cca8d3f1453d0f3f4d19818a31f16bb5abc1acae3a"
+    },
+    "3": {
+      "file": "weights/ltev/xfr_fold3.pt",
+      "sha256": "b222b8256697ea0fc4bb6f521b174123bf4aeeabf39b075059865a327101f4b8"
+    },
+    "4": {
+      "file": "weights/ltev/xfr_fold4.pt",
+      "sha256": "17661a80fd70e41bcdcb70e087457a5c3876b21fd6ab6234fc2ae1d50f59d93c"
+    },
+    "5": {
+      "file": "weights/ltev/xfr_fold5.pt",
+      "sha256": "7adb7bf3d2dce1506674c3af691f59be8d1c7eda4c38154da6e271c334073bae"
+    }
+  },
+  "test_bundle_sha256": "b508eb86aebf5822e2b9539d038e0b8370f95523b7ab5dcb8c3f9dc2ca557f33"
+}

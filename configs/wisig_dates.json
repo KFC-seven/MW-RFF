@@ -1,0 +1,510 @@
+{
+  "m": 240,
+  "L": 256,
+  "rx_chunk": 5,
+  "shuffle_rx_pools": true,
+  "conditioning": "iq_standardization",
+  "seed": 42,
+  "data": {
+    "filename": "ManySig.pkl",
+    "source_sha256": "2b0a7a7488dd3650bcae7b1d80efbcffd1598aaa671ae6b0a0df2a24dc0f694f"
+  },
+  "runs": [
+    {
+      "source_date": "2021-03-01",
+      "target_date": "2021-03-01",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_14-50-20_train2021_03_01_test2021_03_01/model_fold1.pth",
+          "sha256": "c0d6e4f76f2a73738c6cb2187cbbcfc8664b7aa7f14646f50f4ffd58f9e4a036"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_14-50-20_train2021_03_01_test2021_03_01/model_fold2.pth",
+          "sha256": "a9b507db799c0f24c641e61c4d11cfd3c0ae2ca02250f1d48820f0a3a6a8ee50"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_14-50-20_train2021_03_01_test2021_03_01/model_fold3.pth",
+          "sha256": "0e65f8269f5fb0440ec309076a38f25eb036b6e1b68d6bff8f1d82a6b9bd55bb"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_14-50-20_train2021_03_01_test2021_03_01/model_fold4.pth",
+          "sha256": "78828c21b1dd2be1db713c2c76e51ba5d7d66a4ab83efd4ddfe7b4d546c2fff9"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_14-50-20_train2021_03_01_test2021_03_01/model_fold5.pth",
+          "sha256": "adfaa8207ca43cb37eac06f0230933a7f371cc82f70bd44839cc122e6c3f4d78"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-01",
+      "target_date": "2021-03-08",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_14-53-34_train2021_03_01_test2021_03_08/model_fold1.pth",
+          "sha256": "e416962a16324c9fee0ecde5d70abbdd0556222d9325935388d19b81359e1b7f"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_14-53-34_train2021_03_01_test2021_03_08/model_fold2.pth",
+          "sha256": "c57a81d56247067885dc7d17d30f111a6b9348b0bbd3263e8fc6fbadb014a6b2"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_14-53-34_train2021_03_01_test2021_03_08/model_fold3.pth",
+          "sha256": "f012792ee1180694375cf5a8bc1d7934c850f795c8f61f1fcfa2be9b49617e7b"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_14-53-34_train2021_03_01_test2021_03_08/model_fold4.pth",
+          "sha256": "60bbc8cb4bc0760e79f3d48c6efe246b1c9796e6ef8e9c46bb4c3d87857abe04"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_14-53-34_train2021_03_01_test2021_03_08/model_fold5.pth",
+          "sha256": "358bdc0005150be1ea1c2055caf1837080baf23f022a6d0af1db704b3775481a"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-01",
+      "target_date": "2021-03-15",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_14-56-25_train2021_03_01_test2021_03_15/model_fold1.pth",
+          "sha256": "ade92f53fdb6b99b4399ba9821cd18f49031741a7f96bbc1c63271164fd84a6f"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_14-56-25_train2021_03_01_test2021_03_15/model_fold2.pth",
+          "sha256": "9d94cace8a181ee3a0812056adb7ea4acbb983c0fed91e29a8b273be96feb0ff"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_14-56-25_train2021_03_01_test2021_03_15/model_fold3.pth",
+          "sha256": "50481112d574161f2285d2a92e71d7c516fe8e2bf559d345c90ae8d770d30c26"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_14-56-25_train2021_03_01_test2021_03_15/model_fold4.pth",
+          "sha256": "3fd0f52c1c2cfd42392401607790df875da32eac29876c54ae70fd9841a2924f"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_14-56-25_train2021_03_01_test2021_03_15/model_fold5.pth",
+          "sha256": "9fe39701a409fa43c7c41c6f8ef3e345441e3db723c9d2951996dd6511624bda"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-01",
+      "target_date": "2021-03-23",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_14-59-42_train2021_03_01_test2021_03_23/model_fold1.pth",
+          "sha256": "74f47ff42b27767537084e8d7af60cdc543a70173336034b383a7de3371ee9af"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_14-59-42_train2021_03_01_test2021_03_23/model_fold2.pth",
+          "sha256": "ecb5dc54d73fa60eb35aae506416ada577e45ff3a8f638ac2039158aee37a436"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_14-59-42_train2021_03_01_test2021_03_23/model_fold3.pth",
+          "sha256": "48d644b8ff071214f06256094b82752e22d2286d14b5f87fb7fcd7b0b64683b9"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_14-59-42_train2021_03_01_test2021_03_23/model_fold4.pth",
+          "sha256": "a8a4c3d1172d452df2d5cd5a26286328db8faaf91c62cc067c20ff00bb467b8b"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_14-59-42_train2021_03_01_test2021_03_23/model_fold5.pth",
+          "sha256": "63cb4f2bbf8b097829bcecc26cb1ea88d85b840eb003d506169d3456754bcd78"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-08",
+      "target_date": "2021-03-01",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-02-21_train2021_03_08_test2021_03_01/model_fold1.pth",
+          "sha256": "efaeadbd522a2c57b2444445fa1ed7f46c5ab6d3728a4f21402bf0c8dbbcce36"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-02-21_train2021_03_08_test2021_03_01/model_fold2.pth",
+          "sha256": "73c56c0b51b193dde69e027897a32ca121abc6f8b9be5bf4ff2f90db15a697ba"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-02-21_train2021_03_08_test2021_03_01/model_fold3.pth",
+          "sha256": "82a926dca23ffae2bfde6e043db8a4a9f0d30802b5dd0db8620e714d57cd71e9"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-02-21_train2021_03_08_test2021_03_01/model_fold4.pth",
+          "sha256": "a5cd20dba0d07616efaa10c868bbd5e9774ba3e7046273b71101caf1dc8d928b"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-02-21_train2021_03_08_test2021_03_01/model_fold5.pth",
+          "sha256": "5f952f467b32c590e4ca36181758f61c5e76df6b22878e4f7a26895713c23218"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-08",
+      "target_date": "2021-03-08",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-05-01_train2021_03_08_test2021_03_08/model_fold1.pth",
+          "sha256": "a6d2dfd6108cebede70e1f2b95eeff402d7337d68b3609d5db84461400fff5ff"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-05-01_train2021_03_08_test2021_03_08/model_fold2.pth",
+          "sha256": "29f03461c019eebb782fa5cc54cc48eee06f4046d8036b4df511aef5faba0678"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-05-01_train2021_03_08_test2021_03_08/model_fold3.pth",
+          "sha256": "4239a552093d592bd894beb8f9382ddb98746ca3b55c853d0cc7cb6c0b1c8e2d"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-05-01_train2021_03_08_test2021_03_08/model_fold4.pth",
+          "sha256": "1fbf05bdc4eab98a0a96525febf51400197a16f1724912c39a3c8ad4fd2dd38a"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-05-01_train2021_03_08_test2021_03_08/model_fold5.pth",
+          "sha256": "5fd26e1732fcc30a7e6b2fc58257f9537f31a511f1d7dec5e2d7a1473eb057ed"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-08",
+      "target_date": "2021-03-15",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-07-27_train2021_03_08_test2021_03_15/model_fold1.pth",
+          "sha256": "81d4dac3a94a7e71cd60d275ec5d625fae94db8af640e276397f46343b7c85d0"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-07-27_train2021_03_08_test2021_03_15/model_fold2.pth",
+          "sha256": "348cc7ca350f5cb9f099cc7bb759e2d29edc9223479eb326f1881a544fa941f8"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-07-27_train2021_03_08_test2021_03_15/model_fold3.pth",
+          "sha256": "cae8ad5fd21a00db74cfb94eea1645aa238ae07a0d4281eccd6d9389d49d631e"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-07-27_train2021_03_08_test2021_03_15/model_fold4.pth",
+          "sha256": "5c5dd9fa94dd9113b939e92aed2b1cdfe489c7738a79715d77091925d1577a3e"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-07-27_train2021_03_08_test2021_03_15/model_fold5.pth",
+          "sha256": "1674738df0b5c3cb664ff4aa55619aca9b24acc2381392b7a7d98d3796f58ecc"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-08",
+      "target_date": "2021-03-23",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-10-22_train2021_03_08_test2021_03_23/model_fold1.pth",
+          "sha256": "84e71a0a183fee65d44610a6641d562e538abd5066a0d6fe482784ef229264dc"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-10-22_train2021_03_08_test2021_03_23/model_fold2.pth",
+          "sha256": "9c6da3faf0a1dbc613453cd4e8a057d1dc13a7a93a30f91a4324d1c208157b3d"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-10-22_train2021_03_08_test2021_03_23/model_fold3.pth",
+          "sha256": "2f7516b6f95958943e710137b9a696dc0ad9d47dd7223ef16228709b7a1a7ac8"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-10-22_train2021_03_08_test2021_03_23/model_fold4.pth",
+          "sha256": "5a44ff4a91c06d044a47d5400d50bea5b11cdc0055293059731c5e817c97fc41"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-10-22_train2021_03_08_test2021_03_23/model_fold5.pth",
+          "sha256": "77e0f01a85225c175717bb3d9e0b8161aa1fd0b148ec953714eca38d3fe82e34"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-15",
+      "target_date": "2021-03-01",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-13-29_train2021_03_15_test2021_03_01/model_fold1.pth",
+          "sha256": "858d194561f15213f4b0c15df5a08ff93faec86d6799b8ce45de21cb53cf34ac"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-13-29_train2021_03_15_test2021_03_01/model_fold2.pth",
+          "sha256": "451b3057baa23a384e4f0691b14a5b79cb56570e61b6b38396026d74b2694e0a"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-13-29_train2021_03_15_test2021_03_01/model_fold3.pth",
+          "sha256": "d4e75d38c503ce1030641e0b61404c3c57033610517344e615ebbe38a23f806e"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-13-29_train2021_03_15_test2021_03_01/model_fold4.pth",
+          "sha256": "abe8f0f066bb6c34d584cba073b5afdbff8e3ee51701cc0d446f6c26e177ccf1"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-13-29_train2021_03_15_test2021_03_01/model_fold5.pth",
+          "sha256": "98254052648182cd01ca806d9e69fa397ceb620291855b7b1b558604d38452ff"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-15",
+      "target_date": "2021-03-08",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-16-09_train2021_03_15_test2021_03_08/model_fold1.pth",
+          "sha256": "1fd4483ec719325acfadac6dc3074c812a1246a2f54e9f2b5021f31b42230cb4"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-16-09_train2021_03_15_test2021_03_08/model_fold2.pth",
+          "sha256": "0c197cad1088fd865cb2f0d308a9552c9de1f224c16ccd6353a4cfd91e7261bc"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-16-09_train2021_03_15_test2021_03_08/model_fold3.pth",
+          "sha256": "3e38e0466cc7a403d774ccbe33e32594e9cf4b4deb91141439a8b09eba930db5"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-16-09_train2021_03_15_test2021_03_08/model_fold4.pth",
+          "sha256": "e092068955773e4220844d82e1790468f66b7c383e60fe374ba150111c97e77c"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-16-09_train2021_03_15_test2021_03_08/model_fold5.pth",
+          "sha256": "bfd46dbeb70594c099b47eee4ff053689706c7efaf06f30f34df664c1201cec6"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-15",
+      "target_date": "2021-03-15",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-18-37_train2021_03_15_test2021_03_15/model_fold1.pth",
+          "sha256": "090d1e404bb23611f4ae990027877bedf5c5831d4a4976b5d1a8ddae8f9dff8d"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-18-37_train2021_03_15_test2021_03_15/model_fold2.pth",
+          "sha256": "11ec2de809041112e504cadca56cf0c1f6a8f112cf7d6c72af4d235584f579f4"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-18-37_train2021_03_15_test2021_03_15/model_fold3.pth",
+          "sha256": "753e5044fe1e9dff875b7d576435bc19ca8dc35482b7251767b20a6dd3d80913"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-18-37_train2021_03_15_test2021_03_15/model_fold4.pth",
+          "sha256": "18bcc23464b1ad4d7eef039819ffc4fef4a2ad113dde7f9cb185cdaf63cc76e7"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-18-37_train2021_03_15_test2021_03_15/model_fold5.pth",
+          "sha256": "c8645bce51421fd9b3b625d56bd47fde5bfb604342186fe257c4a928203f0398"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-15",
+      "target_date": "2021-03-23",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-21-19_train2021_03_15_test2021_03_23/model_fold1.pth",
+          "sha256": "1d4ba0a7767c2558de08cd5dce3d9d8c0135864842ead257e94bb5cb6742512c"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-21-19_train2021_03_15_test2021_03_23/model_fold2.pth",
+          "sha256": "dfa4cca91258d044142224fc243b8e492f63a7571e236ce0da960e37eb249956"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-21-19_train2021_03_15_test2021_03_23/model_fold3.pth",
+          "sha256": "a6f92136db3b88be88785cd062e8c118ab2b951ebb70df726fc4d447790b6b71"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-21-19_train2021_03_15_test2021_03_23/model_fold4.pth",
+          "sha256": "c96d5995262c4e121976e53ec15d0551b765013665dad0fb410d2f29ceeb781f"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-21-19_train2021_03_15_test2021_03_23/model_fold5.pth",
+          "sha256": "d07859c58247d0245f38c0b1da842da185e0d1b19c37dd63d7f55ad2929a3fac"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-23",
+      "target_date": "2021-03-01",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-23-59_train2021_03_23_test2021_03_01/model_fold1.pth",
+          "sha256": "4e648d24e112741bd969d4ffd63c7fe83b4f3a65b09af5b2ef9046e6064bfd01"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-23-59_train2021_03_23_test2021_03_01/model_fold2.pth",
+          "sha256": "46622dcd123e8c4123c01ab96de2fae90eb8719c5487f3bbe6a49b49c22bf447"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-23-59_train2021_03_23_test2021_03_01/model_fold3.pth",
+          "sha256": "879823d5df6759b17ba8f089c1398331a5f8a0665f927cbfe46cfc41c7f00aba"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-23-59_train2021_03_23_test2021_03_01/model_fold4.pth",
+          "sha256": "52e4d60cce6e026f0a641762e8f786c64fe0d6477725c5190d071445c1e190f9"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-23-59_train2021_03_23_test2021_03_01/model_fold5.pth",
+          "sha256": "932553d8f6eb65979c82d9be6b7c05a6469c88bfa271a19c49cdc689d5dfa68d"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-23",
+      "target_date": "2021-03-08",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-26-14_train2021_03_23_test2021_03_08/model_fold1.pth",
+          "sha256": "e44a9253d6e299c150be58d4b90b4639caf61249dd3f106547916ea56ef1cc12"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-26-14_train2021_03_23_test2021_03_08/model_fold2.pth",
+          "sha256": "55b8d718a4dbf58a50cbae0ee8a6813804fe2e0e0f9459ee51492c1e83552243"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-26-14_train2021_03_23_test2021_03_08/model_fold3.pth",
+          "sha256": "5156d4cbe8d55ef85a8917060910563c75801e0894e5462cd0d56735a92e7a19"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-26-14_train2021_03_23_test2021_03_08/model_fold4.pth",
+          "sha256": "57fa7d9d008c3db0a2621b4e8312d528f1ab48393593d0cc88b8cd85235334a7"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-26-14_train2021_03_23_test2021_03_08/model_fold5.pth",
+          "sha256": "82b34f062c4281c26aaedd7bfed899eeb5db34b193fab2dad98987013197510f"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-23",
+      "target_date": "2021-03-15",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-28-54_train2021_03_23_test2021_03_15/model_fold1.pth",
+          "sha256": "9ae727e556e78a6ee8f8849e5aaf875f8b7a87cff16142dc7231c869ee6e3acb"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-28-54_train2021_03_23_test2021_03_15/model_fold2.pth",
+          "sha256": "307832f4216b6dc886937195bfeb0a50728520fd01a35b5b88a922f60c5e84ab"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-28-54_train2021_03_23_test2021_03_15/model_fold3.pth",
+          "sha256": "35753c0e1cde25fc9b24738c70bd05866d041ae74704c0d138e4042785c1da74"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-28-54_train2021_03_23_test2021_03_15/model_fold4.pth",
+          "sha256": "ae3eaa9e4db80689815ccf1365eced1a59a16b692edf70c5c972063f596e8ae9"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-28-54_train2021_03_23_test2021_03_15/model_fold5.pth",
+          "sha256": "a14104ebcee963da2f68a717448e3a1d8e63eee67d9361157f8bac10a1c37051"
+        }
+      ]
+    },
+    {
+      "source_date": "2021-03-23",
+      "target_date": "2021-03-23",
+      "weights": [
+        {
+          "fold": 1,
+          "path": "2025-11-25_15-31-30_train2021_03_23_test2021_03_23/model_fold1.pth",
+          "sha256": "f2422c661a3321b5debe5ace037b0d6d6352ac8988446a23ed766891365e9eea"
+        },
+        {
+          "fold": 2,
+          "path": "2025-11-25_15-31-30_train2021_03_23_test2021_03_23/model_fold2.pth",
+          "sha256": "aaa6c2262205144cb8448b598badce91947a345a69539fa00996061c7b02a6c0"
+        },
+        {
+          "fold": 3,
+          "path": "2025-11-25_15-31-30_train2021_03_23_test2021_03_23/model_fold3.pth",
+          "sha256": "062bde152935258155322a1ac0c172c1ca611e475049377ae35c481d515651ba"
+        },
+        {
+          "fold": 4,
+          "path": "2025-11-25_15-31-30_train2021_03_23_test2021_03_23/model_fold4.pth",
+          "sha256": "856222091a53eb8c5fa5e4c27233e3b0b3e424148a3d652576c2066aa4922386"
+        },
+        {
+          "fold": 5,
+          "path": "2025-11-25_15-31-30_train2021_03_23_test2021_03_23/model_fold5.pth",
+          "sha256": "dbb233ffc9612abdabec53fbdf3c6ce49430896012b072d9967a61c3ce8194b4"
+        }
+      ]
+    }
+  ]
+}
